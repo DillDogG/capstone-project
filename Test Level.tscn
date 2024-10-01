@@ -61,5 +61,7 @@ storage = ExtResource("1_yxyqu")
 material = SubResource("Terrain3DMaterial_tj0d8")
 assets = SubResource("Terrain3DAssets_ayl1x")
 
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9.97654, 0)
+[node name="Player" type="CharacterBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8892, 0)
+
+[node name="Camera3D" type="Camera3D" parent="Player"]
