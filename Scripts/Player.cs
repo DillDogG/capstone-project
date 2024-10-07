@@ -16,9 +16,16 @@ public partial class Player : CharacterBody3D
 
     private Vector3 _targetVelocity = Vector3.Zero;
 
+    //private Vector2 prevMousePos = Vector2.Zero;
+
+    public override void _Ready()
+    {
+        base._Ready();
+        Input.MouseMode = Input.MouseModeEnum.Captured;
+    }
+
     public override void _PhysicsProcess(double delta)
     {
-
         // We create a local variable to store the input direction.
         var direction = Vector3.Zero;
 
@@ -73,5 +80,18 @@ public partial class Player : CharacterBody3D
         // Moving the character
         Velocity = _targetVelocity;
         MoveAndSlide();
+    }
+
+    public override void _Input(InputEvent @event)
+    {
+        if (@event is InputEventMouseMotion motionEvent)
+        {
+            Vector2 mouseMovement = motionEvent.ScreenRelative;
+            //mouseMovement.Y = clamp(mouseMovement.Y, -1.5,1.2);
+            GetNode<Node3D>("Pivot").RotateObjectLocal((new Vector3(0, 1, 0)), (mouseMovement.X * -0.05f));
+            GetNode<Node3D>("Pivot").RotateObjectLocal((new Vector3(1, 0, 0)), (mouseMovement.Y * -0.05f));
+            //GetNode<Node3D>("Pivot").RotateY(mouseMovement.X * -0.05f);
+            //GetNode<Node3D>("Pivot").RotateX(mouseMovement.Y * -0.05f);
+        }
     }
 }

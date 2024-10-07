@@ -1,8 +1,22 @@
-[gd_scene load_steps=12 format=3 uid="uid://cqtpwqoty3pxd"]
+[gd_scene load_steps=13 format=3 uid="uid://cqtpwqoty3pxd"]
 
 [ext_resource type="Script" path="res://Scripts/Player.cs" id="1_w1ai3"]
 [ext_resource type="PackedScene" uid="uid://cqogvwet1q3ng" path="res://Models/Remy.fbx" id="2_wpfpw"]
 [ext_resource type="Terrain3DStorage" uid="uid://blbayoklwmwm4" path="res://Test Level.res" id="3_381tp"]
+
+[sub_resource type="CSharpScript" id="CSharpScript_2cv8o"]
+script/source = "using Godot;
+using System;
+
+public partial class GameFunc : Node3D
+{
+    public override void _Notification(int what)
+    {
+        if (what == NotificationWMCloseRequest)
+            GetTree().Quit(); // default behavior
+    }
+}
+"
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_nvl54"]
 radius = 0.310774
@@ -61,6 +75,7 @@ generated_type = 1
 mesh_list = Array[Terrain3DMeshAsset]([SubResource("Terrain3DMeshAsset_5rwbj")])
 
 [node name="Node3D" type="Node3D"]
+script = SubResource("CSharpScript_2cv8o")
 
 [node name="Player" type="CharacterBody3D" parent="."]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 1.8892, 0)
