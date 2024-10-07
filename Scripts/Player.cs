@@ -88,10 +88,15 @@ public partial class Player : CharacterBody3D
         {
             Vector2 mouseMovement = motionEvent.ScreenRelative;
             //mouseMovement.Y = clamp(mouseMovement.Y, -1.5,1.2);
-            GetNode<Node3D>("Pivot").RotateObjectLocal((new Vector3(0, 1, 0)), (mouseMovement.X * -0.05f));
-            GetNode<Node3D>("Pivot").RotateObjectLocal((new Vector3(1, 0, 0)), (mouseMovement.Y * -0.05f));
-            //GetNode<Node3D>("Pivot").RotateY(mouseMovement.X * -0.05f);
+            //GetNode<Node3D>("Pivot").RotateObjectLocal((new Vector3(1, 0, 0)), (mouseMovement.Y * 0.05f));
+            //GetNode<Node3D>("Pivot").RotateObjectLocal((new Vector3(0, 1, 0)), (mouseMovement.X * -0.05f));
+            //GetNode<Node3D>("Pivot").RotateY(mouseMovement.X * 0.05f);
             //GetNode<Node3D>("Pivot").RotateX(mouseMovement.Y * -0.05f);
+            GetNode<Node3D>("Pivot").Rotation = new Vector3(mouseMovement.Y * 0.05f + GetNode<Node3D>("Pivot").Rotation.X, mouseMovement.X * -0.05f + GetNode<Node3D>("Pivot").Rotation.Y, GetNode<Node3D>("Pivot").Rotation.Z);
+            //GetNode<Node3D>("Pivot").Rotation.X.Equals(mouseMovement.Y * -0.05f + GetNode<Node3D>("Pivot").Rotation.X);
+
+            //if (GetNode<Node3D>("Pivot").Rotation.X > 50) GetNode<Node3D>("Pivot").RotateObjectLocal((new Vector3(1, 0, 0)), -GetNode<Node3D>("Pivot").Rotation.X);
+            //if (GetNode<Node3D>("Pivot").Rotation.X < -90) GetNode<Node3D>("Pivot").RotateObjectLocal((new Vector3(1, 0, 0)), GetNode<Node3D>("Pivot").Rotation.X);
         }
     }
 }
