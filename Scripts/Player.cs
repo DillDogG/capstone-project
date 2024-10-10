@@ -14,28 +14,52 @@ public partial class Player : CharacterBody3D
 	[Export]
 	public int FallAcceleration { get; set; } = 75;
 
+<<<<<<< Updated upstream
 	public bool Sprinting { get; set; } = false;
 	public bool Crouching { get; set; } = false;
+=======
+    public double CoyoteDuration = 0.25;
+
+    public bool Sprinting { get; set; } = false;
+    public bool Crouching { get; set; } = false;
+>>>>>>> Stashed changes
 
 	public int JumpCount { get; set; }
 
+<<<<<<< Updated upstream
 	private Vector3 _targetVelocity = Vector3.Zero;
+=======
+    private double CoyoteTime { get; set; }
+
+    private Vector3 _targetVelocity = Vector3.Zero;
+>>>>>>> Stashed changes
 
 	Node3D pivot;
 	//private Vector2 prevMousePos = Vector2.Zero;
 
+<<<<<<< Updated upstream
 	public override void _Ready()
 	{
 		base._Ready();
 		Input.MouseMode = Input.MouseModeEnum.Captured;
 		pivot = GetNode<Node3D>("Pivot");
 	}
+=======
+    public override void _Ready()
+    {
+        base._Ready();
+        Input.MouseMode = Input.MouseModeEnum.Captured;
+        pivot = GetNode<Node3D>("Pivot");
+        CoyoteTime = CoyoteDuration;
+    }
+>>>>>>> Stashed changes
 
 	public override void _PhysicsProcess(double delta)
 	{
 		// We create a local variable to store the input direction.
 		var direction = Vector3.Zero;
 
+<<<<<<< Updated upstream
 		// resetting extra jumps while on the ground
 		if (IsOnFloor())
 		{
@@ -65,6 +89,42 @@ public partial class Player : CharacterBody3D
 			//direction.Z -= 1.0f;
 			direction.X += 1.0f;
 		}
+=======
+        // resetting extra jumps while on the ground
+        if (IsOnFloor())
+        {
+            JumpCount = 2;
+            CoyoteTime = CoyoteDuration;
+        }
+        else if (CoyoteTime > 0)
+        {
+            CoyoteTime -= delta;
+        }
+        // We check for each move input and update the direction accordingly.
+        // original is commented out, swap if it works again
+        if (Input.IsActionPressed("move_right"))
+        {
+            //direction.X += 1.0f;
+            direction.Z += 1.0f;
+        }
+        if (Input.IsActionPressed("move_left"))
+        {
+            //direction.X -= 1.0f;
+            direction.Z -= 1.0f;
+        }
+        if (Input.IsActionPressed("move_backward"))
+        {
+            // Notice how we are working with the vector's X and Z axes.
+            // In 3D, the XZ plane is the ground plane.
+            //direction.Z += 1.0f;
+            direction.X -= 1.0f;
+        }
+        if (Input.IsActionPressed("move_forward"))
+        {
+            //direction.Z -= 1.0f;
+            direction.X += 1.0f;
+        }
+>>>>>>> Stashed changes
 
 		if (direction != Vector3.Zero)
 		{
@@ -101,6 +161,7 @@ public partial class Player : CharacterBody3D
 			_targetVelocity.Y -= FallAcceleration * (float)delta;
 		}
 
+<<<<<<< Updated upstream
 		// Jumping.
 		if (IsOnFloor() && Input.IsActionJustPressed("jump"))
 		{
@@ -111,6 +172,19 @@ public partial class Player : CharacterBody3D
 			_targetVelocity.Y = JumpImpulse;
 			JumpCount--;
 		}
+=======
+        // Jumping.
+        if (CoyoteTime > 0 && Input.IsActionJustPressed("jump"))
+        {
+            _targetVelocity.Y = JumpImpulse;
+            CoyoteTime = 0;
+        }
+        else if (JumpCount > 0 && Input.IsActionJustPressed("jump"))
+        {
+            _targetVelocity.Y = JumpImpulse;
+            JumpCount--;
+        }
+>>>>>>> Stashed changes
 
 		// when releasing jump, slow down significantly to give more control when jumping
 		if (Input.IsActionJustReleased("jump") && Velocity.Y > 0)
