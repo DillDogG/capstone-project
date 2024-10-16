@@ -40,6 +40,7 @@ public partial class Player : CharacterBody3D
 
 	public override void _PhysicsProcess(double delta)
 	{
+		MoveAndSlide();
 		// We create a local variable to store the input direction.
 		var direction = Vector3.Zero;
 
@@ -61,6 +62,9 @@ public partial class Player : CharacterBody3D
             JustLanded[0] = false;
             JustLanded[1] = true;
         }
+
+		if (IsOnWallOnly()) WallRunning = true;
+		else WallRunning = false;
         // We check for each move input and update the direction accordingly.
         // original is commented out, swap if it works again
         if (Input.IsActionPressed("move_right"))
@@ -109,10 +113,10 @@ public partial class Player : CharacterBody3D
 		}
 		
 		// gives a burst of movement when ending a slide
-		if (Input.IsActionJustPressed("crouch"))
+		if (Input.IsActionJustPressed("crouch") && IsOnFloor() || Crouching && JustLanded[0])
 		{
-			_targetVelocity.X *= 6;
-			_targetVelocity.Z *= 6;
+			_targetVelocity.X *= 5;
+			_targetVelocity.Z *= 5;
 		}
 
 		// Vertical velocity
@@ -127,8 +131,9 @@ public partial class Player : CharacterBody3D
             _targetVelocity.Y = JumpImpulse;
             CoyoteTime = 0;
         }
-		else if (IsOnWall() && Input.IsActionJustPressed("jump"))
+		else if (WallRunning && Input.IsActionJustPressed("jump"))
 		{
+			JumpCount = 2;
             _targetVelocity.Y = JumpImpulse;
         }
         else if (JumpCount > 0 && Input.IsActionJustPressed("jump"))
@@ -151,6 +156,12 @@ public partial class Player : CharacterBody3D
 			// enable to slow down sliding at a point
 			_targetVelocity.X = (Math.Abs(_targetVelocity.X) < 2) ? 0 : _targetVelocity.X;
 			_targetVelocity.Z = (Math.Abs(_targetVelocity.Z) < 2) ? 0 : _targetVelocity.Z;
+            Velocity = _targetVelocity;
+        }
+		if (!IsOnFloor())
+		{
+			if (Velocity.X > _targetVelocity.X && _targetVelocity.X > 0 || Velocity.X < _targetVelocity.X && _targetVelocity.X < 0) _targetVelocity.X = Velocity.X;
+			if (Velocity.Z > _targetVelocity.Z && _targetVelocity.Z > 0 || Velocity.Z < _targetVelocity.Z && _targetVelocity.Z < 0) _targetVelocity.Z = Velocity.Z;
 			Velocity = _targetVelocity;
 		}
 		else Velocity = _targetVelocity;

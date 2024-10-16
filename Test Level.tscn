@@ -98,6 +98,3 @@ shape = SubResource("CapsuleShape3D_nvl54")
 storage = ExtResource("3_381tp")
 material = SubResource("Terrain3DMaterial_tj0d8")
 assets = SubResource("Terrain3DAssets_ayl1x")
-
-[node name="OmniLight3D" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.10137, 12.0437, 0)
