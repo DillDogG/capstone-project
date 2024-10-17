@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://d13n2it0qywug"]
+
+[ext_resource type="PackedScene" uid="uid://h23fqdum3enj" path="res://Models/Sword.glb" id="1_sg5ty"]
+[ext_resource type="Script" path="res://Scripts/MeleeWeapon.cs" id="2_jl8go"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_4maam"]
+height = 3.72552
+
+[node name="Sword" instance=ExtResource("1_sg5ty")]
+script = ExtResource("2_jl8go")
+
+[node name="Hitbox" type="Area3D" parent="." index="2"]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Hitbox" index="0"]
+transform = Transform3D(0.475271, -0.879839, 0, 0.879839, 0.475271, 0, 0, 0, 1, -0.664084, 0.35664, 0)
+shape = SubResource("CapsuleShape3D_4maam")

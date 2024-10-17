@@ -1,8 +1,8 @@
-[gd_scene load_steps=13 format=3 uid="uid://cqtpwqoty3pxd"]
+[gd_scene load_steps=12 format=3 uid="uid://cqtpwqoty3pxd"]
 
-[ext_resource type="Script" path="res://Scripts/Player.cs" id="1_w1ai3"]
-[ext_resource type="PackedScene" uid="uid://cqogvwet1q3ng" path="res://Models/Remy.fbx" id="2_wpfpw"]
+[ext_resource type="PackedScene" uid="uid://cctntsygmnc80" path="res://Prefabs/player.tscn" id="1_sr6c0"]
 [ext_resource type="Terrain3DStorage" uid="uid://blbayoklwmwm4" path="res://Test Level.res" id="3_381tp"]
+[ext_resource type="PackedScene" uid="uid://d13n2it0qywug" path="res://Prefabs/sword.tscn" id="3_olmw4"]
 
 [sub_resource type="CSharpScript" id="CSharpScript_2cv8o"]
 script/source = "using Godot;
@@ -10,17 +10,13 @@ using System;
 
 public partial class GameFunc : Node3D
 {
-    public override void _Notification(int what)
-    {
-        if (what == NotificationWMCloseRequest)
-            GetTree().Quit(); // default behavior
-    }
+	public override void _Notification(int what)
+	{
+		if (what == NotificationWMCloseRequest)
+			GetTree().Quit(); // default behavior
+	}
 }
 "
-
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_nvl54"]
-radius = 0.310774
-height = 3.82978
 
 [sub_resource type="Gradient" id="Gradient_25asf"]
 offsets = PackedFloat32Array(0.2, 1)
@@ -77,22 +73,11 @@ mesh_list = Array[Terrain3DMeshAsset]([SubResource("Terrain3DMeshAsset_5rwbj")])
 [node name="Node3D" type="Node3D"]
 script = SubResource("CSharpScript_2cv8o")
 
-[node name="Player" type="CharacterBody3D" parent="."]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 1.8892, 0)
-script = ExtResource("1_w1ai3")
+[node name="Player" parent="." node_paths=PackedStringArray("Inventory") instance=ExtResource("1_sr6c0")]
+Inventory = [NodePath("Sword")]
 
-[node name="Pivot" type="Node3D" parent="Player"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.5, 0)
-
-[node name="Camera3D" type="Camera3D" parent="Player/Pivot"]
-transform = Transform3D(-1, 3.69465e-08, -7.92319e-08, 0, 0.906308, 0.422618, 8.74228e-08, 0.422618, -0.906308, 0, 0, 0.4)
-current = true
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Player"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.84219, 0)
-shape = SubResource("CapsuleShape3D_nvl54")
-
-[node name="Character" parent="Player" instance=ExtResource("2_wpfpw")]
+[node name="Sword" parent="Player" instance=ExtResource("3_olmw4")]
+transform = Transform3D(1.81535e-08, -1.21706e-08, -0.5, -0.278431, -0.415303, 1.47545e-15, -0.415303, 0.278431, -2.18557e-08, -1.73369, 3.0535, 0.90201)
 
 [node name="Terrain3D" type="Terrain3D" parent="."]
 storage = ExtResource("3_381tp")
