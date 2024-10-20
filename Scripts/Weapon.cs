@@ -7,7 +7,7 @@ public partial class Weapon : Node
     public enum AnimType { MELEE, ONEHANDED, TWOHANDED };
     public enum FireType { SINGLE, FULLAUTO };
     [Export]
-    public virtual double Damage { get; set; }
+    public virtual double Damage { get; set; } = 5;
     [Export]
     public virtual double FireRate { get; set; }
     public virtual double FireCooldown { get; set; } = 0;
@@ -36,7 +36,6 @@ public partial class Weapon : Node
     public virtual void Attack()
     {
         if (FireCooldown > 0) return;
-        GD.Print("Attack Happened");
     }
 
 }

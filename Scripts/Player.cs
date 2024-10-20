@@ -22,6 +22,9 @@ public partial class Player : CharacterBody3D, Damageable
     public double CoyoteDuration = 0.25;
 
 	[Export]
+    public double InvinsibilityDuration = 2;
+
+	[Export]
 	public double JumpBuffer = 0.1;
 
 	private double Health { get; set; }
@@ -34,6 +37,7 @@ public partial class Player : CharacterBody3D, Damageable
 
 	private int JumpCount { get; set; }
     private double CoyoteTime { get; set; }
+    private double InvinsibilityTime { get; set; }
 	private double JumpSaveTime { get; set; } = 0;
 
     private Vector3 _targetVelocity = Vector3.Zero;
@@ -64,7 +68,10 @@ public partial class Player : CharacterBody3D, Damageable
 		var direction = Vector3.Zero;
 
 		// reduces weapon cooldown
-		if (Weapon != null && Weapon.FireCooldown > 0) Weapon.MainUpdate(delta);
+		if (Weapon != null) Weapon.MainUpdate(delta);
+
+		// reduce the duration of invinsibility if player was recently hit
+		if (InvinsibilityTime > 0) InvinsibilityTime -= delta;
 
         // resetting extra jumps while on the ground
         if (IsOnFloor())
@@ -210,7 +217,9 @@ public partial class Player : CharacterBody3D, Damageable
 
     public void ApplyDamage(double damage)
     {
+		if (InvinsibilityTime > 0) return;
         Health -= damage;
+		InvinsibilityTime = InvinsibilityDuration;
 		GD.Print(Health);
 		if (Health <= 0)
 		{

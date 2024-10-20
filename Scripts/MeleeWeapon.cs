@@ -5,10 +5,10 @@ public partial class MeleeWeapon : Weapon
 {
     public int ComboCount { get; set; }
     public int CurrComboCount { get; set; } = 0;
-    public double ComboMult { get; set; }
+    public double ComboMult { get; set; } = 1;
     public double ComboGracePeriod { get; set; }
     public double AttackDuration { get; set; }
-    public double MaxAttackDuration { get; set; }
+    public double MaxAttackDuration { get; set; } = 4;
 
     public override void MainUpdate(double delta)
     {
@@ -20,7 +20,6 @@ public partial class MeleeWeapon : Weapon
             AttackDuration -= delta;
             if (HitCheck.HasOverlappingBodies())
             {
-                GD.Print("Test Message");
                 foreach (var hits in HitCheck.GetOverlappingBodies())
                 {
                     if (hits is Damageable)
