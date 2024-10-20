@@ -20,6 +20,7 @@ public partial class MeleeWeapon : Weapon
             AttackDuration -= delta;
             if (HitCheck.HasOverlappingBodies())
             {
+                GD.Print("Test Message");
                 foreach (var hits in HitCheck.GetOverlappingBodies())
                 {
                     if (hits is Damageable)
@@ -35,10 +36,12 @@ public partial class MeleeWeapon : Weapon
 
     public override void Attack()
     {
-        if (FireCooldown > 0) return;
+        base.Attack();
         if (ComboGracePeriod > 0)
         {
             CurrComboCount++;
         }
+        AttackDuration = MaxAttackDuration;
+        FireCooldown = FireRate;
     }
 }

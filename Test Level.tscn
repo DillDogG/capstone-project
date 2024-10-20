@@ -74,10 +74,12 @@ mesh_list = Array[Terrain3DMeshAsset]([SubResource("Terrain3DMeshAsset_5rwbj")])
 script = SubResource("CSharpScript_2cv8o")
 
 [node name="Player" parent="." node_paths=PackedStringArray("Inventory") instance=ExtResource("1_sr6c0")]
+collision_layer = 3
+collision_mask = 3
 Inventory = [NodePath("Sword")]
 
 [node name="Sword" parent="Player" instance=ExtResource("3_olmw4")]
-transform = Transform3D(1.81535e-08, -1.21706e-08, -0.5, -0.278431, -0.415303, 1.47545e-15, -0.415303, 0.278431, -2.18557e-08, -1.73369, 3.0535, 0.90201)
+transform = Transform3D(1.81535e-08, -1.21706e-08, -0.5, -0.278431, -0.415303, 1.47545e-15, -0.415303, 0.278431, -2.18557e-08, 0.0688423, 3.0535, 0.396492)
 
 [node name="Terrain3D" type="Terrain3D" parent="."]
 storage = ExtResource("3_381tp")
