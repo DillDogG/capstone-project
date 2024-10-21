@@ -48,7 +48,6 @@ public partial class Player : CharacterBody3D, Damageable
 	public Weapon[] Inventory { get; set; }
 
 	Node3D pivot;
-	//private Vector2 prevMousePos = Vector2.Zero;
 
     public override void _Ready()
     {
@@ -61,38 +60,46 @@ public partial class Player : CharacterBody3D, Damageable
 		Weapon.Equip();
     }
 
-	public override void _PhysicsProcess(double delta)
+	// Function to update many items that need to be updated every frame. 'delta' is seconds since last update, which is normally a small number.
+	public void FullPlayerUpdate(double delta)
 	{
-		MoveAndSlide();
-		// We create a local variable to store the input direction.
-		var direction = Vector3.Zero;
+        // reduces weapon cooldown
+        if (Weapon != null) Weapon.MainUpdate(delta);
 
-		// reduces weapon cooldown
-		if (Weapon != null) Weapon.MainUpdate(delta);
-
-		// reduce the duration of invincibility if player was recently hit
-		if (InvincibilityTime > 0) InvincibilityTime -= delta;
+        // reduce the duration of invincibility if player was recently hit
+        if (InvincibilityTime > 0) InvincibilityTime -= delta;
 
         // resetting extra jumps while on the ground
         if (IsOnFloor())
         {
             JumpCount = 2;
             CoyoteTime = CoyoteDuration;
-			if (!JustLanded[0] && JustLanded[1]) { JustLanded[0] = true; JustLanded[1] = false; }
-			else JustLanded[0] = false;
+            if (!JustLanded[0] && JustLanded[1]) { JustLanded[0] = true; JustLanded[1] = false; }
+            else JustLanded[0] = false;
         }
         else if (CoyoteTime > 0) CoyoteTime -= delta;
-		else
-		{
+        else
+        {
             JustLanded[0] = false;
             JustLanded[1] = true;
         }
 
-		// used to create a jump buffer if you press the button early
-		if (JumpSaveTime > 0) JumpSaveTime -= delta;
+        // used to create a jump buffer if you press the button early
+        if (JumpSaveTime > 0) JumpSaveTime -= delta;
 
-		if (IsOnWallOnly()) WallRunning = true;
-		else WallRunning = false;
+        if (IsOnWallOnly()) WallRunning = true;
+        else WallRunning = false;
+    }
+
+	public override void _PhysicsProcess(double delta)
+	{
+		MoveAndSlide();
+		// We create a local variable to store the input direction.
+		var direction = Vector3.Zero;
+
+		// seperate function for the total update
+		FullPlayerUpdate(delta);
+
         // We check for each move input and update the direction accordingly.
         // original is commented out, swap if it works again
         if (Input.IsActionPressed("move_right"))
@@ -203,6 +210,12 @@ public partial class Player : CharacterBody3D, Damageable
 		}
 		else Velocity = _targetVelocity;
 		MoveAndSlide();
+	}
+
+	// used for altering player movement beyond the original movement, for sprinting sliding or keeping momentum
+	public void PlayerMovementFunction()
+	{
+		
 	}
 
 	public override void _Input(InputEvent @event)
