@@ -1,8 +1,9 @@
-[gd_scene load_steps=12 format=3 uid="uid://cqtpwqoty3pxd"]
+[gd_scene load_steps=13 format=3 uid="uid://cqtpwqoty3pxd"]
 
 [ext_resource type="PackedScene" uid="uid://cctntsygmnc80" path="res://Prefabs/player.tscn" id="1_sr6c0"]
 [ext_resource type="Terrain3DStorage" uid="uid://blbayoklwmwm4" path="res://Test Level.res" id="3_381tp"]
 [ext_resource type="PackedScene" uid="uid://d13n2it0qywug" path="res://Prefabs/sword.tscn" id="3_olmw4"]
+[ext_resource type="PackedScene" uid="uid://b50ul6mjmrdjk" path="res://Prefabs/Enemy.tscn" id="4_cgvfi"]
 
 [sub_resource type="CSharpScript" id="CSharpScript_2cv8o"]
 script/source = "using Godot;
@@ -76,12 +77,15 @@ script = SubResource("CSharpScript_2cv8o")
 [node name="Player" parent="." node_paths=PackedStringArray("Inventory") instance=ExtResource("1_sr6c0")]
 collision_layer = 3
 collision_mask = 3
-Inventory = [NodePath("../Sword")]
+Inventory = [NodePath("Sword")]
+
+[node name="Sword" parent="Player" instance=ExtResource("3_olmw4")]
+transform = Transform3D(0.27739, 0.41375, -0.043204, -0.0240587, -0.0358855, -0.49813, -0.415303, 0.278431, -1.88851e-09, -1.8573, 3.01711, 0.833981)
 
 [node name="Terrain3D" type="Terrain3D" parent="."]
 storage = ExtResource("3_381tp")
 material = SubResource("Terrain3DMaterial_tj0d8")
 assets = SubResource("Terrain3DAssets_ayl1x")
 
-[node name="Sword" parent="." instance=ExtResource("3_olmw4")]
-transform = Transform3D(-0.415303, 0.278431, 0, -0.278431, -0.415303, 1.47545e-15, -2.4869e-14, -8.88178e-15, 0.5, 0.396492, 3.35691, 4.69757)
+[node name="Enemy" parent="." instance=ExtResource("4_cgvfi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 11.2732)

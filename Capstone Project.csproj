@@ -6,4 +6,7 @@
     <EnableDynamicLoading>true</EnableDynamicLoading>
     <RootNamespace>CapstoneProject</RootNamespace>
   </PropertyGroup>
+  <ItemGroup>
+    <Folder Include="Prefabs\" />
+  </ItemGroup>
 </Project>
