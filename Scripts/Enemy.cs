@@ -36,6 +36,7 @@ public partial class Enemy : CharacterBody3D, Damageable
         if (Health <= 0)
         {
             // kill method
+            QueueFree();
         }
     }
 }

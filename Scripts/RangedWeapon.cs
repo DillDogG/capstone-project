@@ -25,7 +25,17 @@ public partial class RangedWeapon : Weapon
             Reload();
             return;
         }
-        if (FireCooldown > 0) return;
+        base.Attack();
+        if (HitCheck.HasOverlappingBodies())
+        {
+            if (HitCheck.GetOverlappingBodies()[0] is Damageable)
+            {
+                Damageable damageable = HitCheck.GetOverlappingBodies()[0] as Damageable;
+                damageable.ApplyDamage(Damage);
+            }
+        }
+        FireCooldown = FireRate;
+        AmmoCount--;
     }
 
     public void Reload()

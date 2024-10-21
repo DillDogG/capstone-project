@@ -81,6 +81,12 @@ Inventory = [NodePath("Sword")]
 
 [node name="Sword" parent="Player" instance=ExtResource("3_olmw4")]
 transform = Transform3D(0.27739, 0.41375, -0.043204, -0.0240587, -0.0358855, -0.49813, -0.415303, 0.278431, -1.88851e-09, -1.8573, 3.01711, 0.833981)
+ComboCount = 3
+ComboMult = 2.0
+ComboGracePeriod = 10.0
+MaxAttackDuration = 1.0
+Damage = 20.0
+FireRate = 1.0
 
 [node name="Terrain3D" type="Terrain3D" parent="."]
 storage = ExtResource("3_381tp")
@@ -89,3 +95,5 @@ assets = SubResource("Terrain3DAssets_ayl1x")
 
 [node name="Enemy" parent="." instance=ExtResource("4_cgvfi")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 11.2732)
+MaxHealth = 100.0
+InvincibilityDuration = 1.05

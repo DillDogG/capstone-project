@@ -1,6 +1,7 @@
 using Godot;
 using System;
 using System.Diagnostics;
+using static Godot.TextServer;
 
 public partial class Player : CharacterBody3D, Damageable
 {
@@ -97,34 +98,16 @@ public partial class Player : CharacterBody3D, Damageable
 		// We create a local variable to store the input direction.
 		var direction = Vector3.Zero;
 
-		// seperate function for the total update
+		// separate function for the total update
 		FullPlayerUpdate(delta);
 
-        // We check for each move input and update the direction accordingly.
-        // original is commented out, swap if it works again
-        if (Input.IsActionPressed("move_right"))
-        {
-            //direction.X += 1.0f;
-            direction.Z += 1.0f;
-        }
-        if (Input.IsActionPressed("move_left"))
-        {
-            //direction.X -= 1.0f;
-            direction.Z -= 1.0f;
-        }
-        if (Input.IsActionPressed("move_backward"))
-        {
-            // Notice how we are working with the vector's X and Z axes.
-            // In 3D, the XZ plane is the ground plane.
-            //direction.Z += 1.0f;
-            direction.X -= 1.0f;
-        }
-        if (Input.IsActionPressed("move_forward"))
-        {
-            //direction.Z -= 1.0f;
-            direction.X += 1.0f;
-        }
+        // take in input turn that into velocity
+        if (Input.IsActionPressed("move_right")) direction.Z += 1.0f;
+        if (Input.IsActionPressed("move_left")) direction.Z -= 1.0f;
+        if (Input.IsActionPressed("move_backward")) direction.X -= 1.0f;
+        if (Input.IsActionPressed("move_forward")) direction.X += 1.0f;
 
+        // normalize velocity, multiply by rotation to make it based on where you are facing, and normalize again
 		if (direction != Vector3.Zero)
 		{
 			direction = direction.Normalized();
@@ -132,43 +115,61 @@ public partial class Player : CharacterBody3D, Damageable
 			direction = direction.Normalized();
 		}
 
+        // checks if player is crouching or sprinting
 		if (Input.IsActionPressed("sprint")) Sprinting = true;
 		else Sprinting = false;
-
 		if (Input.IsActionPressed("crouch")) Crouching = true;
 		else Crouching = false;
 
-		// Ground velocity
+		// multiplies velocity by speed, then saves in a variable for exterior alteration
 		_targetVelocity.X = direction.X * Speed;
 		_targetVelocity.Z = direction.Z * Speed;
-		if (Sprinting && !Crouching)
+        PlayerSpeedMult();
+
+		// gravity
+		if (!IsOnFloor()) _targetVelocity.Y -= FallAcceleration * (float)delta;
+
+		PlayerJumpFunction();
+
+        // if possible move this into a separate function and call from input instead of update
+		if (Input.IsActionJustPressed("Melee"))
 		{
-			_targetVelocity.X *= 2;
-			_targetVelocity.Z *= 2;
-		}
-		
-		// gives a burst of movement when ending a slide
-		if (Input.IsActionJustPressed("crouch") && IsOnFloor() || Crouching && JustLanded[0])
-		{
-			_targetVelocity.X *= 5;
-			_targetVelocity.Z *= 5;
+            // set animation based on weapon type
+			Weapon.Attack();
 		}
 
-		// Vertical velocity
-		if (!IsOnFloor()) // If in the air, fall towards the floor. Literally gravity
-		{
-			_targetVelocity.Y -= FallAcceleration * (float)delta;
-		}
+		PlayerMovementMomentumFunction();
+		Velocity = _targetVelocity;
+		MoveAndSlide();
+	}
 
-        // Jumping.
+    public void PlayerSpeedMult()
+    {
+        // makes player travel faster if sprinting, prevents sprinting while crouching
+        if (Sprinting && !Crouching)
+        {
+            _targetVelocity.X *= 2;
+            _targetVelocity.Z *= 2;
+        }
+
+        // gives a burst of movement when ending a slide
+        if (Input.IsActionJustPressed("crouch") && IsOnFloor() || Crouching && JustLanded[0])
+        {
+            _targetVelocity.X *= 5;
+            _targetVelocity.Z *= 5;
+        }
+    }
+
+	public void PlayerJumpFunction()
+	{
         if (CoyoteTime > 0 && (Input.IsActionJustPressed("jump") || JumpSaveTime > 0))
         {
             _targetVelocity.Y = JumpImpulse;
             CoyoteTime = 0;
         }
-		else if (WallRunning && (Input.IsActionJustPressed("jump") || JumpSaveTime > 0))
-		{
-			JumpCount = 2;
+        else if (WallRunning && (Input.IsActionJustPressed("jump") || JumpSaveTime > 0))
+        {
+            JumpCount = 2;
             _targetVelocity.Y = JumpImpulse;
         }
         else if (JumpCount > 0 && Input.IsActionJustPressed("jump"))
@@ -176,47 +177,33 @@ public partial class Player : CharacterBody3D, Damageable
             _targetVelocity.Y = JumpImpulse;
             JumpCount--;
         }
-		else if (Input.IsActionJustPressed("jump"))
-		{
-			JumpSaveTime = JumpBuffer;
-		}
+        else if (Input.IsActionJustPressed("jump")) JumpSaveTime = JumpBuffer;
 
-		if (Input.IsActionJustPressed("Melee"))
-		{
-			Weapon.Attack();
-		}
-
-		// when releasing jump, slow down significantly to give more control when jumping
-		if (Input.IsActionJustReleased("jump") && Velocity.Y > 0)
-		{
-			_targetVelocity.Y *= 0.25f;
-		}
-
-		// Moving the character if sliding / else not sliding
-		if (Crouching && IsOnFloor())
-		{
-			_targetVelocity.X = (Math.Abs(Velocity.X) > Math.Abs(_targetVelocity.X) * 0.5f) ? Velocity.X * 0.99f : _targetVelocity.X * 0.5f;
-			_targetVelocity.Z = (Math.Abs(Velocity.Z) > Math.Abs(_targetVelocity.Z) * 0.5f) ? Velocity.Z * 0.99f : _targetVelocity.Z * 0.5f;
-			// enable to slow down sliding at a point
-			_targetVelocity.X = (Math.Abs(_targetVelocity.X) < 2) ? 0 : _targetVelocity.X;
-			_targetVelocity.Z = (Math.Abs(_targetVelocity.Z) < 2) ? 0 : _targetVelocity.Z;
-            Velocity = _targetVelocity;
-        }
-		else if (!IsOnFloor())
-		{
-			if (Velocity.X > _targetVelocity.X && _targetVelocity.X > 0 || Velocity.X < _targetVelocity.X && _targetVelocity.X < 0) _targetVelocity.X = Velocity.X;
-			if (Velocity.Z > _targetVelocity.Z && _targetVelocity.Z > 0 || Velocity.Z < _targetVelocity.Z && _targetVelocity.Z < 0) _targetVelocity.Z = Velocity.Z;
-			Velocity = _targetVelocity;
-		}
-		else Velocity = _targetVelocity;
-		MoveAndSlide();
-	}
+        // when releasing jump, slow down significantly to give more control when jumping
+        if (Input.IsActionJustReleased("jump") && Velocity.Y > 0) _targetVelocity.Y *= 0.25f;
+    }
 
 	// used for altering player movement beyond the original movement, for sprinting sliding or keeping momentum
-	public void PlayerMovementFunction()
+	public void PlayerMovementMomentumFunction()
 	{
-		
-	}
+        // Moving the character if sliding / else not sliding
+        if (Crouching && IsOnFloor())
+        {
+            _targetVelocity.X = (Math.Abs(Velocity.X) > Math.Abs(_targetVelocity.X) * 0.5f) ? Velocity.X * 0.99f : _targetVelocity.X * 0.5f;
+            _targetVelocity.Z = (Math.Abs(Velocity.Z) > Math.Abs(_targetVelocity.Z) * 0.5f) ? Velocity.Z * 0.99f : _targetVelocity.Z * 0.5f;
+            // enable to slow down sliding at a point
+            _targetVelocity.X = (Math.Abs(_targetVelocity.X) < 2) ? 0 : _targetVelocity.X;
+            _targetVelocity.Z = (Math.Abs(_targetVelocity.Z) < 2) ? 0 : _targetVelocity.Z;
+			return;
+        }
+        else if (!IsOnFloor())
+        {
+            if (Velocity.X > _targetVelocity.X && _targetVelocity.X > 0 || Velocity.X < _targetVelocity.X && _targetVelocity.X < 0) _targetVelocity.X = Velocity.X;
+            if (Velocity.Z > _targetVelocity.Z && _targetVelocity.Z > 0 || Velocity.Z < _targetVelocity.Z && _targetVelocity.Z < 0) _targetVelocity.Z = Velocity.Z;
+			return;
+        }
+        //else Velocity = _targetVelocity;
+    }
 
 	public override void _Input(InputEvent @event)
 	{
