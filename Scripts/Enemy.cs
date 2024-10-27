@@ -16,6 +16,8 @@ public partial class Enemy : CharacterBody3D, Damageable
 
     private double InvincibilityTime { get; set; }
 
+    public virtual Area3D MovementZone { get; set; }
+
     public override void _Ready()
     {
         Health = MaxHealth;
