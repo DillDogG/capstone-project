@@ -49,14 +49,17 @@ public partial class Player : CharacterBody3D, Damageable
 	public Weapon[] Inventory { get; set; }
 
 	Node3D pivot;
+    AmmoLabel ammoDisp;
 
     public override void _Ready()
     {
         base._Ready();
         Input.MouseMode = Input.MouseModeEnum.Captured;
         pivot = GetNode<Node3D>("Pivot");
+        ammoDisp = GetNode<AmmoLabel>("../UserInterface/AmmoLabel");
         CoyoteTime = CoyoteDuration;
 		Health = MaxHealth;
+        foreach (var item in Inventory) item.Unequip();
 		Weapon = Inventory[0];
 		Weapon.Equip();
     }
@@ -90,6 +93,13 @@ public partial class Player : CharacterBody3D, Damageable
 
         if (IsOnWallOnly()) WallRunning = true;
         else WallRunning = false;
+
+        if (Weapon is RangedWeapon)
+        {
+            ammoDisp.Visible = true;
+            ammoDisp.MainUpdate((RangedWeapon)Weapon);
+        }
+        else ammoDisp.Visible = false;
     }
 
 	public override void _PhysicsProcess(double delta)
@@ -132,7 +142,7 @@ public partial class Player : CharacterBody3D, Damageable
 		PlayerJumpFunction();
 
         // if possible move this into a separate function and call from input instead of update
-		if (Input.IsActionJustPressed("Melee"))
+		if (Input.IsActionJustPressed("Shoot"))
 		{
             // set animation based on weapon type
 			Weapon.Attack();

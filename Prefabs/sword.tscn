@@ -6,9 +6,15 @@
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_4maam"]
 height = 3.72552
 
-[node name="Sword" node_paths=PackedStringArray("HitCheck") instance=ExtResource("1_sg5ty")]
+[node name="Sword" node_paths=PackedStringArray("HitCheck", "Model") instance=ExtResource("1_sg5ty")]
 script = ExtResource("2_jl8go")
+ComboCount = 3
+ComboMult = 2.0
+MaxAttackDuration = 0.5
 HitCheck = NodePath("Hitbox")
+Damage = 10.0
+FireRate = 0.6
+Model = NodePath("Plane")
 
 [node name="Hitbox" type="Area3D" parent="." index="2"]
 collision_layer = 2

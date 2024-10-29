@@ -14,8 +14,9 @@ public partial class Weapon : Node
     [Export]
     public virtual bool IsEquipped { get; set; }
     // Used for the hitbox that the weapon has
+
     [Export]
-    public virtual Area3D HitCheck { get; set; }
+    MeshInstance3D Model;
 
     // used for all update purposes
     public virtual void MainUpdate(double delta)
@@ -26,16 +27,15 @@ public partial class Weapon : Node
     public virtual void Equip()
     {
         IsEquipped = true;
+        Model.Visible = true;
     }
 
     public virtual void Unequip()
     {
         IsEquipped = false;
+        Model.Visible = false;
     }
 
-    public virtual void Attack()
-    {
-        if (FireCooldown > 0) return;
-    }
+    public virtual void Attack() { }
 
 }

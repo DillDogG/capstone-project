@@ -15,6 +15,8 @@ public partial class MeleeWeapon : Weapon
     public double AttackDuration { get; set; }
     [Export]
     public double MaxAttackDuration { get; set; } = 4;
+    [Export]
+    public virtual Area3D HitCheck { get; set; }
 
     public override void MainUpdate(double delta)
     {
@@ -45,7 +47,7 @@ public partial class MeleeWeapon : Weapon
 
     public override void Attack()
     {
-        base.Attack();
+        if (FireCooldown > 0) return;
         if (ComboGraceTracker > 0)
         {
             CurrComboCount++;

@@ -4,9 +4,13 @@ using System;
 public partial class RangedWeapon : Weapon
 {
     public int AmmoCount { get; set; }
+    [Export]
     public int MaxAmmoCount { get; set; }
+    [Export]
     public double ReloadSpeed { get; set; }
     public bool Reloading { get; set; } = false;
+    [Export]
+    public virtual RayCast3D HitCheck { get; set; }
 
     public override void MainUpdate(double delta)
     {
@@ -20,17 +24,18 @@ public partial class RangedWeapon : Weapon
 
     public override void Attack()
     {
+        if (Reloading) return;
         if (AmmoCount <= 0)
         {
             Reload();
             return;
         }
-        base.Attack();
-        if (HitCheck.HasOverlappingBodies())
+        if (FireCooldown > 0) return;
+        if (HitCheck.IsColliding())
         {
-            if (HitCheck.GetOverlappingBodies()[0] is Damageable)
+            if (HitCheck.GetCollider() is Damageable)
             {
-                Damageable damageable = HitCheck.GetOverlappingBodies()[0] as Damageable;
+                Damageable damageable = HitCheck.GetCollider() as Damageable;
                 damageable.ApplyDamage(Damage);
             }
         }
