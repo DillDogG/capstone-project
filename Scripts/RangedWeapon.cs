@@ -9,7 +9,6 @@ public partial class RangedWeapon : Weapon
     [Export]
     public double ReloadSpeed { get; set; }
     public bool Reloading { get; set; } = false;
-    [Export]
     public virtual RayCast3D HitCheck { get; set; }
 
     public override void MainUpdate(double delta)

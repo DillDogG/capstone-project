@@ -44,6 +44,7 @@ public partial class Player : CharacterBody3D, Damageable
     private Vector3 _targetVelocity = Vector3.Zero;
 
 	public Weapon Weapon { get; set; }
+    private int WeaponSlot { get; set; }
 
 	[Export]
 	public Weapon[] Inventory { get; set; }
@@ -59,8 +60,17 @@ public partial class Player : CharacterBody3D, Damageable
         ammoDisp = GetNode<AmmoLabel>("../UserInterface/AmmoLabel");
         CoyoteTime = CoyoteDuration;
 		Health = MaxHealth;
-        foreach (var item in Inventory) item.Unequip();
+        foreach (var item in Inventory)
+        {
+            item.Unequip();
+            if (item is RangedWeapon)
+            {
+                RangedWeapon gun = (RangedWeapon)item;
+                gun.HitCheck = GetNode<RayCast3D>("Pivot/Camera3D/BulletCheck");
+            }
+        }
 		Weapon = Inventory[0];
+        WeaponSlot = 0;
 		Weapon.Equip();
     }
 
@@ -222,7 +232,26 @@ public partial class Player : CharacterBody3D, Damageable
 			Vector2 mouseMovement = motionEvent.ScreenRelative;
 			pivot.Rotation = new Vector3(mouseMovement.Y * 0.01f + pivot.Rotation.X, mouseMovement.X * -0.01f + pivot.Rotation.Y, pivot.Rotation.Z);
 		}
-
+        if (@event is InputEventMouseButton mouseEvent && mouseEvent.Pressed)
+        {
+            switch (mouseEvent.ButtonIndex)
+            {
+                case MouseButton.WheelUp:
+                    if (WeaponSlot <= 0) WeaponSlot = Inventory.Length - 1;
+                    else WeaponSlot--;
+                    Weapon.Unequip();
+                    Weapon = Inventory[WeaponSlot];
+                    Weapon.Equip();
+                    break;
+                case MouseButton.WheelDown:
+                    if (WeaponSlot >= Inventory.Length - 1) WeaponSlot = 0;
+                    else WeaponSlot++;
+                    Weapon.Unequip();
+                    Weapon = Inventory[WeaponSlot];
+                    Weapon.Equip();
+                    break;
+            }
+        }
 	}
 
     public void ApplyDamage(double damage)

@@ -128,8 +128,8 @@ script = ExtResource("6_p10an")
 
 [node name="TextureRect" type="TextureRect" parent="UserInterface"]
 layout_mode = 0
-offset_left = 129.0
-offset_top = 59.0
-offset_right = 169.0
-offset_bottom = 99.0
+offset_left = 556.0
+offset_top = 304.0
+offset_right = 596.0
+offset_bottom = 344.0
 texture = ExtResource("8_jnmsh")
