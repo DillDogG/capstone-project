@@ -81,10 +81,12 @@ default_font_size = 22
 [node name="Node3D" type="Node3D"]
 script = SubResource("CSharpScript_2cv8o")
 
-[node name="Player" parent="." node_paths=PackedStringArray("Inventory") instance=ExtResource("1_sr6c0")]
+[node name="Player" parent="." node_paths=PackedStringArray("Inventory", "ammoDisp", "GlobalTimer") instance=ExtResource("1_sr6c0")]
 collision_layer = 3
 collision_mask = 3
 Inventory = [NodePath("Sniper_Rifle"), NodePath("Sword")]
+ammoDisp = NodePath("../UserInterface/AmmoLabel")
+GlobalTimer = NodePath("../UserInterface/TotalTimer")
 
 [node name="Sniper_Rifle" parent="Player" instance=ExtResource("3_l7idj")]
 transform = Transform3D(-0.5, -2.18557e-08, -6.55671e-08, -6.55671e-08, -1.49012e-08, 0.5, -2.18557e-08, 0.5, 5.96046e-08, -1.78044, 2.92644, 0.0317005)

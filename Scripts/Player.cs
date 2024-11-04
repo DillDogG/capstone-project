@@ -40,6 +40,7 @@ public partial class Player : CharacterBody3D, Damageable
     private double CoyoteTime { get; set; }
     private double InvincibilityTime { get; set; }
 	private double JumpSaveTime { get; set; } = 0;
+    public float MouseSensitivity { get; set; } = 0.01f;
 
     private Vector3 _targetVelocity = Vector3.Zero;
 
@@ -50,24 +51,27 @@ public partial class Player : CharacterBody3D, Damageable
 	public Weapon[] Inventory { get; set; }
 
 	Node3D pivot;
-    AmmoLabel ammoDisp;
+    [Export]
+    public AmmoLabel ammoDisp { get; set; }
+    [Export]
+    public TimerLabel GlobalTimer { get; set; }
 
     public override void _Ready()
     {
         base._Ready();
         Input.MouseMode = Input.MouseModeEnum.Captured;
         pivot = GetNode<Node3D>("Pivot");
-        ammoDisp = GetNode<AmmoLabel>("../UserInterface/AmmoLabel");
         CoyoteTime = CoyoteDuration;
 		Health = MaxHealth;
         foreach (var item in Inventory)
         {
-            item.Unequip();
             if (item is RangedWeapon)
             {
                 RangedWeapon gun = (RangedWeapon)item;
+                gun.GlobalTimer = GlobalTimer;
                 gun.HitCheck = GetNode<RayCast3D>("Pivot/Camera3D/BulletCheck");
             }
+            item.Unequip();
         }
 		Weapon = Inventory[0];
         WeaponSlot = 0;
@@ -230,26 +234,55 @@ public partial class Player : CharacterBody3D, Damageable
 		if (@event is InputEventMouseMotion motionEvent)
 		{
 			Vector2 mouseMovement = motionEvent.ScreenRelative;
-			pivot.Rotation = new Vector3(mouseMovement.Y * 0.01f + pivot.Rotation.X, mouseMovement.X * -0.01f + pivot.Rotation.Y, pivot.Rotation.Z);
+			pivot.Rotation = new Vector3(mouseMovement.Y * MouseSensitivity + pivot.Rotation.X, mouseMovement.X * -MouseSensitivity + pivot.Rotation.Y, pivot.Rotation.Z);
+            pivot.Rotation = new Vector3(Math.Clamp(pivot.Rotation.X, -1.8f, 0.8f), pivot.Rotation.Y, pivot.Rotation.Z);
 		}
-        if (@event is InputEventMouseButton mouseEvent && mouseEvent.Pressed)
+        if (@event is InputEventMouseButton mouseEvent)
         {
-            switch (mouseEvent.ButtonIndex)
+            if (mouseEvent.Pressed)
             {
-                case MouseButton.WheelUp:
-                    if (WeaponSlot <= 0) WeaponSlot = Inventory.Length - 1;
-                    else WeaponSlot--;
-                    Weapon.Unequip();
-                    Weapon = Inventory[WeaponSlot];
-                    Weapon.Equip();
-                    break;
-                case MouseButton.WheelDown:
-                    if (WeaponSlot >= Inventory.Length - 1) WeaponSlot = 0;
-                    else WeaponSlot++;
-                    Weapon.Unequip();
-                    Weapon = Inventory[WeaponSlot];
-                    Weapon.Equip();
-                    break;
+                switch (mouseEvent.ButtonIndex)
+                {
+                    case MouseButton.WheelUp:
+                        if (WeaponSlot <= 0) WeaponSlot = Inventory.Length - 1;
+                        else WeaponSlot--;
+                        Weapon.Unequip();
+                        Weapon = Inventory[WeaponSlot];
+                        Weapon.Equip();
+                        break;
+                    case MouseButton.WheelDown:
+                        if (WeaponSlot >= Inventory.Length - 1) WeaponSlot = 0;
+                        else WeaponSlot++;
+                        Weapon.Unequip();
+                        Weapon = Inventory[WeaponSlot];
+                        Weapon.Equip();
+                        break;
+                    case MouseButton.Right:
+                        Camera3D cam = GetNode<Camera3D>("Pivot/Camera3D");
+                        if (cam != null)
+                        {
+                            cam.Fov *= 0.5f;
+                            MouseSensitivity *= 0.5f;
+                        }
+                        break;
+                }
+            }
+            else if (mouseEvent.IsActionReleased("ADS"))
+            {
+                Camera3D cam = GetNode<Camera3D>("Pivot/Camera3D");
+                if (cam != null)
+                {
+                    cam.Fov *= 2;
+                    MouseSensitivity *= 2;
+                }
+            }
+        }
+        if (@event is InputEventKey && Input.IsActionJustPressed("Reload"))
+        {
+            if (Weapon is RangedWeapon)
+            {
+                RangedWeapon gun = (RangedWeapon)Weapon;
+                gun.Reload();
             }
         }
 	}

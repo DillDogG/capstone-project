@@ -8,8 +8,12 @@ public partial class RangedWeapon : Weapon
     public int MaxAmmoCount { get; set; }
     [Export]
     public double ReloadSpeed { get; set; }
+    [Export]
+    public double AutoReloadSpeed { get; set; }
     public bool Reloading { get; set; } = false;
+    public double AutoReloadTime { get; set; }
     public virtual RayCast3D HitCheck { get; set; }
+    public TimerLabel GlobalTimer { get; set; }
 
     public override void MainUpdate(double delta)
     {
@@ -19,6 +23,23 @@ public partial class RangedWeapon : Weapon
             AmmoCount = MaxAmmoCount;
             Reloading = false;
         }
+    }
+
+    public override void Equip()
+    {
+        base.Equip();
+        if (AutoReloadTime + AutoReloadSpeed + ReloadSpeed - GlobalTimer._timer <= 0)
+        {
+            if (AmmoCount + 2 > MaxAmmoCount - 2) AmmoCount += 2;
+            else AmmoCount = MaxAmmoCount - 2;
+            if (AmmoCount > MaxAmmoCount) AmmoCount = MaxAmmoCount;
+        }
+    }
+
+    public override void Unequip()
+    {
+        base.Unequip();
+        AutoReloadTime = GlobalTimer._timer;
     }
 
     public override void Attack()
@@ -42,10 +63,10 @@ public partial class RangedWeapon : Weapon
         AmmoCount--;
     }
 
-    public void Reload()
+    public void Reload(double TimeAddition = 0)
     {
         if (AmmoCount == MaxAmmoCount) return;
         Reloading = true;
-        FireCooldown = ReloadSpeed;
+        FireCooldown = ReloadSpeed + TimeAddition;
     }
 }
