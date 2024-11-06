@@ -90,6 +90,7 @@ GlobalTimer = NodePath("../UserInterface/TotalTimer")
 
 [node name="Sniper_Rifle" parent="Player" instance=ExtResource("3_l7idj")]
 transform = Transform3D(-0.5, -2.18557e-08, -6.55671e-08, -6.55671e-08, -1.49012e-08, 0.5, -2.18557e-08, 0.5, 5.96046e-08, -1.78044, 2.92644, 0.0317005)
+FireType = 1
 
 [node name="Sword" parent="Player" instance=ExtResource("3_olmw4")]
 transform = Transform3D(0.25, 0.433013, -7.99974e-09, 2.18557e-08, -2.18557e-08, -0.5, -0.433013, 0.25, -2.98554e-08, -1.77996, 2.97392, 0.833981)
@@ -102,7 +103,6 @@ assets = SubResource("Terrain3DAssets_ayl1x")
 [node name="Enemy" parent="." instance=ExtResource("4_cgvfi")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 11.2732)
 MaxHealth = 100.0
-InvincibilityDuration = 1.05
 
 [node name="UserInterface" type="Control" parent="."]
 layout_mode = 3

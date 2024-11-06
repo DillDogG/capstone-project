@@ -61,6 +61,7 @@ public partial class RangedWeapon : Weapon
         }
         FireCooldown = FireRate;
         AmmoCount--;
+        if (FireType == FireEnum.FULLAUTO) Firing = true;
     }
 
     public void Reload(double TimeAddition = 0)

@@ -3,6 +3,9 @@ using System;
 using System.Diagnostics;
 using static Godot.TextServer;
 
+// theoretical smooth fov change
+// add_FOV * delta + base_FOV
+
 public partial class Player : CharacterBody3D, Damageable
 {
 	[Export]
@@ -156,11 +159,7 @@ public partial class Player : CharacterBody3D, Damageable
 		PlayerJumpFunction();
 
         // if possible move this into a separate function and call from input instead of update
-		if (Input.IsActionJustPressed("Shoot"))
-		{
-            // set animation based on weapon type
-			Weapon.Attack();
-		}
+
 
 		PlayerMovementMomentumFunction();
 		Velocity = _targetVelocity;
@@ -276,10 +275,17 @@ public partial class Player : CharacterBody3D, Damageable
                     MouseSensitivity *= 2;
                 }
             }
+            if (Input.IsActionJustPressed("Shoot"))
+            {
+                // add animation
+                GD.Print("StartAttack");
+                Weapon.Attack();
+            }
+            if (Input.IsActionJustReleased("Shoot")) { GD.Print("EndAttack"); Weapon.EndAttack(); }
         }
-        if (@event is InputEventKey && Input.IsActionJustPressed("Reload"))
+        if (@event is InputEventKey)
         {
-            if (Weapon is RangedWeapon)
+            if (Input.IsActionJustPressed("Reload") && Weapon is RangedWeapon)
             {
                 RangedWeapon gun = (RangedWeapon)Weapon;
                 gun.Reload();

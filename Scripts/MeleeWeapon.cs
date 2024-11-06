@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using System.Collections.Generic;
 
 public partial class MeleeWeapon : Weapon
 {
@@ -12,11 +13,18 @@ public partial class MeleeWeapon : Weapon
     public double ComboGracePeriod { get; set; } = 2;
 
     public double ComboGraceTracker { get; set; }
-    public double AttackDuration { get; set; }
+    public double AttackDuration { get; set; } = 0;
     [Export]
     public double MaxAttackDuration { get; set; } = 4;
     [Export]
     public virtual Area3D HitCheck { get; set; }
+
+    public List<Node3D> Hits { get; set; }
+
+    public MeleeWeapon()
+    {
+        Hits = new List<Node3D>();
+    }
 
     public override void MainUpdate(double delta)
     {
@@ -32,6 +40,8 @@ public partial class MeleeWeapon : Weapon
                 {
                     if (hits is Damageable)
                     {
+                        if (Hits.Contains(hits)) continue;
+                        Hits.Add(hits);
                         Damageable damageable = hits as Damageable;
                         if (CurrComboCount >= ComboCount)
                         {
@@ -48,6 +58,7 @@ public partial class MeleeWeapon : Weapon
     public override void Attack()
     {
         if (FireCooldown > 0) return;
+        Hits.Clear();
         if (ComboGraceTracker > 0)
         {
             CurrComboCount++;
@@ -55,5 +66,6 @@ public partial class MeleeWeapon : Weapon
         AttackDuration = MaxAttackDuration;
         FireCooldown = FireRate;
         ComboGraceTracker = ComboGracePeriod;
+        if (FireType == FireEnum.FULLAUTO) Firing = true;
     }
 }
