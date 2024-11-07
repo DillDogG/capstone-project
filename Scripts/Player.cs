@@ -25,8 +25,8 @@ public partial class Player : CharacterBody3D, Damageable
 	[Export]
     public double CoyoteDuration = 0.25;
 
-	[Export]
-    public double InvincibilityDuration = 2;
+	//[Export]
+    //public double InvincibilityDuration = 2;
 
 	[Export]
 	public double JumpBuffer = 0.1;
@@ -41,7 +41,7 @@ public partial class Player : CharacterBody3D, Damageable
 
 	private int JumpCount { get; set; }
     private double CoyoteTime { get; set; }
-    private double InvincibilityTime { get; set; }
+    //private double InvincibilityTime { get; set; }
 	private double JumpSaveTime { get; set; } = 0;
     public float MouseSensitivity { get; set; } = 0.01f;
 
@@ -57,7 +57,11 @@ public partial class Player : CharacterBody3D, Damageable
     [Export]
     public AmmoLabel ammoDisp { get; set; }
     [Export]
+    public HealthBar healthDisp { get; set; }
+    [Export]
     public TimerLabel GlobalTimer { get; set; }
+    [Export]
+    public Game Game { get; set; }
 
     public override void _Ready()
     {
@@ -79,16 +83,17 @@ public partial class Player : CharacterBody3D, Damageable
 		Weapon = Inventory[0];
         WeaponSlot = 0;
 		Weapon.Equip();
+        healthDisp.MainUpdate(Health);
     }
 
-	// Function to update many items that need to be updated every frame. 'delta' is seconds since last update, which is normally a small number.
+	// Function to update many items that need to be updated every update. 'delta' is seconds since last update, which is normally a small number.
 	public void FullPlayerUpdate(double delta)
 	{
         // reduces weapon cooldown
         if (Weapon != null) Weapon.MainUpdate(delta);
 
         // reduce the duration of invincibility if player was recently hit
-        if (InvincibilityTime > 0) InvincibilityTime -= delta;
+        //if (InvincibilityTime > 0) InvincibilityTime -= delta;
 
         // resetting extra jumps while on the ground
         if (IsOnFloor())
@@ -278,10 +283,9 @@ public partial class Player : CharacterBody3D, Damageable
             if (Input.IsActionJustPressed("Shoot"))
             {
                 // add animation
-                GD.Print("StartAttack");
                 Weapon.Attack();
             }
-            if (Input.IsActionJustReleased("Shoot")) { GD.Print("EndAttack"); Weapon.EndAttack(); }
+            if (Input.IsActionJustReleased("Shoot")) Weapon.EndAttack();
         }
         if (@event is InputEventKey)
         {
@@ -290,15 +294,19 @@ public partial class Player : CharacterBody3D, Damageable
                 RangedWeapon gun = (RangedWeapon)Weapon;
                 gun.Reload();
             }
+            if (Input.IsActionJustPressed("Pause"))
+            {
+                Game.Pause();
+            }
         }
 	}
 
     public void ApplyDamage(double damage)
     {
-		if (InvincibilityTime > 0) return;
+		//if (InvincibilityTime > 0) return;
         Health -= damage;
-		InvincibilityTime = InvincibilityDuration;
-		GD.Print(Health);
+		//InvincibilityTime = InvincibilityDuration;
+        healthDisp.MainUpdate(Health);
 		if (Health <= 0)
 		{
 			// kill method
