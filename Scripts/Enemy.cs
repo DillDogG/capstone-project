@@ -9,25 +9,59 @@ public partial class Enemy : CharacterBody3D, Damageable
     [Export]
     public double MaxHealth = 150;
 
+    [Export]
+    public Player Player { get; set; }
+
+    [Export]
+    public NavigationAgent3D NavAgent { get; set; }
+
     //[Export]
     //public double InvincibilityDuration = 2;
 
     private double Health { get; set; }
 
+    [Export]
+    public double AttackRange { get; set; }
+
+    [Export]
+    public Weapon Weapon { get; set; }
+
     //private double InvincibilityTime { get; set; }
 
-    public virtual Area3D MovementZone { get; set; }
+    //public virtual Area3D MovementZone { get; set; }
 
     public override void _Ready()
     {
         Health = MaxHealth;
+        Weapon.Equip();
+    }
+
+    public void FullEnemyUpdate(double delta)
+    {
+        // was from when invincibility happened when getting hit
+        //if (InvincibilityTime > 0) InvincibilityTime -= delta;
+        if (Weapon != null) Weapon.MainUpdate(delta);
     }
 
     public override void _PhysicsProcess(double delta)
     {
-        // was from when invincibility happened when getting hit
-        //if (InvincibilityTime > 0) InvincibilityTime -= delta;
+        FullEnemyUpdate(delta);
+        var direction = Vector3.Zero;
+        NavAgent.TargetPosition = Player.GlobalTransform.Origin;
+        var nextNavPoint = NavAgent.GetNextPathPosition();
+        direction = (nextNavPoint - GlobalTransform.Origin).Normalized();
+        Velocity = direction * Speed;
+        LookAt(new Vector3(Player.GlobalPosition.X, Player.GlobalPosition.Y, Player.GlobalPosition.Z));
+        if (InAttackRange())
+        {
+            Weapon.Attack();
+        }
         MoveAndSlide();
+    }
+
+    public bool InAttackRange()
+    {
+        return GlobalPosition.DistanceTo(Player.GlobalPosition) <= AttackRange;
     }
 
     public void ApplyDamage(double damage)
@@ -35,7 +69,6 @@ public partial class Enemy : CharacterBody3D, Damageable
         //if (InvincibilityTime > 0) return;
         Health -= damage;
         //InvincibilityTime = InvincibilityDuration;
-        GD.Print(Health);
         if (Health <= 0)
         {
             // kill method

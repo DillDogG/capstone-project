@@ -15,6 +15,11 @@ public partial class RangedWeapon : Weapon
     public virtual RayCast3D HitCheck { get; set; }
     public TimerLabel GlobalTimer { get; set; }
 
+    public RangedWeapon()
+    {
+        AmmoCount = MaxAmmoCount;
+    }
+
     public override void MainUpdate(double delta)
     {
         base.MainUpdate(delta);
