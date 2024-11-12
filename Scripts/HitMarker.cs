@@ -6,6 +6,7 @@ public partial class HitMarker : Label
     double Duration = 0;
     double TotalDamage = 0;
     bool KillString = false;
+    float Opacity;
 
     public override void _Process(double delta)
     {
@@ -20,7 +21,10 @@ public partial class HitMarker : Label
         {
             Duration -= delta;
             Visible = true;
-            if (KillString) SetModulate(new Color(1, 0.1f, 0, (float)(delta)));
+            Opacity = (float)Duration / 2;
+            if (KillString) SetModulate(new Color(1, 0.1f, 0, Opacity));
+            else SetModulate(new Color(1, 1, 0, Opacity));
+
         }
     }
 

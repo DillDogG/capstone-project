@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://cqtpwqoty3pxd"]
+[gd_scene load_steps=30 format=3 uid="uid://cqtpwqoty3pxd"]
 
 [ext_resource type="Script" path="res://Scripts/Game.cs" id="1_4awxq"]
 [ext_resource type="PackedScene" uid="uid://cctntsygmnc80" path="res://Prefabs/player.tscn" id="1_sr6c0"]
@@ -14,6 +14,7 @@
 [ext_resource type="Script" path="res://Scripts/HitMarker.cs" id="11_fwiyq"]
 [ext_resource type="Script" path="res://Scripts/PauseContinue.cs" id="11_jmfli"]
 [ext_resource type="Script" path="res://Scripts/Settings.cs" id="12_br18a"]
+[ext_resource type="Texture2D" uid="uid://sfg1wwfrywpj" path="res://Images/HitMarker.png" id="12_fid2k"]
 [ext_resource type="Script" path="res://Scripts/QuitGameButton.cs" id="13_2tfsm"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_tkua6"]
@@ -151,7 +152,7 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "0/0"
 script = ExtResource("6_p10an")
 
-[node name="TextureRect" type="TextureRect" parent="UserInterface"]
+[node name="Crosshair" type="TextureRect" parent="UserInterface"]
 layout_mode = 0
 offset_left = 556.0
 offset_top = 304.0
@@ -178,10 +179,19 @@ offset_left = 607.0
 offset_top = 274.0
 offset_right = 651.0
 offset_bottom = 305.0
-rotation = 0.321295
+rotation = 0.349066
 theme = SubResource("Theme_hl4h3")
 text = "20.0"
 script = ExtResource("11_fwiyq")
+
+[node name="Crosshair2" type="TextureRect" parent="UserInterface/HitMarker"]
+layout_mode = 0
+offset_left = -21.606
+offset_top = 31.2759
+offset_right = 18.394
+offset_bottom = 71.2759
+rotation = 0.436332
+texture = ExtResource("12_fid2k")
 
 [node name="PauseMenu" type="Control" parent="."]
 process_mode = 2
