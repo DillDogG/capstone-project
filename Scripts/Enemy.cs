@@ -26,6 +26,9 @@ public partial class Enemy : CharacterBody3D, Damageable
     [Export]
     public Weapon Weapon { get; set; }
 
+    [Export]
+    public HitMarker HitMarker { get; set; }
+
     //private double InvincibilityTime { get; set; }
 
     //public virtual Area3D MovementZone { get; set; }
@@ -71,8 +74,13 @@ public partial class Enemy : CharacterBody3D, Damageable
         //InvincibilityTime = InvincibilityDuration;
         if (Health <= 0)
         {
+            HitMarker.MainUpdate(damage, true);
             // kill method
             QueueFree();
+        }
+        else
+        {
+            HitMarker.MainUpdate(damage);
         }
     }
 }

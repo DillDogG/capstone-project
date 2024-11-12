@@ -15,7 +15,7 @@ public partial class RangedWeapon : Weapon
     public virtual RayCast3D HitCheck { get; set; }
     public TimerLabel GlobalTimer { get; set; }
 
-    public RangedWeapon()
+    public override void _Ready()
     {
         AmmoCount = MaxAmmoCount;
     }
