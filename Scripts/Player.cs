@@ -62,11 +62,14 @@ public partial class Player : CharacterBody3D, Damageable
     public TimerLabel GlobalTimer { get; set; }
     [Export]
     public Game Game { get; set; }
+    Camera3D cam;
+    double BaseFOV = 75;
 
     public override void _Ready()
     {
         base._Ready();
         Input.MouseMode = Input.MouseModeEnum.Captured;
+        cam = GetNode<Camera3D>("Pivot/Camera3D");
         pivot = GetNode<Node3D>("Pivot");
         CoyoteTime = CoyoteDuration;
 		Health = MaxHealth;
@@ -122,6 +125,7 @@ public partial class Player : CharacterBody3D, Damageable
             ammoDisp.MainUpdate((RangedWeapon)Weapon);
         }
         else ammoDisp.Visible = false;
+        if (cam.Fov != FOV_Ending) SmoothFOVUpdate(delta);
     }
 
 	public override void _PhysicsProcess(double delta)
@@ -265,7 +269,8 @@ public partial class Player : CharacterBody3D, Damageable
                         Camera3D cam = GetNode<Camera3D>("Pivot/Camera3D");
                         if (cam != null)
                         {
-                            cam.Fov *= 0.5f;
+                            //cam.Fov *= 0.5f;
+                            SmoothFOV(BaseFOV * 0.5, 0.5);
                             MouseSensitivity *= 0.5f;
                         }
                         break;
@@ -273,10 +278,10 @@ public partial class Player : CharacterBody3D, Damageable
             }
             else if (mouseEvent.IsActionReleased("ADS"))
             {
-                Camera3D cam = GetNode<Camera3D>("Pivot/Camera3D");
                 if (cam != null)
                 {
-                    cam.Fov *= 2;
+                    //cam.Fov *= 2;
+                    SmoothFOV(BaseFOV, 0.5);
                     MouseSensitivity *= 2;
                 }
             }
@@ -311,5 +316,32 @@ public partial class Player : CharacterBody3D, Damageable
 		{
 			// kill method
 		}
+    }
+
+    // used to update the camera field of view without having it instantly snap into place
+    private double FOV_Starting;
+    private double FOV_Ending;
+    private double FOV_Duration;
+    private double FOV_TimeElapsed;
+    public void SmoothFOVUpdate(double delta)
+    {
+        //if (cam.Fov == FOV_Ending)
+        //{
+        //    FOV_TimeElapsed = 0;
+        //    return;
+        //}
+        FOV_TimeElapsed += delta;
+        if (FOV_TimeElapsed >= FOV_Duration) { cam.Fov = (float)FOV_Ending; return; }
+        double FOV_Change = FOV_Ending - FOV_Starting;
+        double time = FOV_Duration / delta;
+        cam.Fov += (float)FOV_Change / (float)time;
+    }
+
+    public void SmoothFOV(double ending, double duration)
+    {
+        FOV_Starting = cam.Fov;
+        FOV_Ending = ending;
+        FOV_Duration = duration;
+        FOV_TimeElapsed = 0;
     }
 }
