@@ -3,20 +3,40 @@
   "WorkspaceRootPath": "C:\\Users\\dyarbrough\\Godot_Games\\capstone-project\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{C4D11A91-9E0E-4071-AE91-90213DB10F7E}|Capstone Project.csproj|c:\\users\\dyarbrough\\godot_games\\capstone-project\\scripts\\player.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C4D11A91-9E0E-4071-AE91-90213DB10F7E}|Capstone Project.csproj|solutionrelative:scripts\\player.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\dyarbrough\\Godot_Games\\capstone-project\\Scripts\\Settings.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Scripts\\Settings.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C4D11A91-9E0E-4071-AE91-90213DB10F7E}|Capstone Project.csproj|c:\\users\\dyarbrough\\godot_games\\capstone-project\\scripts\\hitmarker.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C4D11A91-9E0E-4071-AE91-90213DB10F7E}|Capstone Project.csproj|solutionrelative:scripts\\hitmarker.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\dyarbrough\\Godot_Games\\capstone-project\\Scripts\\SaveSettings.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Scripts\\SaveSettings.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C4D11A91-9E0E-4071-AE91-90213DB10F7E}|Capstone Project.csproj|c:\\users\\dyarbrough\\godot_games\\capstone-project\\scripts\\settingsbutton.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C4D11A91-9E0E-4071-AE91-90213DB10F7E}|Capstone Project.csproj|solutionrelative:scripts\\settingsbutton.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C4D11A91-9E0E-4071-AE91-90213DB10F7E}|Capstone Project.csproj|c:\\users\\dyarbrough\\godot_games\\capstone-project\\scripts\\game.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C4D11A91-9E0E-4071-AE91-90213DB10F7E}|Capstone Project.csproj|solutionrelative:scripts\\game.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C4D11A91-9E0E-4071-AE91-90213DB10F7E}|Capstone Project.csproj|c:\\users\\dyarbrough\\godot_games\\capstone-project\\scripts\\player.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C4D11A91-9E0E-4071-AE91-90213DB10F7E}|Capstone Project.csproj|solutionrelative:scripts\\player.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{C4D11A91-9E0E-4071-AE91-90213DB10F7E}|Capstone Project.csproj|c:\\users\\dyarbrough\\godot_games\\capstone-project\\scripts\\enemy.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{C4D11A91-9E0E-4071-AE91-90213DB10F7E}|Capstone Project.csproj|solutionrelative:scripts\\enemy.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C4D11A91-9E0E-4071-AE91-90213DB10F7E}|Capstone Project.csproj|c:\\users\\dyarbrough\\godot_games\\capstone-project\\scripts\\game.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C4D11A91-9E0E-4071-AE91-90213DB10F7E}|Capstone Project.csproj|solutionrelative:scripts\\game.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{C4D11A91-9E0E-4071-AE91-90213DB10F7E}|Capstone Project.csproj|c:\\users\\dyarbrough\\godot_games\\capstone-project\\scripts\\pausecontinue.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C4D11A91-9E0E-4071-AE91-90213DB10F7E}|Capstone Project.csproj|solutionrelative:scripts\\pausecontinue.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C4D11A91-9E0E-4071-AE91-90213DB10F7E}|Capstone Project.csproj|c:\\users\\dyarbrough\\godot_games\\capstone-project\\scripts\\quitgamebutton.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C4D11A91-9E0E-4071-AE91-90213DB10F7E}|Capstone Project.csproj|solutionrelative:scripts\\quitgamebutton.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C4D11A91-9E0E-4071-AE91-90213DB10F7E}|Capstone Project.csproj|c:\\users\\dyarbrough\\godot_games\\capstone-project\\scripts\\hitmarker.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C4D11A91-9E0E-4071-AE91-90213DB10F7E}|Capstone Project.csproj|solutionrelative:scripts\\hitmarker.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{C4D11A91-9E0E-4071-AE91-90213DB10F7E}|Capstone Project.csproj|c:\\users\\dyarbrough\\godot_games\\capstone-project\\scripts\\timerlabel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -39,20 +59,8 @@
       "RelativeMoniker": "D:0:0:{C4D11A91-9E0E-4071-AE91-90213DB10F7E}|Capstone Project.csproj|solutionrelative:scripts\\rangedweapon.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C4D11A91-9E0E-4071-AE91-90213DB10F7E}|Capstone Project.csproj|c:\\users\\dyarbrough\\godot_games\\capstone-project\\scripts\\settings.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C4D11A91-9E0E-4071-AE91-90213DB10F7E}|Capstone Project.csproj|solutionrelative:scripts\\settings.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{C4D11A91-9E0E-4071-AE91-90213DB10F7E}|Capstone Project.csproj|c:\\users\\dyarbrough\\godot_games\\capstone-project\\scripts\\damageable.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{C4D11A91-9E0E-4071-AE91-90213DB10F7E}|Capstone Project.csproj|solutionrelative:scripts\\damageable.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C4D11A91-9E0E-4071-AE91-90213DB10F7E}|Capstone Project.csproj|c:\\users\\dyarbrough\\godot_games\\capstone-project\\scripts\\pausecontinue.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C4D11A91-9E0E-4071-AE91-90213DB10F7E}|Capstone Project.csproj|solutionrelative:scripts\\pausecontinue.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C4D11A91-9E0E-4071-AE91-90213DB10F7E}|Capstone Project.csproj|c:\\users\\dyarbrough\\godot_games\\capstone-project\\scripts\\quitgamebutton.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C4D11A91-9E0E-4071-AE91-90213DB10F7E}|Capstone Project.csproj|solutionrelative:scripts\\quitgamebutton.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{C4D11A91-9E0E-4071-AE91-90213DB10F7E}|Capstone Project.csproj|c:\\users\\dyarbrough\\godot_games\\capstone-project\\scripts\\healthbar.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -66,7 +74,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 9,
+          "SelectedChildIndex": 5,
           "Children": [
             {
               "$type": "Bookmark",
@@ -87,19 +95,45 @@
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "HitMarker.cs",
-              "DocumentMoniker": "C:\\Users\\dyarbrough\\Godot_Games\\capstone-project\\Scripts\\HitMarker.cs",
-              "RelativeDocumentMoniker": "Scripts\\HitMarker.cs",
-              "ToolTip": "C:\\Users\\dyarbrough\\Godot_Games\\capstone-project\\Scripts\\HitMarker.cs",
-              "RelativeToolTip": "Scripts\\HitMarker.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAIBJwBYAAAAbAAAAAAAAAA==",
+              "Title": "SaveSettings.cs",
+              "DocumentMoniker": "C:\\Users\\dyarbrough\\Godot_Games\\capstone-project\\Scripts\\SaveSettings.cs",
+              "RelativeDocumentMoniker": "Scripts\\SaveSettings.cs",
+              "ToolTip": "C:\\Users\\dyarbrough\\Godot_Games\\capstone-project\\Scripts\\SaveSettings.cs",
+              "RelativeToolTip": "Scripts\\SaveSettings.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAgAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-11T23:22:15.907Z",
+              "WhenOpened": "2024-11-15T22:27:44.802Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 0,
+              "Title": "Settings.cs",
+              "DocumentMoniker": "C:\\Users\\dyarbrough\\Godot_Games\\capstone-project\\Scripts\\Settings.cs",
+              "RelativeDocumentMoniker": "Scripts\\Settings.cs",
+              "ToolTip": "C:\\Users\\dyarbrough\\Godot_Games\\capstone-project\\Scripts\\Settings.cs",
+              "RelativeToolTip": "Scripts\\Settings.cs",
+              "ViewState": "AgIAAAsAAAAAAAAAAAAAwCAAAAAcAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-15T22:07:46.716Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "SettingsButton.cs",
+              "DocumentMoniker": "C:\\Users\\dyarbrough\\Godot_Games\\capstone-project\\Scripts\\SettingsButton.cs",
+              "RelativeDocumentMoniker": "Scripts\\SettingsButton.cs",
+              "ToolTip": "C:\\Users\\dyarbrough\\Godot_Games\\capstone-project\\Scripts\\SettingsButton.cs",
+              "RelativeToolTip": "Scripts\\SettingsButton.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAASAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-15T21:07:55.442Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
               "Title": "EnemyMelee.cs",
               "DocumentMoniker": "C:\\Users\\dyarbrough\\Godot_Games\\capstone-project\\Scripts\\EnemyMelee.cs",
               "RelativeDocumentMoniker": "Scripts\\EnemyMelee.cs",
@@ -111,31 +145,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "Settings.cs",
-              "DocumentMoniker": "C:\\Users\\dyarbrough\\Godot_Games\\capstone-project\\Scripts\\Settings.cs",
-              "RelativeDocumentMoniker": "Scripts\\Settings.cs",
-              "ToolTip": "C:\\Users\\dyarbrough\\Godot_Games\\capstone-project\\Scripts\\Settings.cs",
-              "RelativeToolTip": "Scripts\\Settings.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAACAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-07T22:47:46.741Z"
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 3,
               "Title": "Game.cs",
               "DocumentMoniker": "C:\\Users\\dyarbrough\\Godot_Games\\capstone-project\\Scripts\\Game.cs",
               "RelativeDocumentMoniker": "Scripts\\Game.cs",
               "ToolTip": "C:\\Users\\dyarbrough\\Godot_Games\\capstone-project\\Scripts\\Game.cs",
               "RelativeToolTip": "Scripts\\Game.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABsAAAA2AAAAAAAAAA==",
+              "ViewState": "AgIAABMAAAAAAAAAAAAkwCwAAAAZAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-06T23:13:10.736Z"
+              "WhenOpened": "2024-11-06T23:13:10.736Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 5,
               "Title": "Enemy.cs",
               "DocumentMoniker": "C:\\Users\\dyarbrough\\Godot_Games\\capstone-project\\Scripts\\Enemy.cs",
               "RelativeDocumentMoniker": "Scripts\\Enemy.cs",
@@ -143,24 +166,25 @@
               "RelativeToolTip": "Scripts\\Enemy.cs",
               "ViewState": "AgIAADcAAAAAAAAAAAAqwEwAAAAvAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-21T16:44:28.536Z"
+              "WhenOpened": "2024-10-21T16:44:28.536Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 4,
               "Title": "Player.cs",
               "DocumentMoniker": "C:\\Users\\dyarbrough\\Godot_Games\\capstone-project\\Scripts\\Player.cs",
               "RelativeDocumentMoniker": "Scripts\\Player.cs",
               "ToolTip": "C:\\Users\\dyarbrough\\Godot_Games\\capstone-project\\Scripts\\Player.cs",
               "RelativeToolTip": "Scripts\\Player.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAACgAAAAAAAAAAADwv0EAAAALAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-10-02T21:55:17.25Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 14,
               "Title": "Damageable.cs",
               "DocumentMoniker": "C:\\Users\\dyarbrough\\Godot_Games\\capstone-project\\Scripts\\Damageable.cs",
               "RelativeDocumentMoniker": "Scripts\\Damageable.cs",
@@ -172,7 +196,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 12,
               "Title": "Weapon.cs",
               "DocumentMoniker": "C:\\Users\\dyarbrough\\Godot_Games\\capstone-project\\Scripts\\Weapon.cs",
               "RelativeDocumentMoniker": "Scripts\\Weapon.cs",
@@ -184,7 +208,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 13,
               "Title": "RangedWeapon.cs",
               "DocumentMoniker": "C:\\Users\\dyarbrough\\Godot_Games\\capstone-project\\Scripts\\RangedWeapon.cs",
               "RelativeDocumentMoniker": "Scripts\\RangedWeapon.cs",
@@ -196,7 +220,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 9,
               "Title": "TimerLabel.cs",
               "DocumentMoniker": "C:\\Users\\dyarbrough\\Godot_Games\\capstone-project\\Scripts\\TimerLabel.cs",
               "RelativeDocumentMoniker": "Scripts\\TimerLabel.cs",
@@ -208,7 +232,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 6,
               "Title": "PauseContinue.cs",
               "DocumentMoniker": "C:\\Users\\dyarbrough\\Godot_Games\\capstone-project\\Scripts\\PauseContinue.cs",
               "RelativeDocumentMoniker": "Scripts\\PauseContinue.cs",
@@ -220,19 +244,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "MeleeWeapon.cs",
-              "DocumentMoniker": "C:\\Users\\dyarbrough\\Godot_Games\\capstone-project\\Scripts\\MeleeWeapon.cs",
-              "RelativeDocumentMoniker": "Scripts\\MeleeWeapon.cs",
-              "ToolTip": "C:\\Users\\dyarbrough\\Godot_Games\\capstone-project\\Scripts\\MeleeWeapon.cs",
-              "RelativeToolTip": "Scripts\\MeleeWeapon.cs",
-              "ViewState": "AgIAAAsAAAAAAAAAAAAgwCQAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-16T20:11:23.807Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 7,
               "Title": "QuitGameButton.cs",
               "DocumentMoniker": "C:\\Users\\dyarbrough\\Godot_Games\\capstone-project\\Scripts\\QuitGameButton.cs",
               "RelativeDocumentMoniker": "Scripts\\QuitGameButton.cs",
@@ -244,7 +256,31 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 8,
+              "Title": "HitMarker.cs",
+              "DocumentMoniker": "C:\\Users\\dyarbrough\\Godot_Games\\capstone-project\\Scripts\\HitMarker.cs",
+              "RelativeDocumentMoniker": "Scripts\\HitMarker.cs",
+              "ToolTip": "C:\\Users\\dyarbrough\\Godot_Games\\capstone-project\\Scripts\\HitMarker.cs",
+              "RelativeToolTip": "Scripts\\HitMarker.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAIBJwBYAAAAbAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-11T23:22:15.907Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "MeleeWeapon.cs",
+              "DocumentMoniker": "C:\\Users\\dyarbrough\\Godot_Games\\capstone-project\\Scripts\\MeleeWeapon.cs",
+              "RelativeDocumentMoniker": "Scripts\\MeleeWeapon.cs",
+              "ToolTip": "C:\\Users\\dyarbrough\\Godot_Games\\capstone-project\\Scripts\\MeleeWeapon.cs",
+              "RelativeToolTip": "Scripts\\MeleeWeapon.cs",
+              "ViewState": "AgIAAAsAAAAAAAAAAAAgwCQAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-16T20:11:23.807Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
               "Title": "HealthBar.cs",
               "DocumentMoniker": "C:\\Users\\dyarbrough\\Godot_Games\\capstone-project\\Scripts\\HealthBar.cs",
               "RelativeDocumentMoniker": "Scripts\\HealthBar.cs",

@@ -5,10 +5,14 @@ public partial class Game : Node3D
 {
 	[Export]
 	public Control PauseMenu { get; set; }
+
+	[Export]
+	public Control SettingsMenu { get; set; }
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
 		PauseMenu.Hide();
+		SettingsMenu.Hide();
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -29,4 +33,16 @@ public partial class Game : Node3D
         PauseMenu.Hide();
         GetTree().Paused = false;
 	}
+
+	public void Settings()
+	{
+        PauseMenu.Hide();
+		SettingsMenu.Show();
+    }
+
+	public void ExitSettings()
+	{
+        PauseMenu.Show();
+        SettingsMenu.Hide();
+    }
 }

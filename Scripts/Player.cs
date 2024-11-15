@@ -63,7 +63,7 @@ public partial class Player : CharacterBody3D, Damageable
     [Export]
     public Game Game { get; set; }
     Camera3D cam;
-    double BaseFOV = 75;
+    public double BaseFOV = 75;
 
     public override void _Ready()
     {
@@ -87,6 +87,7 @@ public partial class Player : CharacterBody3D, Damageable
         WeaponSlot = 0;
 		Weapon.Equip();
         healthDisp.MainUpdate(Health);
+        FOV_Ending = BaseFOV;
     }
 
 	// Function to update many items that need to be updated every update. 'delta' is seconds since last update, which is normally a small number.
