@@ -6,6 +6,9 @@ public partial class RangedWeapon : Weapon
     public int AmmoCount { get; set; }
     [Export]
     public int MaxAmmoCount { get; set; }
+    public int AmmoReserves { get; set; }
+    [Export]
+    public int MaxAmmoReserves { get; set; }
     [Export]
     public double ReloadSpeed { get; set; }
     [Export]
@@ -18,6 +21,7 @@ public partial class RangedWeapon : Weapon
     public override void _Ready()
     {
         AmmoCount = MaxAmmoCount;
+        AmmoReserves = MaxAmmoReserves;
     }
 
     public override void MainUpdate(double delta)
@@ -25,7 +29,17 @@ public partial class RangedWeapon : Weapon
         base.MainUpdate(delta);
         if (FireCooldown <= 0 && Reloading)
         {
-            AmmoCount = MaxAmmoCount;
+            AmmoReserves -= MaxAmmoCount - AmmoCount;
+            if (AmmoReserves < 0)
+            {
+                AmmoCount = MaxAmmoCount;
+                AmmoCount += AmmoReserves;
+                AmmoReserves = 0;
+            }
+            else
+            {
+                AmmoCount = MaxAmmoCount;
+            }
             Reloading = false;
         }
     }
@@ -72,6 +86,7 @@ public partial class RangedWeapon : Weapon
     public void Reload(double TimeAddition = 0)
     {
         if (AmmoCount == MaxAmmoCount) return;
+        if (AmmoReserves <= 0) return;
         Reloading = true;
         FireCooldown = ReloadSpeed + TimeAddition;
     }
