@@ -8,11 +8,19 @@ public partial class Game : Node3D
 
 	[Export]
 	public Control SettingsMenu { get; set; }
+
+	public ReadFile ReadFile { get; set; } = new ReadFile();
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
 		PauseMenu.Hide();
 		SettingsMenu.Hide();
+		ReadFile.ConfirmFiles();
+        if (SettingsMenu is Settings)
+        {
+            Settings menu = (Settings)SettingsMenu;
+			ReadFile.LoadSettings(menu);
+        }
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.

@@ -49,6 +49,7 @@ public partial class RangedWeapon : Weapon
 
     public override void Attack()
     {
+        if (FireType == FireEnum.FULLAUTO) Firing = true;
         if (Reloading) return;
         if (AmmoCount <= 0)
         {
@@ -66,7 +67,6 @@ public partial class RangedWeapon : Weapon
         }
         FireCooldown = FireRate;
         AmmoCount--;
-        if (FireType == FireEnum.FULLAUTO) Firing = true;
     }
 
     public void Reload(double TimeAddition = 0)

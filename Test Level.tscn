@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://cqtpwqoty3pxd"]
+[gd_scene load_steps=34 format=3 uid="uid://cqtpwqoty3pxd"]
 
 [ext_resource type="Script" path="res://Scripts/Game.cs" id="1_4awxq"]
 [ext_resource type="PackedScene" uid="uid://cctntsygmnc80" path="res://Prefabs/player.tscn" id="1_sr6c0"]
@@ -18,6 +18,7 @@
 [ext_resource type="Script" path="res://Scripts/QuitGameButton.cs" id="13_2tfsm"]
 [ext_resource type="Script" path="res://Scripts/Settings.cs" id="13_dy5yw"]
 [ext_resource type="Script" path="res://Scripts/SaveSettings.cs" id="14_msafn"]
+[ext_resource type="Script" path="res://Scripts/ResetSettings.cs" id="15_ys2v0"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_tkua6"]
 
@@ -221,7 +222,29 @@ MouseSens_Slider = NodePath("VBoxContainer/Mouse_Sens_Slider")
 FOV_Label = NodePath("VBoxContainer3/FOV_Value")
 MouseSens_Label = NodePath("VBoxContainer3/MouseSens_Value")
 
-[node name="Button" type="Button" parent="UserInterface/Settings" node_paths=PackedStringArray("Settings")]
+[node name="Background" type="ColorRect" parent="UserInterface/Settings"]
+custom_minimum_size = Vector2(1152, 648)
+layout_mode = 0
+offset_left = -205.0
+offset_top = -124.0
+offset_right = 947.0
+offset_bottom = 524.0
+color = Color(0.141176, 0.141176, 0.141176, 0.784314)
+
+[node name="TabBar" type="TabBar" parent="UserInterface/Settings"]
+layout_mode = 0
+offset_top = -30.0
+offset_right = 413.0
+offset_bottom = 10.0
+current_tab = 0
+clip_tabs = false
+tab_count = 4
+tab_0/title = "Visuals"
+tab_1/title = "Audio"
+tab_2/title = "Controls"
+tab_3/title = "Controller"
+
+[node name="SaveSettings" type="Button" parent="UserInterface/Settings" node_paths=PackedStringArray("Settings")]
 layout_mode = 2
 offset_left = 150.0
 offset_top = 231.0
@@ -229,6 +252,16 @@ offset_right = 300.0
 offset_bottom = 281.0
 text = "Save Settings"
 script = ExtResource("14_msafn")
+Settings = NodePath("..")
+
+[node name="ResetSettings" type="Button" parent="UserInterface/Settings" node_paths=PackedStringArray("Settings")]
+layout_mode = 2
+offset_left = 431.0
+offset_top = 231.0
+offset_right = 581.0
+offset_bottom = 281.0
+text = "Reset Settings"
+script = ExtResource("15_ys2v0")
 Settings = NodePath("..")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="UserInterface/Settings"]
@@ -253,7 +286,7 @@ scrollable = false
 [node name="Mouse_Sens_Slider" type="HSlider" parent="UserInterface/Settings/VBoxContainer"]
 layout_mode = 2
 max_value = 5.0
-step = 0.1
+step = 0.05
 value = 1.0
 scrollable = false
 
@@ -297,6 +330,13 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
+
+[node name="Background" type="ColorRect" parent="PauseMenu"]
+custom_minimum_size = Vector2(1152, 648)
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+color = Color(0.141176, 0.141176, 0.141176, 0.784314)
 
 [node name="Button" type="Button" parent="PauseMenu" node_paths=PackedStringArray("Game")]
 layout_mode = 0

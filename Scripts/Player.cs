@@ -137,7 +137,6 @@ public partial class Player : CharacterBody3D, Damageable
 
 		// separate function for the total update
 		FullPlayerUpdate(delta);
-
         // take in input turn that into velocity
         if (Input.IsActionPressed("move_right")) direction.Z += 1.0f;
         if (Input.IsActionPressed("move_left")) direction.Z -= 1.0f;
@@ -145,7 +144,7 @@ public partial class Player : CharacterBody3D, Damageable
         if (Input.IsActionPressed("move_forward")) direction.X += 1.0f;
 
         // normalize velocity, multiply by rotation to make it based on where you are facing, and normalize again
-		if (direction != Vector3.Zero)
+        if (direction != Vector3.Zero)
 		{
 			direction = direction.Normalized();
 			direction = direction.Rotated(new Vector3(0, 1, 0), pivot.Rotation.Y);
@@ -153,8 +152,16 @@ public partial class Player : CharacterBody3D, Damageable
 		}
 
         // checks if player is crouching or sprinting
-		if (Input.IsActionPressed("sprint")) Sprinting = true;
-		else Sprinting = false;
+        if (Input.IsActionJustPressed("sprint"))
+        {
+            Sprinting = true;
+            SmoothFOV(BaseFOV * 1.05, 0.05);
+        }
+        else if (Input.IsActionJustReleased("sprint"))
+        {
+            Sprinting = false;
+            SmoothFOV(BaseFOV, 0.05);
+        }
 		if (Input.IsActionPressed("crouch")) Crouching = true;
 		else Crouching = false;
 
@@ -240,12 +247,12 @@ public partial class Player : CharacterBody3D, Damageable
 
 	public override void _Input(InputEvent @event)
 	{
-		if (@event is InputEventMouseMotion motionEvent)
-		{
-			Vector2 mouseMovement = motionEvent.ScreenRelative;
-			pivot.Rotation = new Vector3(mouseMovement.Y * MouseSensitivity + pivot.Rotation.X, mouseMovement.X * -MouseSensitivity + pivot.Rotation.Y, pivot.Rotation.Z);
+        if (@event is InputEventMouseMotion motionEvent)
+        {
+            Vector2 mouseMovement = motionEvent.ScreenRelative;
+            pivot.Rotation = new Vector3(mouseMovement.Y * MouseSensitivity + pivot.Rotation.X, mouseMovement.X * -MouseSensitivity + pivot.Rotation.Y, pivot.Rotation.Z);
             pivot.Rotation = new Vector3(Math.Clamp(pivot.Rotation.X, -1.8f, 0.8f), pivot.Rotation.Y, pivot.Rotation.Z);
-		}
+        }
         if (@event is InputEventMouseButton mouseEvent)
         {
             if (mouseEvent.Pressed)
@@ -305,7 +312,7 @@ public partial class Player : CharacterBody3D, Damageable
                 Game.Pause();
             }
         }
-	}
+    }
 
     public void ApplyDamage(double damage)
     {
