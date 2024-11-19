@@ -6,7 +6,7 @@
 [node name="Sniper_Rifle" node_paths=PackedStringArray("Model") instance=ExtResource("1_efqej")]
 script = ExtResource("2_gg687")
 MaxAmmoCount = 7
-MaxAmmoReserves = 10
+MaxAmmoReserves = 35
 ReloadSpeed = 5.0
 AnimType = 2
 Damage = 20.0
