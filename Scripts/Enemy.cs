@@ -39,6 +39,11 @@ public partial class Enemy : CharacterBody3D, Damageable
         Weapon.Equip();
     }
 
+    public void Initialize(Vector3 startPosition)
+    {
+
+    }
+
     public void FullEnemyUpdate(double delta)
     {
         // was from when invincibility happened when getting hit

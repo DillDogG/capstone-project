@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://cqtpwqoty3pxd"]
+[gd_scene load_steps=35 format=3 uid="uid://cqtpwqoty3pxd"]
 
 [ext_resource type="Script" path="res://Scripts/Game.cs" id="1_4awxq"]
 [ext_resource type="PackedScene" uid="uid://cctntsygmnc80" path="res://Prefabs/player.tscn" id="1_sr6c0"]
@@ -19,6 +19,7 @@
 [ext_resource type="Script" path="res://Scripts/Settings.cs" id="13_dy5yw"]
 [ext_resource type="Script" path="res://Scripts/SaveSettings.cs" id="14_msafn"]
 [ext_resource type="Script" path="res://Scripts/ResetSettings.cs" id="15_ys2v0"]
+[ext_resource type="PackedScene" uid="uid://bci0n6iga4udj" path="res://Prefabs/enemy_spawner.tscn" id="20_equgk"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_tkua6"]
 
@@ -378,3 +379,7 @@ navigation_mesh = SubResource("NavigationMesh_s6y4x")
 storage = ExtResource("3_381tp")
 material = SubResource("Terrain3DMaterial_tj0d8")
 assets = SubResource("Terrain3DAssets_ayl1x")
+
+[node name="EnemySpawner" parent="." node_paths=PackedStringArray("Game") instance=ExtResource("20_equgk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30.5613, 0, 19.0614)
+Game = NodePath("..")
