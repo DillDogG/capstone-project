@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://cqtpwqoty3pxd"]
+[gd_scene load_steps=32 format=3 uid="uid://cqtpwqoty3pxd"]
 
 [ext_resource type="Script" path="res://Scripts/Game.cs" id="1_4awxq"]
 [ext_resource type="PackedScene" uid="uid://cctntsygmnc80" path="res://Prefabs/player.tscn" id="1_sr6c0"]
@@ -8,7 +8,6 @@
 [ext_resource type="PackedScene" uid="uid://b50ul6mjmrdjk" path="res://Prefabs/Enemy.tscn" id="4_cgvfi"]
 [ext_resource type="Script" path="res://Scripts/TimerLabel.cs" id="5_7is0y"]
 [ext_resource type="Script" path="res://Scripts/AmmoLabel.cs" id="6_p10an"]
-[ext_resource type="Script" path="res://Scripts/EnemyMelee.cs" id="6_q7tr3"]
 [ext_resource type="Texture2D" uid="uid://eiiv82akd2a7" path="res://Images/Crosshair.png" id="8_jnmsh"]
 [ext_resource type="Script" path="res://Scripts/HealthBar.cs" id="10_wl1f8"]
 [ext_resource type="Script" path="res://Scripts/HitMarker.cs" id="11_fwiyq"]
@@ -19,9 +18,6 @@
 [ext_resource type="Script" path="res://Scripts/Settings.cs" id="13_dy5yw"]
 [ext_resource type="Script" path="res://Scripts/SaveSettings.cs" id="14_msafn"]
 [ext_resource type="Script" path="res://Scripts/ResetSettings.cs" id="15_ys2v0"]
-[ext_resource type="PackedScene" uid="uid://bci0n6iga4udj" path="res://Prefabs/enemy_spawner.tscn" id="20_equgk"]
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_tkua6"]
 
 [sub_resource type="Theme" id="Theme_bj8ju"]
 default_font_size = 22
@@ -95,10 +91,12 @@ generated_type = 1
 [sub_resource type="Terrain3DAssets" id="Terrain3DAssets_ayl1x"]
 mesh_list = Array[Terrain3DMeshAsset]([SubResource("Terrain3DMeshAsset_5rwbj")])
 
-[node name="Node3D" type="Node3D" node_paths=PackedStringArray("PauseMenu", "SettingsMenu")]
+[node name="Node3D" type="Node3D" node_paths=PackedStringArray("PauseMenu", "SettingsMenu", "Spawners")]
 script = ExtResource("1_4awxq")
 PauseMenu = NodePath("PauseMenu")
 SettingsMenu = NodePath("UserInterface/Settings")
+EnemyPrefab = ExtResource("4_cgvfi")
+Spawners = [NodePath("Spawners/EnemySpawner1"), NodePath("Spawners/EnemySpawner2"), NodePath("Spawners/EnemySpawner3"), NodePath("Spawners/EnemySpawner4"), NodePath("Spawners/EnemySpawner5"), NodePath("Spawners/EnemySpawner6")]
 
 [node name="Player" parent="." node_paths=PackedStringArray("Inventory", "ammoDisp", "healthDisp", "GlobalTimer", "Game") instance=ExtResource("1_sr6c0")]
 Inventory = [NodePath("Sniper_Rifle"), NodePath("Sword")]
@@ -113,26 +111,6 @@ FireType = 1
 
 [node name="Sword" parent="Player" instance=ExtResource("3_olmw4")]
 transform = Transform3D(0.25, 0.433013, -7.99974e-09, 2.18557e-08, -2.18557e-08, -0.5, -0.433013, 0.25, -2.98554e-08, -1.77996, 2.97392, 0.833981)
-
-[node name="Enemy" parent="." node_paths=PackedStringArray("Player", "Weapon", "HitMarker") instance=ExtResource("4_cgvfi")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 11.2732)
-MaxHealth = 100.0
-Player = NodePath("../Player")
-AttackRange = 3.0
-Weapon = NodePath("Node3D")
-HitMarker = NodePath("../UserInterface/HitMarker")
-
-[node name="Node3D" type="Node3D" parent="Enemy" node_paths=PackedStringArray("HitCheck")]
-script = ExtResource("6_q7tr3")
-HitCheck = NodePath("EnemyAttack")
-
-[node name="EnemyAttack" type="Area3D" parent="Enemy/Node3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.75981, -0.17823)
-collision_layer = 2
-collision_mask = 2
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Enemy/Node3D/EnemyAttack"]
-shape = SubResource("BoxShape3D_tkua6")
 
 [node name="UserInterface" type="Control" parent="."]
 layout_mode = 3
@@ -380,6 +358,53 @@ storage = ExtResource("3_381tp")
 material = SubResource("Terrain3DMaterial_tj0d8")
 assets = SubResource("Terrain3DAssets_ayl1x")
 
-[node name="EnemySpawner" parent="." node_paths=PackedStringArray("Game") instance=ExtResource("20_equgk")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30.5613, 0, 19.0614)
-Game = NodePath("..")
+[node name="SpawnTimer" type="Timer" parent="."]
+wait_time = 20.0
+autostart = true
+
+[node name="Spawners" type="Node3D" parent="."]
+
+[node name="EnemySpawner1" type="Node3D" parent="Spawners"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -40.7979, 0, 2.11905)
+
+[node name="EnemySpawner2" type="Node3D" parent="Spawners"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.80445, 0, -29.1229)
+
+[node name="EnemySpawner3" type="Node3D" parent="Spawners"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.9049, 0, 33.4996)
+
+[node name="EnemySpawner4" type="Node3D" parent="Spawners"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.28746, 0, -34.1814)
+
+[node name="EnemySpawner5" type="Node3D" parent="Spawners"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -65.1358, 0, 20.0099)
+
+[node name="EnemySpawner6" type="Node3D" parent="Spawners"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26.8723, 0, -43.0439)
+
+[node name="Enemy" parent="." node_paths=PackedStringArray("Player", "HitMarker") instance=ExtResource("4_cgvfi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.4057, 0, -9.20651)
+Player = NodePath("../Player")
+HitMarker = NodePath("../UserInterface/HitMarker")
+
+[node name="Enemy2" parent="." node_paths=PackedStringArray("Player", "HitMarker") instance=ExtResource("4_cgvfi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.8762, 0, 10.4135)
+Player = NodePath("../Player")
+HitMarker = NodePath("../UserInterface/HitMarker")
+
+[node name="Enemy3" parent="." node_paths=PackedStringArray("Player", "HitMarker") instance=ExtResource("4_cgvfi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.2876, 0, -8.20045)
+Player = NodePath("../Player")
+HitMarker = NodePath("../UserInterface/HitMarker")
+
+[node name="Enemy4" parent="." node_paths=PackedStringArray("Player", "HitMarker") instance=ExtResource("4_cgvfi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.2098, 0, -12.4644)
+Player = NodePath("../Player")
+HitMarker = NodePath("../UserInterface/HitMarker")
+
+[node name="Enemy5" parent="." node_paths=PackedStringArray("Player", "HitMarker") instance=ExtResource("4_cgvfi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -37.6917, 0, 4.68846)
+Player = NodePath("../Player")
+HitMarker = NodePath("../UserInterface/HitMarker")
+
+[connection signal="timeout" from="SpawnTimer" to="." method="OnSpawnTimerTimeout"]

@@ -18,7 +18,7 @@ Inventory = []
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.5, 0)
 
 [node name="Camera3D" type="Camera3D" parent="Pivot"]
-transform = Transform3D(-1, 3.69465e-08, -7.92319e-08, 0, 0.906308, 0.422618, 8.74228e-08, 0.422618, -0.906308, 0, 0, 0.4)
+transform = Transform3D(-1, 3.69464e-08, -7.9232e-08, 0, 0.906308, 0.422618, 8.74228e-08, 0.422618, -0.906308, 0, 0, 0.2)
 current = true
 
 [node name="BulletCheck" type="RayCast3D" parent="Pivot/Camera3D"]
@@ -31,3 +31,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.84219, 0)
 shape = SubResource("CapsuleShape3D_nvl54")
 
 [node name="Character" parent="." instance=ExtResource("2_i13uy")]
+transform = Transform3D(1, 0, 3.55271e-15, 0, 1, 0, 3.55271e-15, 0, 1, 0, -2.38419e-07, 0)
+visible = false

@@ -10,7 +10,7 @@ public partial class Enemy : CharacterBody3D, Damageable
     public double MaxHealth = 150;
 
     [Export]
-    public Player Player { get; set; }
+    public Player Player { get; set; } = null;
 
     [Export]
     public NavigationAgent3D NavAgent { get; set; }
@@ -27,7 +27,10 @@ public partial class Enemy : CharacterBody3D, Damageable
     public Weapon Weapon { get; set; }
 
     [Export]
-    public HitMarker HitMarker { get; set; }
+    public HitMarker HitMarker { get; set; } = null;
+
+    [Export]
+    public Timer SpawnTimer { get; set; }
 
     //private double InvincibilityTime { get; set; }
 
@@ -39,9 +42,11 @@ public partial class Enemy : CharacterBody3D, Damageable
         Weapon.Equip();
     }
 
-    public void Initialize(Vector3 startPosition)
+    public void Initialize(Vector3 startPosition, Player player, HitMarker hit)
     {
-
+        if (Player == null) Player = player;
+        if (HitMarker == null) HitMarker = hit;
+        Position = startPosition;
     }
 
     public void FullEnemyUpdate(double delta)
@@ -59,7 +64,7 @@ public partial class Enemy : CharacterBody3D, Damageable
         var nextNavPoint = NavAgent.GetNextPathPosition();
         direction = (nextNavPoint - GlobalTransform.Origin).Normalized();
         Velocity = direction * Speed;
-        LookAt(new Vector3(Player.GlobalPosition.X, Player.GlobalPosition.Y, Player.GlobalPosition.Z));
+        LookAt(new Vector3(Player.GlobalPosition.X, 0, Player.GlobalPosition.Z));
         if (InAttackRange())
         {
             Weapon.Attack();

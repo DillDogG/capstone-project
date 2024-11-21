@@ -127,6 +127,7 @@ public partial class Player : CharacterBody3D, Damageable
         }
         else ammoDisp.Visible = false;
         if (cam.Fov != FOV_Ending) SmoothFOVUpdate(delta);
+        //Rotation = new Vector3(Rotation.X, pivot.Rotation.Y, Rotation.Z);
     }
 
 	public override void _PhysicsProcess(double delta)
