@@ -4,10 +4,10 @@ using System;
 public partial class Weapon : Node
 {
     // Used for equip animation
-    public enum AnimEnum { MELEE, ONEHANDED, TWOHANDED };
+    //public enum AnimEnum { MELEE, ONEHANDED, TWOHANDED };
     public enum FireEnum { SINGLE, FULLAUTO };
-    [Export]
-    public AnimEnum AnimType { get; set; }
+    //[Export]
+    //public AnimEnum AnimType { get; set; }
     [Export]
     public FireEnum FireType { get; set; }
     public bool Firing { get; set; } = false;

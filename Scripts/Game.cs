@@ -63,7 +63,6 @@ public partial class Game : Node3D
 
     private void OnSpawnTimerTimeout()
     {
-        GD.Print("Timer Complete");
         // Create a new instance of the Mob scene.
         Enemy mob = EnemyPrefab.Instantiate<Enemy>();
 
@@ -76,7 +75,7 @@ public partial class Game : Node3D
             else if (nearest == null || spawner.GlobalPosition.DistanceTo(playerPosition) < nearest.GlobalPosition.DistanceTo(playerPosition)) nearest = spawner;
         }
         if (potentialSpawners.Count == 0) potentialSpawners.Add(nearest);
-        var mobSpawnLocation = potentialSpawners[(int)GD.Randi() % (potentialSpawners.Count - 1)];
+        var mobSpawnLocation = potentialSpawners[(int)GD.Randi() % (potentialSpawners.Count)];
 
         //Vector3 playerPosition = GetNode<Player>("Player").Position;
         mob.Initialize(mobSpawnLocation.Position, GetNode<Player>("Player"), GetNode<HitMarker>("UserInterface/HitMarker"));

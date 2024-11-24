@@ -1,14 +1,11 @@
 [gd_scene load_steps=3 format=3 uid="uid://cbs7p83yxip1d"]
 
 [ext_resource type="PackedScene" uid="uid://dq8u2kpk1y4tx" path="res://Models/Sniper_Rifle.fbx" id="1_efqej"]
-[ext_resource type="Script" path="res://Scripts/RangedWeapon.cs" id="2_gg687"]
+[ext_resource type="Script" path="res://Scripts/SniperRifleRanged.cs" id="2_fc3yr"]
 
 [node name="Sniper_Rifle" node_paths=PackedStringArray("Model") instance=ExtResource("1_efqej")]
-script = ExtResource("2_gg687")
-MaxAmmoCount = 7
-MaxAmmoReserves = 35
-ReloadSpeed = 5.0
-AnimType = 2
-Damage = 20.0
-FireRate = 1.0
+script = ExtResource("2_fc3yr")
 Model = NodePath("Sniper_Rifle")
+
+[node name="Sniper_Rifle" parent="." index="0"]
+transform = Transform3D(100, 0, 0, 0, -4.37114e-06, 100, 0, -100, -4.37114e-06, 0, 0, 0)

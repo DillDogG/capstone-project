@@ -1,10 +1,8 @@
-[gd_scene load_steps=32 format=3 uid="uid://cqtpwqoty3pxd"]
+[gd_scene load_steps=30 format=3 uid="uid://cqtpwqoty3pxd"]
 
 [ext_resource type="Script" path="res://Scripts/Game.cs" id="1_4awxq"]
 [ext_resource type="PackedScene" uid="uid://cctntsygmnc80" path="res://Prefabs/player.tscn" id="1_sr6c0"]
 [ext_resource type="Terrain3DStorage" uid="uid://blbayoklwmwm4" path="res://Test Level.res" id="3_381tp"]
-[ext_resource type="PackedScene" uid="uid://cbs7p83yxip1d" path="res://Prefabs/sniper_rifle.tscn" id="3_l7idj"]
-[ext_resource type="PackedScene" uid="uid://d13n2it0qywug" path="res://Prefabs/sword.tscn" id="3_olmw4"]
 [ext_resource type="PackedScene" uid="uid://b50ul6mjmrdjk" path="res://Prefabs/Enemy.tscn" id="4_cgvfi"]
 [ext_resource type="Script" path="res://Scripts/TimerLabel.cs" id="5_7is0y"]
 [ext_resource type="Script" path="res://Scripts/AmmoLabel.cs" id="6_p10an"]
@@ -98,19 +96,11 @@ SettingsMenu = NodePath("UserInterface/Settings")
 EnemyPrefab = ExtResource("4_cgvfi")
 Spawners = [NodePath("Spawners/EnemySpawner1"), NodePath("Spawners/EnemySpawner2"), NodePath("Spawners/EnemySpawner3"), NodePath("Spawners/EnemySpawner4"), NodePath("Spawners/EnemySpawner5"), NodePath("Spawners/EnemySpawner6")]
 
-[node name="Player" parent="." node_paths=PackedStringArray("Inventory", "ammoDisp", "healthDisp", "GlobalTimer", "Game") instance=ExtResource("1_sr6c0")]
-Inventory = [NodePath("Sniper_Rifle"), NodePath("Sword")]
+[node name="Player" parent="." node_paths=PackedStringArray("ammoDisp", "healthDisp", "GlobalTimer", "Game") instance=ExtResource("1_sr6c0")]
 ammoDisp = NodePath("../UserInterface/AmmoLabel")
 healthDisp = NodePath("../UserInterface/HealthBar")
 GlobalTimer = NodePath("../UserInterface/TotalTimer")
 Game = NodePath("..")
-
-[node name="Sniper_Rifle" parent="Player" instance=ExtResource("3_l7idj")]
-transform = Transform3D(-0.5, -2.18557e-08, -6.55671e-08, -6.55671e-08, -1.49012e-08, 0.5, -2.18557e-08, 0.5, 5.96046e-08, -1.78044, 2.92644, 0.0317005)
-FireType = 1
-
-[node name="Sword" parent="Player" instance=ExtResource("3_olmw4")]
-transform = Transform3D(0.25, 0.433013, -7.99974e-09, 2.18557e-08, -2.18557e-08, -0.5, -0.433013, 0.25, -2.98554e-08, -1.77996, 2.97392, 0.833981)
 
 [node name="UserInterface" type="Control" parent="."]
 layout_mode = 3

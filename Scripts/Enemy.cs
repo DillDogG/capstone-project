@@ -5,9 +5,10 @@ public partial class Enemy : CharacterBody3D, Damageable
 {
     [Export]
     public int Speed { get; set; } = 20;
+    private int BaseSpeed;
 
     [Export]
-    public double MaxHealth = 150;
+    public double MaxHealth = 100;
 
     [Export]
     public Player Player { get; set; } = null;
@@ -24,13 +25,16 @@ public partial class Enemy : CharacterBody3D, Damageable
     public double AttackRange { get; set; }
 
     [Export]
-    public Weapon Weapon { get; set; }
+    public MeleeWeapon Weapon { get; set; }
 
     [Export]
     public HitMarker HitMarker { get; set; } = null;
 
+
     [Export]
-    public Timer SpawnTimer { get; set; }
+    AnimationPlayer animation;
+
+    private bool Dead = false;
 
     //private double InvincibilityTime { get; set; }
 
@@ -40,6 +44,7 @@ public partial class Enemy : CharacterBody3D, Damageable
     {
         Health = MaxHealth;
         Weapon.Equip();
+        BaseSpeed = Speed;
     }
 
     public void Initialize(Vector3 startPosition, Player player, HitMarker hit)
@@ -54,6 +59,8 @@ public partial class Enemy : CharacterBody3D, Damageable
         // was from when invincibility happened when getting hit
         //if (InvincibilityTime > 0) InvincibilityTime -= delta;
         if (Weapon != null) Weapon.MainUpdate(delta);
+        if (Weapon.AttackDuration <= 0 && !Dead) Speed = BaseSpeed;
+        if (!animation.IsPlaying() && Dead) QueueFree();
     }
 
     public override void _PhysicsProcess(double delta)
@@ -64,11 +71,14 @@ public partial class Enemy : CharacterBody3D, Damageable
         var nextNavPoint = NavAgent.GetNextPathPosition();
         direction = (nextNavPoint - GlobalTransform.Origin).Normalized();
         Velocity = direction * Speed;
-        LookAt(new Vector3(Player.GlobalPosition.X, 0, Player.GlobalPosition.Z));
-        if (InAttackRange())
+        if (!Dead) LookAt(new Vector3(Player.GlobalPosition.X, 0, Player.GlobalPosition.Z));
+        if (InAttackRange() && !Dead)
         {
+            animation.Play("Zombie/ZombieAttack");
             Weapon.Attack();
+            Speed = 0;
         }
+        if (!animation.IsPlaying()) animation.Play("Zombie/ZombieRun");
         MoveAndSlide();
     }
 
@@ -85,8 +95,9 @@ public partial class Enemy : CharacterBody3D, Damageable
         if (Health <= 0)
         {
             HitMarker.MainUpdate(damage, true);
-            // kill method
-            QueueFree();
+            Dead = true;
+            Speed = 0;
+            animation.Play("Zombie/ZombieDying");
         }
         else
         {

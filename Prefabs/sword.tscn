@@ -1,13 +1,12 @@
 [gd_scene load_steps=7 format=3 uid="uid://d13n2it0qywug"]
 
 [ext_resource type="PackedScene" uid="uid://h23fqdum3enj" path="res://Models/Sword.glb" id="1_sg5ty"]
-[ext_resource type="Script" path="res://Scripts/MeleeWeapon.cs" id="2_jl8go"]
+[ext_resource type="Script" path="res://Scripts/SwordMelee.cs" id="2_m1dya"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_4maam"]
 height = 3.72552
 
-[sub_resource type="Animation" id="Animation_3576y"]
-resource_name = "SwordSwing"
+[sub_resource type="Animation" id="Animation_whwjh"]
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -15,10 +14,10 @@ tracks/0/path = NodePath(".:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(0, 0, -1.0472), Vector3(0, 1.5708, 0)]
+"values": [Vector3(0, 0, 0)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -33,8 +32,9 @@ tracks/1/keys = {
 "values": [Vector3(0, 0, 0)]
 }
 
-[sub_resource type="Animation" id="Animation_whwjh"]
-length = 0.001
+[sub_resource type="Animation" id="Animation_3576y"]
+resource_name = "SwordSwing"
+length = 1.25
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -42,10 +42,10 @@ tracks/0/path = NodePath(".:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.25, 0.75, 1.25),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [Vector3(0, 0, 0)]
+"values": [Vector3(0, 0, -1.0472), Vector3(-0.523599, 0, -1.0472), Vector3(-1.5708, 1.5708, 0.523599), Vector3(0, 0, -1.0472)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -54,10 +54,10 @@ tracks/1/path = NodePath(".:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.25, 0.75, 1.25),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [Vector3(0, 0, 0)]
+"values": [Vector3(0, 0, 0), Vector3(-0.25, 0, -2.25), Vector3(0, 0, 2), Vector3(0, 0, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_woehc"]
@@ -66,15 +66,10 @@ _data = {
 "SwordSwing": SubResource("Animation_3576y")
 }
 
-[node name="Sword" node_paths=PackedStringArray("HitCheck", "Model") instance=ExtResource("1_sg5ty")]
-script = ExtResource("2_jl8go")
-ComboCount = 3
-ComboMult = 2.0
-MaxAttackDuration = 0.5
+[node name="Sword" node_paths=PackedStringArray("animation", "HitCheck", "Model") instance=ExtResource("1_sg5ty")]
+script = ExtResource("2_m1dya")
+animation = NodePath("AnimationPlayer")
 HitCheck = NodePath("Hitbox")
-FireType = 1
-Damage = 10.0
-FireRate = 0.6
 Model = NodePath("Plane")
 
 [node name="Hitbox" type="Area3D" parent="." index="2"]

@@ -1,24 +1,35 @@
-[gd_scene load_steps=6 format=3 uid="uid://b50ul6mjmrdjk"]
+[gd_scene load_steps=10 format=3 uid="uid://b50ul6mjmrdjk"]
 
 [ext_resource type="Script" path="res://Scripts/Enemy.cs" id="1_f1ge3"]
-[ext_resource type="PackedScene" uid="uid://qnopnaqponi8" path="res://Models/Zombie/Warzombie F Pedroso.dae" id="2_vcblb"]
+[ext_resource type="PackedScene" uid="uid://dt2tx0kvyue8x" path="res://Animations/Zombie Run.fbx" id="3_7lv8e"]
 [ext_resource type="Script" path="res://Scripts/EnemyMelee.cs" id="3_kwswh"]
+[ext_resource type="Animation" uid="uid://btqjbjxxrruat" path="res://Animations/ZombieAttack.res" id="4_lpn2h"]
+[ext_resource type="Animation" uid="uid://n2ctwpp5vjna" path="res://Animations/ZombieDying.res" id="5_3suk6"]
+[ext_resource type="Animation" uid="uid://qkq2q3tx28c" path="res://Animations/ZombieRun.res" id="6_30o1u"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_5ytvo"]
 radius = 0.479654
 height = 3.82978
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_s2lbs"]
-size = Vector3(1, 2.77881, 1)
+size = Vector3(1, 2.77881, 1.32617)
 
-[node name="Enemy" type="CharacterBody3D" node_paths=PackedStringArray("NavAgent", "Weapon")]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_kghpc"]
+_data = {
+"ZombieAttack": ExtResource("4_lpn2h"),
+"ZombieDying": ExtResource("5_3suk6"),
+"ZombieRun": ExtResource("6_30o1u")
+}
+
+[node name="Enemy" type="CharacterBody3D" node_paths=PackedStringArray("NavAgent", "Weapon", "animation")]
 collision_layer = 5
 collision_mask = 5
 script = ExtResource("1_f1ge3")
 Speed = 15
 NavAgent = NodePath("NavigationAgent3D")
-AttackRange = 5.0
+AttackRange = 2.0
 Weapon = NodePath("Node3D")
+animation = NodePath("Zombie Run/AnimationPlayer2")
 
 [node name="Pivot" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.5, 0)
@@ -28,11 +39,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.84219, 0)
 shape = SubResource("CapsuleShape3D_5ytvo")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
-
-[node name="Warzombie F Pedroso" parent="." instance=ExtResource("2_vcblb")]
-transform = Transform3D(-1.75, 0, -1.5299e-07, 0, 1.75, 0, 1.5299e-07, 0, -1.75, 0, 0, 0)
-
-[node name="AnimationPlayer2" type="AnimationPlayer" parent="Warzombie F Pedroso"]
 
 [node name="Node3D" type="Node3D" parent="." node_paths=PackedStringArray("HitCheck")]
 script = ExtResource("3_kwswh")
@@ -44,5 +50,13 @@ collision_layer = 2
 collision_mask = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Node3D/EnemyAttack"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.889404, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.889404, -0.163086)
 shape = SubResource("BoxShape3D_s2lbs")
+
+[node name="Zombie Run" parent="." instance=ExtResource("3_7lv8e")]
+transform = Transform3D(-1.75, 0, 1.5299e-07, 0, 1.75, 0, -1.5299e-07, 0, -1.75, 0, 0, 0)
+
+[node name="AnimationPlayer2" type="AnimationPlayer" parent="Zombie Run"]
+libraries = {
+"Zombie": SubResource("AnimationLibrary_kghpc")
+}
