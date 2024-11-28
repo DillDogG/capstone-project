@@ -3,6 +3,8 @@ using System;
 
 public partial class SniperRifleRanged : RangedWeapon
 {
+    [Export]
+    AnimationPlayer animation;
     public SniperRifleRanged()
     {
         if (MaxAmmoCount == 0) MaxAmmoCount = 7;
@@ -12,5 +14,12 @@ public partial class SniperRifleRanged : RangedWeapon
         FireType = FireEnum.FULLAUTO;
         if (Damage == 5) Damage = 70;
         if (FireRate == 0) FireRate = 1;
+    }
+
+    public override void Attack()
+    {
+        int startAmmo = AmmoCount;
+        base.Attack();
+        if (AmmoCount != startAmmo) animation.Play("Shoot");
     }
 }

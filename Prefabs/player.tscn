@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Scripts/Player.cs" id="1_hgagt"]
 [ext_resource type="PackedScene" uid="uid://cbs7p83yxip1d" path="res://Prefabs/sniper_rifle.tscn" id="2_51xqw"]
-[ext_resource type="Texture2D" uid="uid://cfrl2u7k03aa4" path="res://Images/Skybox.png" id="2_d8tji"]
+[ext_resource type="Texture2D" uid="uid://c5g43yafftv3x" path="res://Images/Skybox.png" id="2_d8tji"]
 [ext_resource type="PackedScene" uid="uid://cqogvwet1q3ng" path="res://Models/Remy/Remy.fbx" id="2_i13uy"]
 [ext_resource type="PackedScene" uid="uid://d13n2it0qywug" path="res://Prefabs/sword.tscn" id="3_kyweh"]
 
@@ -25,7 +25,7 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 1.8
 collision_layer = 3
 collision_mask = 3
 script = ExtResource("1_hgagt")
-Inventory = [NodePath("Pivot/Sniper_Rifle"), NodePath("Pivot/Node3D/Sword")]
+Inventory = [NodePath("Pivot/SniperBase/Sniper_Rifle"), NodePath("Pivot/SwordBase/Sword")]
 
 [node name="Pivot" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.5, 0)
@@ -40,14 +40,16 @@ transform = Transform3D(1.91069e-15, 4.37114e-08, 1, 1, -4.37114e-08, 0, 4.37114
 target_position = Vector3(0, -100, 0)
 collision_mask = 4
 
-[node name="Sniper_Rifle" parent="Pivot" instance=ExtResource("2_51xqw")]
-transform = Transform3D(4.37114e-08, -6.95449e-09, -0.5, 2.18557e-08, 0.5, 3.77489e-08, 0.5, -2.18557e-08, 4.37114e-08, -1.42175, -1.42133, 1.07056)
-FireType = 1
-
-[node name="Node3D" type="Node3D" parent="Pivot"]
+[node name="SwordBase" type="Node3D" parent="Pivot"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -1.36917, -1.33661, 1.53453)
 
-[node name="Sword" parent="Pivot/Node3D" instance=ExtResource("3_kyweh")]
+[node name="Sword" parent="Pivot/SwordBase" instance=ExtResource("3_kyweh")]
+
+[node name="SniperBase" type="Node3D" parent="Pivot"]
+transform = Transform3D(4.37114e-08, -6.95449e-09, -0.5, 2.18557e-08, 0.5, 3.77489e-08, 0.5, -2.18557e-08, 4.37114e-08, -1.42175, -1.42133, 1.07056)
+
+[node name="Sniper_Rifle" parent="Pivot/SniperBase" instance=ExtResource("2_51xqw")]
+FireType = 1
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.84219, 0)

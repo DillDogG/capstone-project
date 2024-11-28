@@ -42,6 +42,10 @@ public partial class RangedWeapon : Weapon
             }
             Reloading = false;
         }
+        else if (Reloading)
+        {
+            GetTree().Root.GetNode<ReloadTimer>("Node3D/UserInterface/Crosshair/ReloadTimer").MainUpdate(FireCooldown, ReloadSpeed);
+        }
     }
 
     public override void Equip()

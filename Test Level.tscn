@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://cqtpwqoty3pxd"]
+[gd_scene load_steps=34 format=3 uid="uid://cqtpwqoty3pxd"]
 
 [ext_resource type="Script" path="res://Scripts/Game.cs" id="1_4awxq"]
 [ext_resource type="PackedScene" uid="uid://cctntsygmnc80" path="res://Prefabs/player.tscn" id="1_sr6c0"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://b50ul6mjmrdjk" path="res://Prefabs/Enemy.tscn" id="4_cgvfi"]
 [ext_resource type="Script" path="res://Scripts/TimerLabel.cs" id="5_7is0y"]
 [ext_resource type="Script" path="res://Scripts/AmmoLabel.cs" id="6_p10an"]
+[ext_resource type="Script" path="res://ReloadTimer.cs" id="7_es0wi"]
 [ext_resource type="Texture2D" uid="uid://eiiv82akd2a7" path="res://Images/Crosshair.png" id="8_jnmsh"]
 [ext_resource type="Script" path="res://Scripts/HealthBar.cs" id="10_wl1f8"]
 [ext_resource type="Script" path="res://Scripts/HitMarker.cs" id="11_fwiyq"]
@@ -19,6 +20,15 @@
 
 [sub_resource type="Theme" id="Theme_bj8ju"]
 default_font_size = 22
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vtxi2"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q1edg"]
+
+[sub_resource type="Theme" id="Theme_bjrqy"]
+ProgressBar/styles/background = SubResource("StyleBoxFlat_vtxi2")
+ProgressBar/styles/fill = SubResource("StyleBoxFlat_q1edg")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e3k6m"]
 bg_color = Color(1, 0, 0, 1)
@@ -142,6 +152,17 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("8_jnmsh")
 
+[node name="ReloadTimer" type="ProgressBar" parent="UserInterface/Crosshair"]
+layout_mode = 0
+offset_left = -80.0
+offset_top = 55.0
+offset_right = 120.0
+offset_bottom = 61.0
+theme = SubResource("Theme_bjrqy")
+value = 75.0
+show_percentage = false
+script = ExtResource("7_es0wi")
+
 [node name="HealthBar" type="ProgressBar" parent="UserInterface"]
 layout_mode = 0
 offset_left = 5.0
@@ -175,7 +196,7 @@ offset_bottom = 71.2759
 rotation = 0.436332
 texture = ExtResource("12_fid2k")
 
-[node name="Settings" type="Control" parent="UserInterface" node_paths=PackedStringArray("Game", "Player", "FOV_Slider", "MouseSens_Slider", "FOV_Label", "MouseSens_Label")]
+[node name="Settings" type="Control" parent="UserInterface" node_paths=PackedStringArray("Game", "Player", "FOV_Slider", "MouseSens_Slider", "FOV_Label", "MouseSens_Label", "Section", "Visuals", "Audio", "Controls", "Controller")]
 process_mode = 2
 anchors_preset = 0
 offset_left = 205.0
@@ -186,10 +207,15 @@ theme = SubResource("Theme_bucok")
 script = ExtResource("13_dy5yw")
 Game = NodePath("../..")
 Player = NodePath("../../Player")
-FOV_Slider = NodePath("VBoxContainer/FOV_Slider")
-MouseSens_Slider = NodePath("VBoxContainer/Mouse_Sens_Slider")
-FOV_Label = NodePath("VBoxContainer3/FOV_Value")
-MouseSens_Label = NodePath("VBoxContainer3/MouseSens_Value")
+FOV_Slider = NodePath("Visuals/VBoxContainer/FOV_Slider")
+MouseSens_Slider = NodePath("Controls/Mouse_Sens_Slider")
+FOV_Label = NodePath("Visuals/FOV_Value")
+MouseSens_Label = NodePath("Controls/MouseSens_Value")
+Section = NodePath("TabBar")
+Visuals = NodePath("Visuals")
+Audio = NodePath("Audio")
+Controls = NodePath("Controls")
+Controller = NodePath("Controller")
 
 [node name="Background" type="ColorRect" parent="UserInterface/Settings"]
 custom_minimum_size = Vector2(1152, 648)
@@ -233,65 +259,91 @@ text = "Reset Settings"
 script = ExtResource("15_ys2v0")
 Settings = NodePath("..")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="UserInterface/Settings"]
+[node name="Visuals" type="Control" parent="UserInterface/Settings"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="UserInterface/Settings/Visuals"]
+layout_mode = 2
+offset_left = 510.0
+offset_top = 90.0
+offset_right = 696.0
+offset_bottom = 121.0
+text = "FOV"
+horizontal_alignment = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UserInterface/Settings/Visuals"]
 layout_mode = 0
 offset_top = 10.0
 offset_right = 500.0
 offset_bottom = 181.0
 theme_override_constants/separation = 50
 
-[node name="MenuButton" type="MenuButton" parent="UserInterface/Settings/VBoxContainer"]
+[node name="Resolution" type="MenuButton" parent="UserInterface/Settings/Visuals/VBoxContainer"]
 layout_mode = 2
 text = "Resolution"
 item_count = 1
 
-[node name="FOV_Slider" type="HSlider" parent="UserInterface/Settings/VBoxContainer"]
+[node name="FOV_Slider" type="HSlider" parent="UserInterface/Settings/Visuals/VBoxContainer"]
 layout_mode = 2
 min_value = 65.0
 max_value = 110.0
 value = 75.0
 scrollable = false
 
-[node name="Mouse_Sens_Slider" type="HSlider" parent="UserInterface/Settings/VBoxContainer"]
+[node name="FOV_Value" type="Label" parent="UserInterface/Settings/Visuals"]
 layout_mode = 2
+offset_left = 720.0
+offset_top = 90.0
+offset_right = 795.0
+offset_bottom = 121.0
+text = "75"
+
+[node name="Audio" type="Control" parent="UserInterface/Settings"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Controls" type="Control" parent="UserInterface/Settings"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label2" type="Label" parent="UserInterface/Settings/Controls"]
+layout_mode = 2
+offset_left = 510.0
+offset_top = 156.0
+offset_right = 696.0
+offset_bottom = 187.0
+text = "Mouse Sensitivity"
+horizontal_alignment = 2
+
+[node name="MouseSens_Value" type="Label" parent="UserInterface/Settings/Controls"]
+layout_mode = 2
+offset_left = 720.0
+offset_top = 156.0
+offset_right = 795.0
+offset_bottom = 187.0
+text = "1.0"
+
+[node name="Mouse_Sens_Slider" type="HSlider" parent="UserInterface/Settings/Controls"]
+layout_mode = 2
+offset_top = 165.0
+offset_right = 500.0
+offset_bottom = 181.0
 max_value = 5.0
 step = 0.05
 value = 1.0
 scrollable = false
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="UserInterface/Settings"]
-layout_mode = 0
-offset_left = 510.0
-offset_top = 90.0
-offset_right = 696.0
-offset_bottom = 187.0
-theme_override_constants/separation = 35
-
-[node name="Label" type="Label" parent="UserInterface/Settings/VBoxContainer2"]
-layout_mode = 2
-text = "FOV"
-horizontal_alignment = 2
-
-[node name="Label2" type="Label" parent="UserInterface/Settings/VBoxContainer2"]
-layout_mode = 2
-text = "Mouse Sensitivity"
-horizontal_alignment = 2
-
-[node name="VBoxContainer3" type="VBoxContainer" parent="UserInterface/Settings"]
-layout_mode = 0
-offset_left = 720.0
-offset_top = 90.0
-offset_right = 795.0
-offset_bottom = 187.0
-theme_override_constants/separation = 35
-
-[node name="FOV_Value" type="Label" parent="UserInterface/Settings/VBoxContainer3"]
-layout_mode = 2
-text = "75"
-
-[node name="MouseSens_Value" type="Label" parent="UserInterface/Settings/VBoxContainer3"]
-layout_mode = 2
-text = "1.0"
+[node name="Controller" type="Control" parent="UserInterface/Settings"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
 
 [node name="PauseMenu" type="Control" parent="."]
 process_mode = 2
@@ -396,5 +448,10 @@ HitMarker = NodePath("../UserInterface/HitMarker")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -37.6917, 0, 4.68846)
 Player = NodePath("../Player")
 HitMarker = NodePath("../UserInterface/HitMarker")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.633907, 0, -0.773409, 0.0935581, 0.992656, 0.0766828, 0.767729, -0.120968, 0.629252, 0, 0, 0)
+light_color = Color(1, 0.627451, 0.627451, 1)
+shadow_enabled = true
 
 [connection signal="timeout" from="SpawnTimer" to="." method="OnSpawnTimerTimeout"]
