@@ -15,5 +15,6 @@ public partial class EnemyMelee : MeleeWeapon
         FireType = FireEnum.SINGLE;
         if (Damage == 5) Damage = 20;
         FireRate = 2.6333;
+        if (Delay == 0) Delay = .8;
     }
 }

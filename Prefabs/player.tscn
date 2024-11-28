@@ -1,9 +1,20 @@
-[gd_scene load_steps=6 format=3 uid="uid://cctntsygmnc80"]
+[gd_scene load_steps=10 format=3 uid="uid://cctntsygmnc80"]
 
 [ext_resource type="Script" path="res://Scripts/Player.cs" id="1_hgagt"]
 [ext_resource type="PackedScene" uid="uid://cbs7p83yxip1d" path="res://Prefabs/sniper_rifle.tscn" id="2_51xqw"]
+[ext_resource type="Texture2D" uid="uid://cfrl2u7k03aa4" path="res://Images/Skybox.png" id="2_d8tji"]
 [ext_resource type="PackedScene" uid="uid://cqogvwet1q3ng" path="res://Models/Remy/Remy.fbx" id="2_i13uy"]
 [ext_resource type="PackedScene" uid="uid://d13n2it0qywug" path="res://Prefabs/sword.tscn" id="3_kyweh"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_p2xx3"]
+panorama = ExtResource("2_d8tji")
+
+[sub_resource type="Sky" id="Sky_31psj"]
+sky_material = SubResource("PanoramaSkyMaterial_p2xx3")
+
+[sub_resource type="Environment" id="Environment_eo7mf"]
+background_mode = 2
+sky = SubResource("Sky_31psj")
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_nvl54"]
 radius = 0.310774
@@ -21,6 +32,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.5, 0)
 
 [node name="Camera3D" type="Camera3D" parent="Pivot"]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, 0.2)
+environment = SubResource("Environment_eo7mf")
 current = true
 
 [node name="BulletCheck" type="RayCast3D" parent="Pivot/Camera3D"]

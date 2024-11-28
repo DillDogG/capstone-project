@@ -252,7 +252,7 @@ public partial class Player : CharacterBody3D, Damageable
         {
             Vector2 mouseMovement = motionEvent.ScreenRelative;
             pivot.Rotation = new Vector3(mouseMovement.Y * MouseSensitivity + pivot.Rotation.X, mouseMovement.X * -MouseSensitivity + pivot.Rotation.Y, pivot.Rotation.Z);
-            pivot.Rotation = new Vector3(Math.Clamp(pivot.Rotation.X, -1.8f, 1), pivot.Rotation.Y, pivot.Rotation.Z);
+            pivot.Rotation = new Vector3(Math.Clamp(pivot.Rotation.X, -1.8f, 1.5f), pivot.Rotation.Y, pivot.Rotation.Z);
         }
         if (@event is InputEventMouseButton mouseEvent)
         {

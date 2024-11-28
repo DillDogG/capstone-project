@@ -21,6 +21,9 @@ public partial class MeleeWeapon : Weapon
 
     public List<Node3D> Hits { get; set; }
 
+    [Export]
+    public double Delay { get; set; } = 0;
+
     public MeleeWeapon()
     {
         Hits = new List<Node3D>();
@@ -34,7 +37,7 @@ public partial class MeleeWeapon : Weapon
         if (AttackDuration > 0)
         {
             AttackDuration -= delta;
-            if (HitCheck.HasOverlappingBodies())
+            if (HitCheck.HasOverlappingBodies() && AttackDuration < MaxAttackDuration - Delay)
             {
                 foreach (var hits in HitCheck.GetOverlappingBodies())
                 {
