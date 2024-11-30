@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://cctntsygmnc80" path="res://Prefabs/player.tscn" id="2_jolhm"]
 [ext_resource type="Texture2D" uid="uid://bud0xymsonut8" path="res://Images/Grass/tileable-TT7002066_nm.png" id="2_swgp5"]
 [ext_resource type="Texture2D" uid="uid://eiiv82akd2a7" path="res://Images/Crosshair.png" id="3_0a3yq"]
-[ext_resource type="Script" path="res://ReloadTimer.cs" id="4_tj3dd"]
+[ext_resource type="Script" path="res://Scripts/ReloadTimer.cs" id="4_tj3dd"]
 [ext_resource type="Script" path="res://Scripts/HealthBar.cs" id="5_a8uo7"]
 [ext_resource type="Script" path="res://Scripts/HitMarker.cs" id="6_tgti8"]
 [ext_resource type="Texture2D" uid="uid://sfg1wwfrywpj" path="res://Images/HitMarker.png" id="7_aqagn"]
@@ -367,7 +367,7 @@ offset_right = 1152.0
 offset_bottom = 648.0
 color = Color(0.141176, 0.141176, 0.141176, 0.784314)
 
-[node name="Button" type="Button" parent="PauseMenu"]
+[node name="Button" type="Button" parent="PauseMenu" node_paths=PackedStringArray("Game")]
 layout_mode = 0
 offset_left = 475.0
 offset_top = 200.0
@@ -376,8 +376,9 @@ offset_bottom = 299.0
 theme_override_font_sizes/font_size = 24
 text = "Continue"
 script = ExtResource("14_ji308")
+Game = NodePath("../..")
 
-[node name="Button2" type="Button" parent="PauseMenu"]
+[node name="Button2" type="Button" parent="PauseMenu" node_paths=PackedStringArray("Game")]
 layout_mode = 0
 offset_left = 475.0
 offset_top = 300.0
@@ -386,8 +387,9 @@ offset_bottom = 399.0
 theme_override_font_sizes/font_size = 24
 text = "Settings"
 script = ExtResource("15_evojd")
+Game = NodePath("../..")
 
-[node name="Button3" type="Button" parent="PauseMenu"]
+[node name="Button3" type="Button" parent="PauseMenu" node_paths=PackedStringArray("Game")]
 layout_mode = 0
 offset_left = 475.0
 offset_top = 400.0
@@ -396,6 +398,7 @@ offset_bottom = 499.0
 theme_override_font_sizes/font_size = 24
 text = "Quit Game"
 script = ExtResource("16_ltoy6")
+Game = NodePath("../..")
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
 navigation_mesh = SubResource("NavigationMesh_j5t0u")
@@ -406,14 +409,21 @@ material = SubResource("Terrain3DMaterial_xdkvx")
 assets = SubResource("Terrain3DAssets_0lyq3")
 
 [node name="SpawnTimer" type="Timer" parent="."]
+wait_time = 5.0
 
 [node name="Spawners" type="Node3D" parent="."]
 
 [node name="EnemySpawner1" type="Node3D" parent="Spawners"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.2899, 0.385853, 10.6264)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.633907, 0, -0.773409, 0.0935581, 0.992656, 0.0766828, 0.767729, -0.120968, 0.629252, 0, 0, 0)
 light_color = Color(1, 0.627451, 0.627451, 1)
 shadow_enabled = true
+
+[node name="Enemy" parent="." node_paths=PackedStringArray("Player", "HitMarker") instance=ExtResource("2_c6icm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32.3599, 0, 0)
+Player = NodePath("../Player")
+HitMarker = NodePath("../UserInterface/HitMarker")
 
 [connection signal="timeout" from="SpawnTimer" to="." method="OnSpawnTimerTimeout"]

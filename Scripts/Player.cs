@@ -117,8 +117,8 @@ public partial class Player : CharacterBody3D, Damageable
         // used to create a jump buffer if you press the button early
         if (JumpSaveTime > 0) JumpSaveTime -= delta;
 
-        if (IsOnWallOnly()) WallRunning = true;
-        else WallRunning = false;
+        //if (IsOnWallOnly()) WallRunning = true;
+        //else WallRunning = false;
 
         if (Weapon is RangedWeapon)
         {

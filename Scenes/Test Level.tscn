@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://cqtpwqoty3pxd"]
+[gd_scene load_steps=39 format=3 uid="uid://cqtpwqoty3pxd"]
 
 [ext_resource type="Script" path="res://Scripts/Game.cs" id="1_4awxq"]
 [ext_resource type="PackedScene" uid="uid://cctntsygmnc80" path="res://Prefabs/player.tscn" id="1_sr6c0"]
@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://b50ul6mjmrdjk" path="res://Prefabs/Enemy.tscn" id="4_cgvfi"]
 [ext_resource type="Script" path="res://Scripts/TimerLabel.cs" id="5_7is0y"]
 [ext_resource type="Script" path="res://Scripts/AmmoLabel.cs" id="6_p10an"]
-[ext_resource type="Script" path="res://ReloadTimer.cs" id="7_es0wi"]
+[ext_resource type="Script" path="res://Scripts/ReloadTimer.cs" id="7_es0wi"]
 [ext_resource type="Texture2D" uid="uid://eiiv82akd2a7" path="res://Images/Crosshair.png" id="8_jnmsh"]
 [ext_resource type="Script" path="res://Scripts/HealthBar.cs" id="10_wl1f8"]
 [ext_resource type="Script" path="res://Scripts/HitMarker.cs" id="11_fwiyq"]
@@ -19,6 +19,8 @@
 [ext_resource type="Script" path="res://Scripts/ResetSettings.cs" id="15_ys2v0"]
 [ext_resource type="Texture2D" uid="uid://qilxaj3b4nx0" path="res://Images/Grass/tileable-TT7002066-verydark.png" id="18_pb75f"]
 [ext_resource type="Texture2D" uid="uid://bud0xymsonut8" path="res://Images/Grass/tileable-TT7002066_nm.png" id="19_hc43c"]
+[ext_resource type="PackedScene" uid="uid://cpfg37lc5lvbn" path="res://Prefabs/exit_door.tscn" id="20_mo2mr"]
+[ext_resource type="PackedScene" uid="uid://b0o2845gp0mpj" path="res://Scenes/FirstLevel.tscn" id="21_xsl2f"]
 
 [sub_resource type="Theme" id="Theme_bj8ju"]
 default_font_size = 22
@@ -461,4 +463,12 @@ transform = Transform3D(0.633907, 0, -0.773409, 0.0935581, 0.992656, 0.0766828, 
 light_color = Color(1, 0.627451, 0.627451, 1)
 shadow_enabled = true
 
+[node name="ExitDoor" parent="." instance=ExtResource("20_mo2mr")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 140, 2.5, 0)
+
+[node name="Area3D" parent="ExitDoor" index="1"]
+TargetScene = ExtResource("21_xsl2f")
+
 [connection signal="timeout" from="SpawnTimer" to="." method="OnSpawnTimerTimeout"]
+
+[editable path="ExitDoor"]
