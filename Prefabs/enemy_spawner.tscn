@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://d4me04o87nygi"]
+
+[ext_resource type="Script" path="res://Scripts/EnemySpawner.cs" id="1_7gcep"]
+[ext_resource type="PackedScene" uid="uid://b2rph8o30rg3d" path="res://Models/EnemySpawner/Spawner.glb" id="1_7lo73"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ca4yy"]
+size = Vector3(0.75, 6.1, 4.5)
+
+[node name="Node3D" type="Node3D" node_paths=PackedStringArray("area", "animation")]
+script = ExtResource("1_7gcep")
+area = NodePath("Area3D")
+animation = NodePath("Spawner/AnimationPlayer")
+
+[node name="Spawner" parent="." instance=ExtResource("1_7lo73")]
+transform = Transform3D(0.56, 0, 0, 0, 0.56, 0, 0, 0, 0.56, -2, 2.75, 0)
+
+[node name="Area3D" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("BoxShape3D_ca4yy")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 3.06885, 0)
+shape = SubResource("BoxShape3D_ca4yy")

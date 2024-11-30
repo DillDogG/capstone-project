@@ -34,6 +34,9 @@ public partial class Enemy : CharacterBody3D, Damageable
     [Export]
     AnimationPlayer animation;
 
+    [Export]
+    public int CredValue { get; set; }
+
     private bool Dead = false;
 
     //private double InvincibilityTime { get; set; }
@@ -71,7 +74,8 @@ public partial class Enemy : CharacterBody3D, Damageable
         var nextNavPoint = NavAgent.GetNextPathPosition();
         direction = (nextNavPoint - GlobalTransform.Origin).Normalized();
         Velocity = direction * Speed;
-        if (!Dead) LookAt(new Vector3(Player.GlobalPosition.X, 0, Player.GlobalPosition.Z));
+        //if (!Dead) LookAt(new Vector3(Player.GlobalPosition.X, 0, Player.GlobalPosition.Z));
+        if (!Dead) { LookAt(new Vector3(Player.GlobalPosition.X, Player.GlobalPosition.Y, Player.GlobalPosition.Z)); Rotation = new Vector3(Math.Clamp(Rotation.X, -0.8f, 0.5f), Rotation.Y, Rotation.Z); }
         if (InAttackRange() && !Dead)
         {
             animation.Play("Zombie/ZombieAttack");
@@ -98,6 +102,7 @@ public partial class Enemy : CharacterBody3D, Damageable
             Dead = true;
             Speed = 0;
             animation.Play("Zombie/ZombieDying");
+            Player.AddCredits(CredValue);
         }
         else
         {

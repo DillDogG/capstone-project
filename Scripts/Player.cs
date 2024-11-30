@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using static Godot.TextServer;
 
@@ -31,7 +32,7 @@ public partial class Player : CharacterBody3D, Damageable
 	[Export]
 	public double JumpBuffer = 0.1;
 
-	private double Health { get; set; }
+	public double Health { get; set; }
 
     public bool Sprinting { get; set; } = false;
     public bool Crouching { get; set; } = false;
@@ -51,7 +52,7 @@ public partial class Player : CharacterBody3D, Damageable
     private int WeaponSlot { get; set; }
 
 	[Export]
-	public Weapon[] Inventory { get; set; }
+	public Godot.Collections.Array<Weapon> Inventory { get; set; }
 
 	Node3D pivot;
     [Export]
@@ -61,9 +62,13 @@ public partial class Player : CharacterBody3D, Damageable
     [Export]
     public TimerLabel GlobalTimer { get; set; }
     [Export]
+    public CreditCount CreditDisplay { get; set; }
+    [Export]
     public Game Game { get; set; }
     Camera3D cam;
     public double BaseFOV = 75;
+
+    public int Credits { get; set; } = 0;
 
     public override void _Ready()
     {
@@ -133,6 +138,8 @@ public partial class Player : CharacterBody3D, Damageable
         {
             CamBounce(3, 0.0625);
         }
+        if (healthDisp.Value != Health) healthDisp.MainUpdate(Health);
+        if (CreditDisplay.CredCount + CreditDisplay.CredsAdded != Credits) CreditDisplay.SetScore(Credits);
     }
 
 	public override void _PhysicsProcess(double delta)
@@ -272,14 +279,14 @@ public partial class Player : CharacterBody3D, Damageable
                 switch (mouseEvent.ButtonIndex)
                 {
                     case MouseButton.WheelUp:
-                        if (WeaponSlot <= 0) WeaponSlot = Inventory.Length - 1;
+                        if (WeaponSlot <= 0) WeaponSlot = Inventory.Count - 1;
                         else WeaponSlot--;
                         Weapon.Unequip();
                         Weapon = Inventory[WeaponSlot];
                         Weapon.Equip();
                         break;
                     case MouseButton.WheelDown:
-                        if (WeaponSlot >= Inventory.Length - 1) WeaponSlot = 0;
+                        if (WeaponSlot >= Inventory.Count - 1) WeaponSlot = 0;
                         else WeaponSlot++;
                         Weapon.Unequip();
                         Weapon = Inventory[WeaponSlot];
@@ -326,12 +333,15 @@ public partial class Player : CharacterBody3D, Damageable
         }
     }
 
+    public void AddCredits(int credits)
+    {
+        Credits += credits;
+        CreditDisplay.MainUpdate(credits);
+    }
+
     public void ApplyDamage(double damage)
     {
-		//if (InvincibilityTime > 0) return;
         Health -= damage;
-		//InvincibilityTime = InvincibilityDuration;
-        healthDisp.MainUpdate(Health);
 		if (Health <= 0)
 		{
 			// kill method

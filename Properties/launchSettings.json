@@ -1,8 +1,8 @@
 {
   "profiles": {
-    "Capstone Project": {
-      "commandName": "Project",
-      "commandLineArgs": "-e --path C:\\Users\\dyarbrough\\Godot_Games\\capstone-project"
-    }
+	"Capstone Project": {
+	  "commandName": "Project",
+	  "commandLineArgs": "-e --path C:\\Users\\dyarbrough\\Godot_Games\\capstone-project"
+	}
   }
 }

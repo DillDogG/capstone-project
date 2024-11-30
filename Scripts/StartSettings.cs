@@ -1,13 +1,10 @@
 using Godot;
 using System;
 
-public partial class Settings : Control
+public partial class StartSettings : Control
 {
     [Export]
-    public Game Game;
-
-    [Export]
-    public Player Player;
+    public StartScreen Game;
 
     [Export]
     public Slider FOV_Slider;
@@ -40,9 +37,9 @@ public partial class Settings : Control
 
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
-	{
+    {
         // make a load from a file
-	}
+    }
 
     public void SaveSettings()
     {
@@ -66,15 +63,11 @@ public partial class Settings : Control
         if (FOV_Slider.Value != prevFOV)
         {
             FOV_Label.Value = FOV_Slider.Value;
-            Player.BaseFOV = FOV_Slider.Value;
-            Player.SmoothFOV(FOV_Slider.Value, 0);
             prevFOV = FOV_Slider.Value;
         }
         else if (FOV_Label.Value != prevFOV)
         {
             FOV_Slider.Value = FOV_Label.Value;
-            Player.BaseFOV = FOV_Slider.Value;
-            Player.SmoothFOV(FOV_Slider.Value, 0);
             prevFOV = FOV_Slider.Value;
         }
 
@@ -86,7 +79,6 @@ public partial class Settings : Control
                 MouseSens_Slider.Value = 0.1;
             }
             MouseSens_Label.Value = Math.Round(MouseSens_Slider.Value, 2);
-            Player.MouseSensitivity = (float)MouseSens_Slider.Value * 0.01f;
             prevMouseSens = MouseSens_Slider.Value;
         }
         else if (MouseSens_Label.Value != prevMouseSens)
@@ -97,7 +89,6 @@ public partial class Settings : Control
                 MouseSens_Label.Value = 0.1;
             }
             MouseSens_Slider.Value = Math.Round(MouseSens_Label.Value, 2);
-            Player.MouseSensitivity = (float)MouseSens_Slider.Value * 0.01f;
             prevMouseSens = MouseSens_Slider.Value;
         }
     }

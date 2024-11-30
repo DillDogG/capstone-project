@@ -1,13 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://cpfg37lc5lvbn"]
+[gd_scene load_steps=4 format=3 uid="uid://cpfg37lc5lvbn"]
 
 [ext_resource type="Script" path="res://Scripts/ExitDoor.cs" id="1_gwg3k"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_l26iv"]
-albedo_color = Color(0.383122, 0.254279, 0.100439, 1)
-
-[sub_resource type="BoxMesh" id="BoxMesh_26ti0"]
-material = SubResource("StandardMaterial3D_l26iv")
-size = Vector3(0.5, 5, 3)
+[ext_resource type="PackedScene" uid="uid://c84735uocwo8g" path="res://Models/Door/Door.glb" id="2_0l4my"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_algi3"]
 size = Vector3(3, 5, 3)
@@ -15,12 +9,12 @@ size = Vector3(3, 5, 3)
 [node name="ExitDoor" type="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 140, 1, 0)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-mesh = SubResource("BoxMesh_26ti0")
-
 [node name="Area3D" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.25, 0, 0)
 script = ExtResource("1_gwg3k")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
 shape = SubResource("BoxShape3D_algi3")
+
+[node name="Door" parent="." instance=ExtResource("2_0l4my")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)

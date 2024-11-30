@@ -1,0 +1,231 @@
+[gd_scene load_steps=11 format=3 uid="uid://cwmqhs88eueto"]
+
+[ext_resource type="Script" path="res://Scripts/StartScreen.cs" id="1_kagiq"]
+[ext_resource type="FontFile" uid="uid://7jc8lsmmfdi1" path="res://Fonts/DavysCrappyWrit.ttf" id="1_spnxb"]
+[ext_resource type="Script" path="res://Scripts/NewGameButton.cs" id="3_0nw0h"]
+[ext_resource type="Script" path="res://Scripts/LoadGame.cs" id="3_rp1gh"]
+[ext_resource type="Script" path="res://Scripts/SettingsButtonStart.cs" id="3_soygs"]
+[ext_resource type="Script" path="res://Scripts/QuitGameButton.cs" id="4_me061"]
+[ext_resource type="Script" path="res://Scripts/StartSettings.cs" id="5_ugr8y"]
+[ext_resource type="Script" path="res://Scripts/SaveSettingsStart.cs" id="6_fg8y7"]
+[ext_resource type="Script" path="res://Scripts/ResetSettingsStart.cs" id="7_gn0ud"]
+
+[sub_resource type="Theme" id="Theme_hmbx4"]
+
+[node name="StartScreen" type="Node2D" node_paths=PackedStringArray("PauseMenu", "SettingsMenu")]
+process_mode = 3
+script = ExtResource("1_kagiq")
+PauseMenu = NodePath("PauseMenu")
+SettingsMenu = NodePath("Settings")
+
+[node name="Background" type="ColorRect" parent="."]
+custom_minimum_size = Vector2(1152, 648)
+offset_right = 1152.0
+offset_bottom = 648.0
+color = Color(0.141176, 0.141176, 0.141176, 0.784314)
+
+[node name="PauseMenu" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Title" type="Label" parent="PauseMenu"]
+offset_left = 426.0
+offset_top = 75.0
+offset_right = 726.0
+offset_bottom = 192.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("1_spnxb")
+theme_override_font_sizes/font_size = 96
+text = "Get Moving"
+horizontal_alignment = 1
+
+[node name="Load" type="Button" parent="PauseMenu" node_paths=PackedStringArray("Game")]
+offset_left = 475.0
+offset_top = 200.0
+offset_right = 685.0
+offset_bottom = 299.0
+theme_override_font_sizes/font_size = 24
+text = "Load Game"
+script = ExtResource("3_rp1gh")
+Game = NodePath("../..")
+
+[node name="New" type="Button" parent="PauseMenu" node_paths=PackedStringArray("game")]
+layout_mode = 0
+offset_left = 475.0
+offset_top = 300.0
+offset_right = 685.0
+offset_bottom = 399.0
+theme_override_font_sizes/font_size = 24
+text = "New Game"
+script = ExtResource("3_0nw0h")
+game = NodePath("../..")
+
+[node name="Settings" type="Button" parent="PauseMenu" node_paths=PackedStringArray("Game")]
+layout_mode = 0
+offset_left = 475.0
+offset_top = 400.0
+offset_right = 685.0
+offset_bottom = 499.0
+theme_override_font_sizes/font_size = 24
+text = "Settings"
+script = ExtResource("3_soygs")
+Game = NodePath("../..")
+
+[node name="Quit" type="Button" parent="PauseMenu"]
+layout_mode = 0
+offset_left = 475.0
+offset_top = 500.0
+offset_right = 685.0
+offset_bottom = 599.0
+theme_override_font_sizes/font_size = 24
+text = "Quit Game"
+script = ExtResource("4_me061")
+
+[node name="Settings" type="Control" parent="." node_paths=PackedStringArray("Game", "FOV_Slider", "MouseSens_Slider", "FOV_Label", "MouseSens_Label", "Section", "Visuals", "Audio", "Controls", "Controller")]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 205.0
+offset_top = 124.0
+offset_right = 245.0
+offset_bottom = 164.0
+theme = SubResource("Theme_hmbx4")
+script = ExtResource("5_ugr8y")
+Game = NodePath("..")
+FOV_Slider = NodePath("Visuals/VBoxContainer/FOV_Slider")
+MouseSens_Slider = NodePath("Controls/Mouse_Sens_Slider")
+FOV_Label = NodePath("Visuals/FOV_Value")
+MouseSens_Label = NodePath("Controls/Mouse_Sens_Value")
+Section = NodePath("TabBar")
+Visuals = NodePath("Visuals")
+Audio = NodePath("Audio")
+Controls = NodePath("Controls")
+Controller = NodePath("Controller")
+
+[node name="TabBar" type="TabBar" parent="Settings"]
+layout_mode = 0
+offset_top = -30.0
+offset_right = 413.0
+offset_bottom = 10.0
+current_tab = 0
+clip_tabs = false
+tab_count = 4
+tab_0/title = "Visuals"
+tab_1/title = "Audio"
+tab_2/title = "Controls"
+tab_3/title = "Controller"
+
+[node name="SaveSettings" type="Button" parent="Settings" node_paths=PackedStringArray("Settings")]
+layout_mode = 2
+offset_left = 150.0
+offset_top = 231.0
+offset_right = 300.0
+offset_bottom = 281.0
+text = "Save Settings"
+script = ExtResource("6_fg8y7")
+Settings = NodePath("..")
+
+[node name="ResetSettings" type="Button" parent="Settings" node_paths=PackedStringArray("Settings")]
+layout_mode = 2
+offset_left = 431.0
+offset_top = 231.0
+offset_right = 581.0
+offset_bottom = 281.0
+text = "Reset Settings"
+script = ExtResource("7_gn0ud")
+Settings = NodePath("..")
+
+[node name="Visuals" type="Control" parent="Settings"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="Settings/Visuals"]
+layout_mode = 2
+offset_left = 510.0
+offset_top = 90.0
+offset_right = 696.0
+offset_bottom = 121.0
+text = "FOV"
+horizontal_alignment = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Settings/Visuals"]
+layout_mode = 0
+offset_top = 10.0
+offset_right = 500.0
+offset_bottom = 181.0
+theme_override_constants/separation = 50
+
+[node name="Resolution" type="MenuButton" parent="Settings/Visuals/VBoxContainer"]
+layout_mode = 2
+text = "Resolution"
+item_count = 1
+
+[node name="FOV_Slider" type="HSlider" parent="Settings/Visuals/VBoxContainer"]
+layout_mode = 2
+min_value = 65.0
+max_value = 110.0
+value = 75.0
+scrollable = false
+
+[node name="FOV_Value" type="SpinBox" parent="Settings/Visuals"]
+layout_mode = 0
+offset_left = 720.0
+offset_top = 90.0
+offset_right = 803.063
+offset_bottom = 121.0
+min_value = 65.0
+max_value = 110.0
+value = 75.0
+
+[node name="Audio" type="Control" parent="Settings"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Controls" type="Control" parent="Settings"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label2" type="Label" parent="Settings/Controls"]
+layout_mode = 2
+offset_left = 510.0
+offset_top = 156.0
+offset_right = 696.0
+offset_bottom = 187.0
+text = "Mouse Sensitivity"
+horizontal_alignment = 2
+
+[node name="Mouse_Sens_Slider" type="HSlider" parent="Settings/Controls"]
+layout_mode = 2
+offset_top = 165.0
+offset_right = 500.0
+offset_bottom = 181.0
+min_value = 0.1
+max_value = 5.0
+step = 0.05
+value = 1.0
+scrollable = false
+
+[node name="Mouse_Sens_Value" type="SpinBox" parent="Settings/Controls"]
+layout_mode = 0
+offset_left = 720.0
+offset_top = 156.0
+offset_right = 803.063
+offset_bottom = 187.0
+min_value = 0.1
+max_value = 5.0
+step = 0.05
+value = 1.0
+
+[node name="Controller" type="Control" parent="Settings"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
