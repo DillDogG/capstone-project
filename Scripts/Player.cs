@@ -127,7 +127,12 @@ public partial class Player : CharacterBody3D, Damageable
         }
         else ammoDisp.Visible = false;
         if (cam.Fov != FOV_Ending) SmoothFOVUpdate(delta);
-        //Rotation = new Vector3(Rotation.X, pivot.Rotation.Y, Rotation.Z);
+        if (pivot.Position.Y != Cam_Ending) CamBounceUpdate(delta);
+        else if (pivot.Position.Y == 3) CamBounce(3.5, 0.0625);
+        if (JustLanded[0])
+        {
+            CamBounce(3, 0.0625);
+        }
     }
 
 	public override void _PhysicsProcess(double delta)
@@ -163,11 +168,17 @@ public partial class Player : CharacterBody3D, Damageable
             Sprinting = false;
             SmoothFOV(BaseFOV, 0.05);
         }
-		if (Input.IsActionPressed("crouch")) Crouching = true;
-		else Crouching = false;
+        if (Input.IsActionPressed("crouch"))
+        {
+            Crouching = true;
+            CamBounce(3.5 / 2, 0.125);
+        }
+        else Crouching = false;
+        
+        if (Input.IsActionJustReleased("crouch")) CamBounce(3.5, 0.125);
 
-		// multiplies velocity by speed, then saves in a variable for exterior alteration
-		_targetVelocity.X = direction.X * Speed;
+        // multiplies velocity by speed, then saves in a variable for exterior alteration
+        _targetVelocity.X = direction.X * Speed;
 		_targetVelocity.Z = direction.Z * Speed;
         PlayerSpeedMult();
 
@@ -332,6 +343,14 @@ public partial class Player : CharacterBody3D, Damageable
     private double FOV_Ending;
     private double FOV_Duration;
     private double FOV_TimeElapsed;
+
+    public void SmoothFOV(double ending, double duration)
+    {
+        FOV_Starting = cam.Fov;
+        FOV_Ending = ending;
+        FOV_Duration = duration;
+        FOV_TimeElapsed = 0;
+    }
     public void SmoothFOVUpdate(double delta)
     {
         //if (cam.Fov == FOV_Ending)
@@ -346,11 +365,24 @@ public partial class Player : CharacterBody3D, Damageable
         cam.Fov += (float)FOV_Change / (float)time;
     }
 
-    public void SmoothFOV(double ending, double duration)
+    private double Cam_Starting = 3.5;
+    private double Cam_Ending = 3.5;
+    private double Cam_Duration;
+    private double Cam_TimeElapsed;
+    public void CamBounce(double EndHeight, double duration)
     {
-        FOV_Starting = cam.Fov;
-        FOV_Ending = ending;
-        FOV_Duration = duration;
-        FOV_TimeElapsed = 0;
+        Cam_Starting = pivot.Position.Y;
+        Cam_Ending = EndHeight;
+        Cam_Duration = duration;
+        Cam_TimeElapsed = 0;
+    }
+
+    public void CamBounceUpdate(double delta)
+    {
+        Cam_TimeElapsed += delta;
+        if (Cam_TimeElapsed >= Cam_Duration) { pivot.Position = new Vector3(0, (float)Cam_Ending, 0); return; }
+        double Cam_Change = Cam_Ending - Cam_Starting;
+        double time = Cam_Duration / delta;
+        pivot.Position = new Vector3(0, pivot.Position.Y + (float)(Cam_Change / time), 0);
     }
 }

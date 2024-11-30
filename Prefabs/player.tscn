@@ -15,6 +15,8 @@ sky_material = SubResource("PanoramaSkyMaterial_p2xx3")
 [sub_resource type="Environment" id="Environment_eo7mf"]
 background_mode = 2
 sky = SubResource("Sky_31psj")
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.02
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_nvl54"]
 radius = 0.310774
@@ -31,7 +33,7 @@ Inventory = [NodePath("Pivot/SniperBase/Sniper_Rifle"), NodePath("Pivot/SwordBas
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.5, 0)
 
 [node name="Camera3D" type="Camera3D" parent="Pivot"]
-transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, 0.2)
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, 0)
 environment = SubResource("Environment_eo7mf")
 current = true
 
