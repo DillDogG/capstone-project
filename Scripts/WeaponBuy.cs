@@ -12,15 +12,14 @@ public partial class WeaponBuy : Node3D
 	[Export]
 	public PackedScene GunPrefab { get; set; }
 
-	bool Purchased = false;
-
     [Export]
     public Area3D area { get; set; }
 
-    public override void _Ready()
-    {
-        GD.Print(GunPrefab.CanInstantiate());
-    }
+    [Export]
+    public string WeaponName { get; set; }
+
+    [Export]
+    public Label BuyDisplay { get; set; }
 
     public override void _PhysicsProcess(double delta)
     {
@@ -31,22 +30,31 @@ public partial class WeaponBuy : Node3D
                 if (Overlaps is Player && Input.IsActionJustPressed("Interact"))
                 {
                     Player player = (Player)Overlaps;
-                    if (!Purchased && player.Credits >= MainPrice)
+                    Weapon playerSave = null;
+                    foreach (Weapon weapon in player.Inventory)
+                    {
+                        if (weapon.Name == WeaponName)
+                        {
+                            playerSave = weapon;
+                            break;
+                        }
+                    }
+                    if (playerSave == null && player.Credits >= MainPrice)
                     {
                         player.AddCredits(-MainPrice);
                         Weapon gun = GunPrefab.Instantiate<Weapon>();
                         player.AddGun("SniperBase", GunPrefab);
-                        foreach (var weap in player.Inventory)
-                        {
-                            GD.Print(weap.Name);
-                        }
-                        GD.Print(player.GetNode<Node3D>("Pivot/SniperBase").GetChildCount());
-                        //gun.Unequip();
-                        Purchased = true;
+                        if (gun is MeleeWeapon) QueueFree();
                     }
                     else if (player.Credits >= AmmoPrice)
                     {
-                        player.AddCredits(-AmmoPrice);
+                        if (playerSave is RangedWeapon)
+                        {
+                            player.AddCredits(-AmmoPrice);
+                            RangedWeapon gun = (RangedWeapon)playerSave;
+                            gun.AmmoReserves = gun.MaxAmmoReserves + (gun.MaxAmmoCount - gun.AmmoCount);
+                        }
+                        else QueueFree();
                     }
                     break;
                 }

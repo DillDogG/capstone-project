@@ -16,9 +16,6 @@ public partial class Enemy : CharacterBody3D, Damageable
     [Export]
     public NavigationAgent3D NavAgent { get; set; }
 
-    //[Export]
-    //public double InvincibilityDuration = 2;
-
     private double Health { get; set; }
 
     [Export]
@@ -39,10 +36,6 @@ public partial class Enemy : CharacterBody3D, Damageable
 
     private bool Dead = false;
 
-    //private double InvincibilityTime { get; set; }
-
-    //public virtual Area3D MovementZone { get; set; }
-
     public override void _Ready()
     {
         Health = MaxHealth;
@@ -59,8 +52,6 @@ public partial class Enemy : CharacterBody3D, Damageable
 
     public void FullEnemyUpdate(double delta)
     {
-        // was from when invincibility happened when getting hit
-        //if (InvincibilityTime > 0) InvincibilityTime -= delta;
         if (Weapon != null) Weapon.MainUpdate(delta);
         if (Weapon.AttackDuration <= 0 && !Dead) Speed = BaseSpeed;
         if (!animation.IsPlaying() && Dead) QueueFree();
@@ -74,7 +65,6 @@ public partial class Enemy : CharacterBody3D, Damageable
         var nextNavPoint = NavAgent.GetNextPathPosition();
         direction = (nextNavPoint - GlobalTransform.Origin).Normalized();
         Velocity = direction * Speed;
-        //if (!Dead) LookAt(new Vector3(Player.GlobalPosition.X, 0, Player.GlobalPosition.Z));
         if (!Dead) { LookAt(new Vector3(Player.GlobalPosition.X, Player.GlobalPosition.Y, Player.GlobalPosition.Z)); Rotation = new Vector3(Math.Clamp(Rotation.X, -0.8f, 0.5f), Rotation.Y, Rotation.Z); }
         if (InAttackRange() && !Dead)
         {
@@ -93,9 +83,8 @@ public partial class Enemy : CharacterBody3D, Damageable
 
     public void ApplyDamage(double damage)
     {
-        //if (InvincibilityTime > 0) return;
+        if (Dead) return;
         Health -= damage;
-        //InvincibilityTime = InvincibilityDuration;
         if (Health <= 0)
         {
             HitMarker.MainUpdate(damage, true);

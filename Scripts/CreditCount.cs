@@ -22,17 +22,47 @@ public partial class CreditCount : Label
 
     public override void _PhysicsProcess(double delta)
     {
-        if (CredsAdded > 100 && PauseDuration <= 0)
+        if (CredsAdded > 1000 && PauseDuration <= 0)
+        {
+            Text = $"  {CredCount}\n+ {CredsAdded}";
+            CredsAdded -= 100;
+            CredCount += 100;
+        }
+        else if (CredsAdded > 100 && PauseDuration <= 0)
         {
             Text = $"  {CredCount}\n+ {CredsAdded}";
             CredsAdded -= 10;
             CredCount += 10;
+        }
+        else if (CredsAdded > 20 && PauseDuration <= 0)
+        {
+            Text = $"  {CredCount}\n+ {CredsAdded}";
+            CredsAdded -= 5;
+            CredCount += 5;
         }
         else if (CredsAdded > 0 && PauseDuration <= 0)
         {
             Text = $"  {CredCount}\n+ {CredsAdded}";
             CredsAdded--;
             CredCount++;
+        }
+        else if (CredsAdded < -1000 && PauseDuration <= 0)
+        {
+            Text = $"  {CredCount}\n {CredsAdded}";
+            CredsAdded += 100;
+            CredCount -= 100;
+        }
+        else if (CredsAdded < -100 && PauseDuration <= 0)
+        {
+            Text = $"  {CredCount}\n {CredsAdded}";
+            CredsAdded += 10;
+            CredCount -= 10;
+        }
+        else if (CredsAdded < -20 && PauseDuration <= 0)
+        {
+            Text = $"  {CredCount}\n {CredsAdded}";
+            CredsAdded += 5;
+            CredCount -= 5;
         }
         else if (CredsAdded < 0 && PauseDuration <= 0)
         {

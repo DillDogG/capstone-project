@@ -400,14 +400,16 @@ public partial class Player : CharacterBody3D, Damageable
     public void AddGun(string Location, PackedScene prefab)
     {
         Weapon weap = prefab.Instantiate<Weapon>();
+        //weap.MainUpdate(0);
         pivot.GetNode<Node3D>(Location).AddChild(weap);
         if (weap is RangedWeapon)
         {
             RangedWeapon gun = (RangedWeapon)weap;
+            gun.GlobalTimer = GlobalTimer;
             gun.HitCheck = GetNode<RayCast3D>("Pivot/Camera3D/BulletCheck");
         }
 
-        //Inventory.Insert(Inventory.Count, weap);
+        Inventory.Insert(Inventory.Count, weap);
         weap.Unequip();
     }
 }

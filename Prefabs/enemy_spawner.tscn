@@ -1,7 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://d4me04o87nygi"]
+[gd_scene load_steps=5 format=3 uid="uid://d4me04o87nygi"]
 
 [ext_resource type="Script" path="res://Scripts/EnemySpawner.cs" id="1_7gcep"]
 [ext_resource type="PackedScene" uid="uid://b2rph8o30rg3d" path="res://Models/EnemySpawner/Spawner.glb" id="1_7lo73"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_4nrc5"]
+size = Vector3(5, 6.1, 4.5)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ca4yy"]
 size = Vector3(0.75, 6.1, 4.5)
@@ -18,9 +21,11 @@ transform = Transform3D(0.56, 0, 0, 0, 0.56, 0, 0, 0, 0.56, -2, 2.75, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
-shape = SubResource("BoxShape3D_ca4yy")
+shape = SubResource("BoxShape3D_4nrc5")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
+collision_layer = 7
+collision_mask = 7
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 3.06885, 0)
