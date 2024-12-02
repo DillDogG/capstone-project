@@ -22,7 +22,13 @@ public partial class CreditCount : Label
 
     public override void _PhysicsProcess(double delta)
     {
-        if (CredsAdded > 0 && PauseDuration <= 0)
+        if (CredsAdded > 100 && PauseDuration <= 0)
+        {
+            Text = $"  {CredCount}\n+ {CredsAdded}";
+            CredsAdded -= 10;
+            CredCount += 10;
+        }
+        else if (CredsAdded > 0 && PauseDuration <= 0)
         {
             Text = $"  {CredCount}\n+ {CredsAdded}";
             CredsAdded--;

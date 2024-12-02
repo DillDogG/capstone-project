@@ -17,6 +17,11 @@ public partial class WeaponBuy : Node3D
     [Export]
     public Area3D area { get; set; }
 
+    public override void _Ready()
+    {
+        GD.Print(GunPrefab.CanInstantiate());
+    }
+
     public override void _PhysicsProcess(double delta)
     {
         if (area.HasOverlappingBodies())
@@ -29,10 +34,14 @@ public partial class WeaponBuy : Node3D
                     if (!Purchased && player.Credits >= MainPrice)
                     {
                         player.AddCredits(-MainPrice);
-                        //Weapon gun = GunPrefab.Instantiate<Weapon>();
-                        //gun.Initialize(Position, player, GetNode<HitMarker>("UserInterface/HitMarker"));
-                        //player.Inventory.Add(gun);
-                        //player.GetNode<Node3D>("Pivot").AddChild(gun);
+                        Weapon gun = GunPrefab.Instantiate<Weapon>();
+                        player.AddGun("SniperBase", GunPrefab);
+                        foreach (var weap in player.Inventory)
+                        {
+                            GD.Print(weap.Name);
+                        }
+                        GD.Print(player.GetNode<Node3D>("Pivot/SniperBase").GetChildCount());
+                        //gun.Unequip();
                         Purchased = true;
                     }
                     else if (player.Credits >= AmmoPrice)

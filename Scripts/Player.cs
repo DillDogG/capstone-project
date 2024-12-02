@@ -2,6 +2,7 @@ using Godot;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Linq;
 using static Godot.TextServer;
 
 // theoretical smooth fov change
@@ -394,5 +395,19 @@ public partial class Player : CharacterBody3D, Damageable
         double Cam_Change = Cam_Ending - Cam_Starting;
         double time = Cam_Duration / delta;
         pivot.Position = new Vector3(0, pivot.Position.Y + (float)(Cam_Change / time), 0);
+    }
+
+    public void AddGun(string Location, PackedScene prefab)
+    {
+        Weapon weap = prefab.Instantiate<Weapon>();
+        pivot.GetNode<Node3D>(Location).AddChild(weap);
+        if (weap is RangedWeapon)
+        {
+            RangedWeapon gun = (RangedWeapon)weap;
+            gun.HitCheck = GetNode<RayCast3D>("Pivot/Camera3D/BulletCheck");
+        }
+
+        //Inventory.Insert(Inventory.Count, weap);
+        weap.Unequip();
     }
 }

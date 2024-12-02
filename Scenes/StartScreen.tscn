@@ -31,6 +31,7 @@ offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="Title" type="Label" parent="PauseMenu"]
+layout_mode = 0
 offset_left = 426.0
 offset_top = 75.0
 offset_right = 726.0
@@ -44,6 +45,7 @@ text = "Get Moving"
 horizontal_alignment = 1
 
 [node name="Load" type="Button" parent="PauseMenu" node_paths=PackedStringArray("Game")]
+layout_mode = 0
 offset_left = 475.0
 offset_top = 200.0
 offset_right = 685.0
