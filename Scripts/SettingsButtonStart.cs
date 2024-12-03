@@ -8,7 +8,6 @@ public partial class SettingsButtonStart : Button
 
     public override void _Pressed()
     {
-        GD.Print("Settings pressed");
         base._Pressed();
         Game.Settings();
     }

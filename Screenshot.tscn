@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://cq1mf8ibn8dmm"]
+
+[ext_resource type="Texture2D" uid="uid://uokv2htf5v6n" path="res://Images/GameImage.png" id="1_y7ods"]
+[ext_resource type="FontFile" uid="uid://7jc8lsmmfdi1" path="res://Fonts/DavysCrappyWrit.ttf" id="2_cq45t"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_right = 1152.0
+offset_bottom = 648.0
+texture = ExtResource("1_y7ods")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="."]
+offset_left = 421.0
+offset_top = 431.0
+offset_right = 732.0
+offset_bottom = 552.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("2_cq45t")
+theme_override_font_sizes/font_size = 100
+text = "Get Moving"

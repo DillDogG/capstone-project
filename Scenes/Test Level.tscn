@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=3 uid="uid://cqtpwqoty3pxd"]
+[gd_scene load_steps=44 format=3 uid="uid://cqtpwqoty3pxd"]
 
 [ext_resource type="Script" path="res://Scripts/Game.cs" id="1_4awxq"]
 [ext_resource type="PackedScene" uid="uid://cctntsygmnc80" path="res://Prefabs/player.tscn" id="1_sr6c0"]
@@ -20,6 +20,7 @@
 [ext_resource type="Script" path="res://Scripts/SaveSettings.cs" id="14_msafn"]
 [ext_resource type="Script" path="res://Scripts/ResetSettings.cs" id="15_ys2v0"]
 [ext_resource type="PackedScene" uid="uid://seg3hudp2oft" path="res://Prefabs/WeaponBuy.tscn" id="16_fd4bh"]
+[ext_resource type="Script" path="res://Scripts/DeathFade.cs" id="16_mh2vt"]
 [ext_resource type="Script" path="res://Scripts/SaveGameButton.cs" id="16_ut0gf"]
 [ext_resource type="Texture2D" uid="uid://qilxaj3b4nx0" path="res://Images/Grass/tileable-TT7002066-verydark.png" id="18_pb75f"]
 [ext_resource type="Texture2D" uid="uid://bud0xymsonut8" path="res://Images/Grass/tileable-TT7002066_nm.png" id="19_hc43c"]
@@ -112,15 +113,18 @@ normal_texture = ExtResource("19_hc43c")
 mesh_list = Array[Terrain3DMeshAsset]([SubResource("Terrain3DMeshAsset_5rwbj")])
 texture_list = Array[Terrain3DTextureAsset]([SubResource("Terrain3DTextureAsset_ofyha")])
 
-[node name="Node3D" type="Node3D" node_paths=PackedStringArray("PauseMenu", "SettingsMenu", "Spawners")]
+[node name="Node3D" type="Node3D" node_paths=PackedStringArray("PauseMenu", "SettingsMenu", "Spawners", "Death")]
 script = ExtResource("1_4awxq")
 PauseMenu = NodePath("PauseMenu")
 SettingsMenu = NodePath("UserInterface/Settings")
 EnemyPrefab = ExtResource("4_cgvfi")
 Spawners = [NodePath("Spawners/EnemySpawner1"), NodePath("Spawners/EnemySpawner2"), NodePath("Spawners/EnemySpawner3"), NodePath("Spawners/EnemySpawner4"), NodePath("Spawners/EnemySpawner5"), NodePath("Spawners/EnemySpawner6")]
 SceneName = "Test Level"
+Death = NodePath("UserInterface/DeathFade")
 
 [node name="Player" parent="." node_paths=PackedStringArray("ammoDisp", "healthDisp", "GlobalTimer", "CreditDisplay", "Game") instance=ExtResource("1_sr6c0")]
+visible = false
+MaxHealth = 1e+08
 ammoDisp = NodePath("../UserInterface/AmmoLabel")
 healthDisp = NodePath("../UserInterface/HealthBar")
 GlobalTimer = NodePath("../UserInterface/TotalTimer")
@@ -128,6 +132,7 @@ CreditDisplay = NodePath("../UserInterface/CreditCount")
 Game = NodePath("..")
 
 [node name="UserInterface" type="Control" parent="."]
+visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
@@ -392,6 +397,16 @@ offset_top = 573.0
 offset_right = 45.0
 offset_bottom = 604.0
 
+[node name="DeathFade" type="ColorRect" parent="UserInterface"]
+process_mode = 2
+visible = false
+custom_minimum_size = Vector2(1152, 648)
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+color = Color(0, 0, 0, 0.784314)
+script = ExtResource("16_mh2vt")
+
 [node name="PauseMenu" type="Control" parent="."]
 process_mode = 2
 layout_mode = 3
@@ -467,37 +482,31 @@ autostart = true
 
 [node name="EnemySpawner1" parent="Spawners" node_paths=PackedStringArray("game") instance=ExtResource("22_30aan")]
 game = NodePath("../..")
-ReenableTime = 40.0
 
 [node name="EnemySpawner2" parent="Spawners" node_paths=PackedStringArray("game") instance=ExtResource("22_30aan")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.80445, 0, -29.1229)
 game = NodePath("../..")
 spawnerNumber = 1
-ReenableTime = 40.0
 
 [node name="EnemySpawner3" parent="Spawners" node_paths=PackedStringArray("game") instance=ExtResource("22_30aan")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.9049, 0, 33.4996)
 game = NodePath("../..")
 spawnerNumber = 2
-ReenableTime = 40.0
 
 [node name="EnemySpawner4" parent="Spawners" node_paths=PackedStringArray("game") instance=ExtResource("22_30aan")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.28746, 0, -34.1814)
 game = NodePath("../..")
 spawnerNumber = 3
-ReenableTime = 40.0
 
 [node name="EnemySpawner5" parent="Spawners" node_paths=PackedStringArray("game") instance=ExtResource("22_30aan")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -65.1358, 0, 20.0099)
 game = NodePath("../..")
 spawnerNumber = 4
-ReenableTime = 40.0
 
 [node name="EnemySpawner6" parent="Spawners" node_paths=PackedStringArray("game") instance=ExtResource("22_30aan")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26.8723, 0, -43.0439)
 game = NodePath("../..")
 spawnerNumber = 5
-ReenableTime = 40.0
 
 [node name="Enemy" parent="." node_paths=PackedStringArray("Player", "HitMarker") instance=ExtResource("4_cgvfi")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.4057, 0, -9.20651)
@@ -535,10 +544,8 @@ transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 140, 2
 [node name="Area3D" parent="ExitDoor" index="0"]
 TargetScene = "FirstLevel"
 
-[node name="WeaponBuy" parent="." node_paths=PackedStringArray("BuyDisplay") instance=ExtResource("16_fd4bh")]
+[node name="WeaponBuy" parent="." instance=ExtResource("16_fd4bh")]
 transform = Transform3D(-1, 0, -8.9407e-08, 0, 1, 0, 8.9407e-08, 0, -1, 105.576, 0, 59.1457)
-WeaponName = "SubmachineGun"
-BuyDisplay = NodePath("../UserInterface/BuyDisplay")
 
 [connection signal="timeout" from="SpawnTimer" to="." method="OnSpawnTimerTimeout"]
 

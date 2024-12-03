@@ -24,11 +24,13 @@ public partial class StartScreen : Node
     }
     public void LoadGame()
     {
+        GetTree().Paused = false;
         GetTree().ChangeSceneToFile("res://Scenes/" + ReadFile.LoadGame() + ".tscn");
     }
 
     public void NewGame()
     {
+        GetTree().Paused = false;
         ReadFile.ResetGame();
         GetTree().ChangeSceneToFile("res://Scenes/Test Level.tscn");
     }

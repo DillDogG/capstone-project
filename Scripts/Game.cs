@@ -22,6 +22,9 @@ public partial class Game : Node3D
     public string SceneName { get; set; }
 
     public Player player { get; set; }
+
+    [Export]
+    public DeathFade Death;
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
 	{
@@ -73,6 +76,13 @@ public partial class Game : Node3D
 	{
         PauseMenu.Show();
         SettingsMenu.Hide();
+    }
+
+    public void Dead()
+    {
+        Input.MouseMode = Input.MouseModeEnum.Visible;
+        Death.FadeIn = true;
+        GetTree().Paused = true;
     }
 
     public void SaveGame()

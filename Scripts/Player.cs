@@ -19,7 +19,7 @@ public partial class Player : CharacterBody3D, Damageable
 
 	// The downward acceleration when in the air, in meters per second squared.
 	[Export]
-	public int FallAcceleration { get; set; } = 75;
+	public int FallAcceleration { get; set; } = 25;
 
 	[Export]
 	public double MaxHealth = 150;
@@ -70,6 +70,8 @@ public partial class Player : CharacterBody3D, Damageable
     public double BaseFOV = 75;
 
     public int Credits { get; set; } = 0;
+
+    private bool Dead = false;
 
     public override void _Ready()
     {
@@ -145,6 +147,7 @@ public partial class Player : CharacterBody3D, Damageable
 
 	public override void _PhysicsProcess(double delta)
 	{
+        if (Dead) return;
 		MoveAndSlide();
 		// We create a local variable to store the input direction.
 		var direction = Vector3.Zero;
@@ -201,6 +204,12 @@ public partial class Player : CharacterBody3D, Damageable
 		PlayerMovementMomentumFunction();
 		Velocity = _targetVelocity;
 		MoveAndSlide();
+        Vector3 momentum = _targetVelocity;
+        momentum.Y = 0;
+        if (momentum.Length() / 20 <= 0.5) ApplyDamage((5 - momentum.Length()) / 20);
+        else if (Health <= 150) Health += momentum.Length() / 400;
+        //GD.Print((momentum.Length() / 20));
+        //Health += _targetVelocity.Length() / 20;
 	}
 
     public void PlayerSpeedMult()
@@ -345,8 +354,8 @@ public partial class Player : CharacterBody3D, Damageable
         Health -= damage;
 		if (Health <= 0)
 		{
-			// kill method
-		}
+            Game.Dead();
+        }
     }
 
     // used to update the camera field of view without having it instantly snap into place
