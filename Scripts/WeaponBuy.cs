@@ -27,7 +27,7 @@ public partial class WeaponBuy : Node3D
         {
             foreach (var Overlaps in area.GetOverlappingBodies())
             {
-                if (Overlaps is Player && Input.IsActionJustPressed("Interact"))
+                if (Overlaps is Player)
                 {
                     Player player = (Player)Overlaps;
                     Weapon playerSave = null;
@@ -39,25 +39,35 @@ public partial class WeaponBuy : Node3D
                             break;
                         }
                     }
-                    if (playerSave == null && player.Credits >= MainPrice)
+                    if (playerSave == null) BuyDisplay.Text = "Purchase " + WeaponName + ": Price " + MainPrice;
+                    else BuyDisplay.Text = "Purchase " + WeaponName + " Ammo: Price " + AmmoPrice;
+                    if (Input.IsActionJustPressed("Interact"))
                     {
-                        player.AddCredits(-MainPrice);
-                        Weapon gun = GunPrefab.Instantiate<Weapon>();
-                        player.AddGun("SniperBase", GunPrefab);
-                        if (gun is MeleeWeapon) QueueFree();
-                    }
-                    else if (player.Credits >= AmmoPrice)
-                    {
-                        if (playerSave is RangedWeapon)
+                        foreach (Weapon weapon in player.Inventory)
                         {
-                            player.AddCredits(-AmmoPrice);
-                            RangedWeapon gun = (RangedWeapon)playerSave;
-                            gun.AmmoReserves = gun.MaxAmmoReserves + (gun.MaxAmmoCount - gun.AmmoCount);
+                            GD.Print(weapon.Name);
                         }
-                        else QueueFree();
+                        if (playerSave == null && player.Credits >= MainPrice)
+                        {
+                            player.AddCredits(-MainPrice);
+                            Weapon gun = GunPrefab.Instantiate<Weapon>();
+                            player.AddGun("SniperBase", GunPrefab);
+                            if (gun is MeleeWeapon) QueueFree();
+                        }
+                        else if (player.Credits >= AmmoPrice)
+                        {
+                            if (playerSave is RangedWeapon)
+                            {
+                                player.AddCredits(-AmmoPrice);
+                                RangedWeapon gun = (RangedWeapon)playerSave;
+                                gun.AmmoReserves = gun.MaxAmmoReserves + (gun.MaxAmmoCount - gun.AmmoCount);
+                            }
+                            else QueueFree();
+                        }
                     }
                     break;
                 }
+                BuyDisplay.Text = "";
             }
         }
     }

@@ -19,7 +19,7 @@ public partial class Player : CharacterBody3D, Damageable
 
 	// The downward acceleration when in the air, in meters per second squared.
 	[Export]
-	public int FallAcceleration { get; set; } = 25;
+	public int FallAcceleration { get; set; } = 75;
 
 	[Export]
 	public double MaxHealth = 150;

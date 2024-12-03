@@ -7,12 +7,16 @@
       "RelativeMoniker": "D:0:0:{C4D11A91-9E0E-4071-AE91-90213DB10F7E}|Capstone Project.csproj|solutionrelative:scripts\\weaponbuy.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C4D11A91-9E0E-4071-AE91-90213DB10F7E}|Capstone Project.csproj|c:\\users\\dyarbrough\\capstone-project\\scripts\\rangedweapon.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C4D11A91-9E0E-4071-AE91-90213DB10F7E}|Capstone Project.csproj|solutionrelative:scripts\\rangedweapon.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{C4D11A91-9E0E-4071-AE91-90213DB10F7E}|Capstone Project.csproj|c:\\users\\dyarbrough\\capstone-project\\scripts\\player.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C4D11A91-9E0E-4071-AE91-90213DB10F7E}|Capstone Project.csproj|solutionrelative:scripts\\player.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{C4D11A91-9E0E-4071-AE91-90213DB10F7E}|Capstone Project.csproj|c:\\users\\dyarbrough\\capstone-project\\scripts\\enemyspawner.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{C4D11A91-9E0E-4071-AE91-90213DB10F7E}|Capstone Project.csproj|solutionrelative:scripts\\enemyspawner.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C4D11A91-9E0E-4071-AE91-90213DB10F7E}|Capstone Project.csproj|c:\\users\\dyarbrough\\capstone-project\\scripts\\rangedweapon.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C4D11A91-9E0E-4071-AE91-90213DB10F7E}|Capstone Project.csproj|solutionrelative:scripts\\rangedweapon.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{C4D11A91-9E0E-4071-AE91-90213DB10F7E}|Capstone Project.csproj|c:\\users\\dyarbrough\\capstone-project\\scripts\\creditcount.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -25,10 +29,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{C4D11A91-9E0E-4071-AE91-90213DB10F7E}|Capstone Project.csproj|c:\\users\\dyarbrough\\capstone-project\\scripts\\submachinegun.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{C4D11A91-9E0E-4071-AE91-90213DB10F7E}|Capstone Project.csproj|solutionrelative:scripts\\submachinegun.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C4D11A91-9E0E-4071-AE91-90213DB10F7E}|Capstone Project.csproj|c:\\users\\dyarbrough\\capstone-project\\scripts\\player.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C4D11A91-9E0E-4071-AE91-90213DB10F7E}|Capstone Project.csproj|solutionrelative:scripts\\player.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{C4D11A91-9E0E-4071-AE91-90213DB10F7E}|Capstone Project.csproj|c:\\users\\dyarbrough\\capstone-project\\scripts\\game.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -101,32 +101,6 @@
           "SelectedChildIndex": 7,
           "Children": [
             {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "CreditCount.cs",
-              "DocumentMoniker": "C:\\Users\\dyarbrough\\capstone-project\\Scripts\\CreditCount.cs",
-              "RelativeDocumentMoniker": "Scripts\\CreditCount.cs",
-              "ToolTip": "C:\\Users\\dyarbrough\\capstone-project\\Scripts\\CreditCount.cs",
-              "RelativeToolTip": "Scripts\\CreditCount.cs",
-              "ViewState": "AgIAABkAAAAAAAAAAAAiwDMAAAAeAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-02T22:21:11.223Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "SubmachineGun.cs",
-              "DocumentMoniker": "C:\\USERS\\DYARBROUGH\\CAPSTONE-PROJECT\\Scripts\\SubmachineGun.cs",
-              "RelativeDocumentMoniker": "Scripts\\SubmachineGun.cs",
-              "ToolTip": "C:\\USERS\\DYARBROUGH\\CAPSTONE-PROJECT\\Scripts\\SubmachineGun.cs",
-              "RelativeToolTip": "Scripts\\SubmachineGun.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABkAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-02T21:58:42.197Z",
-              "EditorCaption": ""
-            },
-            {
               "$type": "Bookmark",
               "Name": "ST:0:0:{004be353-6879-467c-9d1e-9ac23cdf6d49}"
             },
@@ -144,6 +118,30 @@
             },
             {
               "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "CreditCount.cs",
+              "DocumentMoniker": "C:\\Users\\dyarbrough\\capstone-project\\Scripts\\CreditCount.cs",
+              "RelativeDocumentMoniker": "Scripts\\CreditCount.cs",
+              "ToolTip": "C:\\Users\\dyarbrough\\capstone-project\\Scripts\\CreditCount.cs",
+              "RelativeToolTip": "Scripts\\CreditCount.cs",
+              "ViewState": "AgIAABkAAAAAAAAAAAAiwDMAAAAeAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-02T22:21:11.223Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "SubmachineGun.cs",
+              "DocumentMoniker": "C:\\Users\\dyarbrough\\capstone-project\\Scripts\\SubmachineGun.cs",
+              "RelativeDocumentMoniker": "Scripts\\SubmachineGun.cs",
+              "ToolTip": "C:\\Users\\dyarbrough\\capstone-project\\Scripts\\SubmachineGun.cs",
+              "RelativeToolTip": "Scripts\\SubmachineGun.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-02T21:58:42.197Z"
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 9,
               "Title": "SniperRifleRanged.cs",
               "DocumentMoniker": "C:\\Users\\dyarbrough\\capstone-project\\Scripts\\SniperRifleRanged.cs",
@@ -152,8 +150,7 @@
               "RelativeToolTip": "Scripts\\SniperRifleRanged.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABkAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-02T21:57:55.085Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-02T21:57:55.085Z"
             },
             {
               "$type": "Document",
@@ -161,9 +158,9 @@
               "Title": "WeaponBuy.cs",
               "DocumentMoniker": "C:\\Users\\dyarbrough\\capstone-project\\Scripts\\WeaponBuy.cs",
               "RelativeDocumentMoniker": "Scripts\\WeaponBuy.cs",
-              "ToolTip": "C:\\Users\\dyarbrough\\capstone-project\\Scripts\\WeaponBuy.cs",
-              "RelativeToolTip": "Scripts\\WeaponBuy.cs",
-              "ViewState": "AgIAABcAAAAAAAAAAAAswDIAAAA3AAAAAAAAAA==",
+              "ToolTip": "C:\\Users\\dyarbrough\\capstone-project\\Scripts\\WeaponBuy.cs*",
+              "RelativeToolTip": "Scripts\\WeaponBuy.cs*",
+              "ViewState": "AgIAABUAAAAAAAAAAAA/wC8AAAAwAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-12-02T21:39:33.741Z",
               "EditorCaption": ""
@@ -178,8 +175,7 @@
               "RelativeToolTip": "Scripts\\EnemySpawner.cs",
               "ViewState": "AgIAACEAAAAAAAAAAAAowDgAAAAoAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-20T20:55:07.847Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-20T20:55:07.847Z"
             },
             {
               "$type": "Document",
@@ -191,18 +187,17 @@
               "RelativeToolTip": "Scripts\\Game.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAHIAAAAWAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-06T23:13:10.736Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-06T23:13:10.736Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 1,
               "Title": "Player.cs",
               "DocumentMoniker": "C:\\Users\\dyarbrough\\capstone-project\\Scripts\\Player.cs",
               "RelativeDocumentMoniker": "Scripts\\Player.cs",
               "ToolTip": "C:\\Users\\dyarbrough\\capstone-project\\Scripts\\Player.cs",
               "RelativeToolTip": "Scripts\\Player.cs",
-              "ViewState": "AgIAAIMBAAAAAAAAAAAqwJIBAAAKAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-10-02T21:55:17.25Z",
               "EditorCaption": ""
@@ -217,12 +212,11 @@
               "RelativeToolTip": "Scripts\\Weapon.cs",
               "ViewState": "AgIAAA0AAAAAAAAAAAAkwBcAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-16T19:27:24.405Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-16T19:27:24.405Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 5,
               "Title": "Enemy.cs",
               "DocumentMoniker": "C:\\Users\\dyarbrough\\capstone-project\\Scripts\\Enemy.cs",
               "RelativeDocumentMoniker": "Scripts\\Enemy.cs",
@@ -230,12 +224,11 @@
               "RelativeToolTip": "Scripts\\Enemy.cs",
               "ViewState": "AgIAAEsAAAAAAAAAAAAiwFcAAAAYAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-21T16:44:28.536Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-21T16:44:28.536Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 3,
               "Title": "RangedWeapon.cs",
               "DocumentMoniker": "C:\\Users\\dyarbrough\\capstone-project\\Scripts\\RangedWeapon.cs",
               "RelativeDocumentMoniker": "Scripts\\RangedWeapon.cs",
@@ -243,8 +236,7 @@
               "RelativeToolTip": "Scripts\\RangedWeapon.cs",
               "ViewState": "AgIAAD0AAAAAAAAAAAAEwE4AAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-17T14:55:01.587Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-17T14:55:01.587Z"
             },
             {
               "$type": "Document",

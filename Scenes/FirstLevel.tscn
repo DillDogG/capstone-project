@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=3 uid="uid://b0o2845gp0mpj"]
+[gd_scene load_steps=41 format=3 uid="uid://b0o2845gp0mpj"]
 
 [ext_resource type="Script" path="res://Scripts/Game.cs" id="1_81kqs"]
 [ext_resource type="Texture2D" uid="uid://qilxaj3b4nx0" path="res://Images/Grass/tileable-TT7002066-verydark.png" id="1_audgr"]
@@ -11,6 +11,7 @@
 [ext_resource type="FontFile" uid="uid://7jc8lsmmfdi1" path="res://Fonts/DavysCrappyWrit.ttf" id="4_7e3gh"]
 [ext_resource type="Script" path="res://Scripts/ReloadTimer.cs" id="4_tj3dd"]
 [ext_resource type="Script" path="res://Scripts/HealthBar.cs" id="5_a8uo7"]
+[ext_resource type="Script" path="res://Scripts/CreditCount.cs" id="6_6a4he"]
 [ext_resource type="Script" path="res://Scripts/HitMarker.cs" id="6_tgti8"]
 [ext_resource type="Texture2D" uid="uid://sfg1wwfrywpj" path="res://Images/HitMarker.png" id="7_aqagn"]
 [ext_resource type="Script" path="res://Scripts/Settings.cs" id="8_p1x7g"]
@@ -117,10 +118,11 @@ EnemyPrefab = ExtResource("2_c6icm")
 Spawners = [NodePath("Spawners/EnemySpawner")]
 SceneName = "FirstLevel"
 
-[node name="Player" parent="." node_paths=PackedStringArray("ammoDisp", "healthDisp", "GlobalTimer", "Game") instance=ExtResource("2_jolhm")]
+[node name="Player" parent="." node_paths=PackedStringArray("ammoDisp", "healthDisp", "GlobalTimer", "CreditDisplay", "Game") instance=ExtResource("2_jolhm")]
 ammoDisp = NodePath("../UserInterface/AmmoLabel")
 healthDisp = NodePath("../UserInterface/HealthBar")
 GlobalTimer = NodePath("../UserInterface/TotalTimer")
+CreditDisplay = NodePath("../UserInterface/CreditCount")
 Game = NodePath("..")
 
 [node name="UserInterface" type="Control" parent="."]
@@ -134,11 +136,27 @@ theme = SubResource("Theme_sff2g")
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 31.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
 theme_override_fonts/font = ExtResource("4_7e3gh")
 theme_override_font_sizes/font_size = 40
 text = "0.0"
 script = ExtResource("1_keo1e")
+
+[node name="CreditCount" type="Label" parent="UserInterface"]
+offset_top = 41.0
+offset_right = 40.0
+offset_bottom = 119.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/line_spacing = -20
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("4_7e3gh")
+theme_override_font_sizes/font_size = 40
+text = "0
+0"
+script = ExtResource("6_6a4he")
 
 [node name="AmmoLabel" type="Label" parent="UserInterface"]
 layout_mode = 0
@@ -146,7 +164,9 @@ offset_left = 5.0
 offset_top = 573.0
 offset_right = 45.0
 offset_bottom = 604.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
 theme_override_fonts/font = ExtResource("4_7e3gh")
 theme_override_font_sizes/font_size = 40
 text = "0/0"
