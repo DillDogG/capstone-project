@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=3 uid="uid://cqtpwqoty3pxd"]
+[gd_scene load_steps=39 format=3 uid="uid://cqtpwqoty3pxd"]
 
 [ext_resource type="Script" path="res://Scripts/Game.cs" id="1_4awxq"]
 [ext_resource type="PackedScene" uid="uid://cctntsygmnc80" path="res://Prefabs/player.tscn" id="1_sr6c0"]
@@ -10,18 +10,16 @@
 [ext_resource type="Script" path="res://Scripts/AmmoLabel.cs" id="6_p10an"]
 [ext_resource type="Script" path="res://Scripts/ReloadTimer.cs" id="7_es0wi"]
 [ext_resource type="Texture2D" uid="uid://eiiv82akd2a7" path="res://Images/Crosshair.png" id="8_jnmsh"]
+[ext_resource type="Texture2D" uid="uid://canwlfiupuvto" path="res://Images/CircularProgressBar.png" id="9_yc8vd"]
 [ext_resource type="Script" path="res://Scripts/HealthBar.cs" id="10_wl1f8"]
 [ext_resource type="Script" path="res://Scripts/HitMarker.cs" id="11_fwiyq"]
-[ext_resource type="Script" path="res://Scripts/PauseContinue.cs" id="11_jmfli"]
-[ext_resource type="Script" path="res://Scripts/SettingsButton.cs" id="12_br18a"]
 [ext_resource type="Texture2D" uid="uid://sfg1wwfrywpj" path="res://Images/HitMarker.png" id="12_fid2k"]
-[ext_resource type="Script" path="res://Scripts/QuitGameButton.cs" id="13_2tfsm"]
 [ext_resource type="Script" path="res://Scripts/Settings.cs" id="13_dy5yw"]
 [ext_resource type="Script" path="res://Scripts/SaveSettings.cs" id="14_msafn"]
 [ext_resource type="Script" path="res://Scripts/ResetSettings.cs" id="15_ys2v0"]
 [ext_resource type="PackedScene" uid="uid://seg3hudp2oft" path="res://Prefabs/WeaponBuy.tscn" id="16_fd4bh"]
 [ext_resource type="Script" path="res://Scripts/DeathFade.cs" id="16_mh2vt"]
-[ext_resource type="Script" path="res://Scripts/SaveGameButton.cs" id="16_ut0gf"]
+[ext_resource type="PackedScene" uid="uid://bdaaobcdhef0j" path="res://Prefabs/pause_menu.tscn" id="18_38umj"]
 [ext_resource type="Texture2D" uid="uid://qilxaj3b4nx0" path="res://Images/Grass/tileable-TT7002066-verydark.png" id="18_pb75f"]
 [ext_resource type="Texture2D" uid="uid://bud0xymsonut8" path="res://Images/Grass/tileable-TT7002066_nm.png" id="19_hc43c"]
 [ext_resource type="PackedScene" uid="uid://cpfg37lc5lvbn" path="res://Prefabs/exit_door.tscn" id="20_mo2mr"]
@@ -29,15 +27,6 @@
 
 [sub_resource type="Theme" id="Theme_bj8ju"]
 default_font_size = 22
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vtxi2"]
-bg_color = Color(0.6, 0.6, 0.6, 0)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q1edg"]
-
-[sub_resource type="Theme" id="Theme_bjrqy"]
-ProgressBar/styles/background = SubResource("StyleBoxFlat_vtxi2")
-ProgressBar/styles/fill = SubResource("StyleBoxFlat_q1edg")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e3k6m"]
 bg_color = Color(1, 0, 0, 1)
@@ -120,6 +109,7 @@ SettingsMenu = NodePath("UserInterface/Settings")
 EnemyPrefab = ExtResource("4_cgvfi")
 Spawners = [NodePath("Spawners/EnemySpawner1"), NodePath("Spawners/EnemySpawner2"), NodePath("Spawners/EnemySpawner3"), NodePath("Spawners/EnemySpawner4"), NodePath("Spawners/EnemySpawner5"), NodePath("Spawners/EnemySpawner6")]
 SceneName = "Test Level"
+Checkpoints = PackedVector3Array(0, 1.889, 0)
 Death = NodePath("UserInterface/DeathFade")
 
 [node name="Player" parent="." node_paths=PackedStringArray("ammoDisp", "healthDisp", "GlobalTimer", "CreditDisplay", "Game") instance=ExtResource("1_sr6c0")]
@@ -192,15 +182,19 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("8_jnmsh")
 
-[node name="ReloadTimer" type="ProgressBar" parent="UserInterface/Crosshair"]
+[node name="ReloadTimer" type="TextureProgressBar" parent="UserInterface/Crosshair"]
 layout_mode = 0
-offset_left = -80.0
-offset_top = 55.0
-offset_right = 120.0
-offset_bottom = 61.0
-theme = SubResource("Theme_bjrqy")
-value = 75.0
-show_percentage = false
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 60.0
+offset_bottom = 60.0
+step = 0.01
+value = 10.0
+fill_mode = 4
+texture_under = ExtResource("9_yc8vd")
+texture_progress = ExtResource("9_yc8vd")
+tint_under = Color(0.180005, 0.180005, 0.180005, 1)
+tint_progress = Color(0.716296, 0.716296, 0.716296, 1)
 script = ExtResource("7_es0wi")
 
 [node name="HealthBar" type="ProgressBar" parent="UserInterface"]
@@ -238,7 +232,7 @@ offset_bottom = 71.2759
 rotation = 0.436332
 texture = ExtResource("12_fid2k")
 
-[node name="Settings" type="Control" parent="UserInterface" node_paths=PackedStringArray("Game", "Player", "FOV_Slider", "MouseSens_Slider", "FOV_Label", "MouseSens_Label", "Section", "Visuals", "Audio", "Controls", "Controller")]
+[node name="Settings" type="Control" parent="UserInterface" node_paths=PackedStringArray("FOV_Slider", "MouseSens_Slider", "FOV_Label", "MouseSens_Label", "Section", "Visuals", "Audio", "Controls", "Controller")]
 process_mode = 2
 anchors_preset = 0
 offset_left = 205.0
@@ -247,8 +241,6 @@ offset_right = 245.0
 offset_bottom = 164.0
 theme = SubResource("Theme_bucok")
 script = ExtResource("13_dy5yw")
-Game = NodePath("../..")
-Player = NodePath("../../Player")
 FOV_Slider = NodePath("Visuals/VBoxContainer/FOV_Slider")
 MouseSens_Slider = NodePath("Controls/Mouse_Sens_Slider")
 FOV_Label = NodePath("Visuals/FOV_Value")
@@ -410,62 +402,7 @@ offset_bottom = 648.0
 color = Color(0, 0, 0, 0.784314)
 script = ExtResource("16_mh2vt")
 
-[node name="PauseMenu" type="Control" parent="."]
-process_mode = 2
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="Background" type="ColorRect" parent="PauseMenu"]
-custom_minimum_size = Vector2(1152, 648)
-layout_mode = 0
-offset_right = 1152.0
-offset_bottom = 648.0
-color = Color(0.141176, 0.141176, 0.141176, 0.784314)
-
-[node name="Continue" type="Button" parent="PauseMenu" node_paths=PackedStringArray("Game")]
-layout_mode = 0
-offset_left = 475.0
-offset_top = 200.0
-offset_right = 685.0
-offset_bottom = 299.0
-theme_override_font_sizes/font_size = 24
-text = "Continue"
-script = ExtResource("11_jmfli")
-Game = NodePath("../..")
-
-[node name="Settings" type="Button" parent="PauseMenu" node_paths=PackedStringArray("Game")]
-layout_mode = 0
-offset_left = 475.0
-offset_top = 300.0
-offset_right = 685.0
-offset_bottom = 399.0
-theme_override_font_sizes/font_size = 24
-text = "Settings"
-script = ExtResource("12_br18a")
-Game = NodePath("../..")
-
-[node name="Save" type="Button" parent="PauseMenu" node_paths=PackedStringArray("game")]
-layout_mode = 0
-offset_left = 475.0
-offset_top = 400.0
-offset_right = 685.0
-offset_bottom = 499.0
-theme_override_font_sizes/font_size = 24
-text = "Save Game"
-script = ExtResource("16_ut0gf")
-game = NodePath("../..")
-
-[node name="Quit" type="Button" parent="PauseMenu"]
-layout_mode = 0
-offset_left = 475.0
-offset_top = 500.0
-offset_right = 685.0
-offset_bottom = 599.0
-theme_override_font_sizes/font_size = 24
-text = "Quit Game"
-script = ExtResource("13_2tfsm")
+[node name="PauseMenu" parent="." instance=ExtResource("18_38umj")]
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
 navigation_mesh = SubResource("NavigationMesh_s6y4x")
@@ -554,4 +491,5 @@ BuyDisplay = NodePath("../UserInterface/BuyDisplay")
 
 [connection signal="timeout" from="SpawnTimer" to="." method="OnSpawnTimerTimeout"]
 
+[editable path="PauseMenu"]
 [editable path="ExitDoor"]

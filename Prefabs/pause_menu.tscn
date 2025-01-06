@@ -1,0 +1,60 @@
+[gd_scene load_steps=5 format=3 uid="uid://bdaaobcdhef0j"]
+
+[ext_resource type="Script" path="res://Scripts/PauseContinue.cs" id="1_6ljbv"]
+[ext_resource type="Script" path="res://Scripts/SettingsButton.cs" id="2_ec3q3"]
+[ext_resource type="Script" path="res://Scripts/SaveGameButton.cs" id="3_3dymg"]
+[ext_resource type="Script" path="res://Scripts/QuitGameButton.cs" id="4_3memw"]
+
+[node name="PauseMenu" type="Control"]
+process_mode = 2
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Background" type="ColorRect" parent="."]
+custom_minimum_size = Vector2(1152, 648)
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+color = Color(0.141176, 0.141176, 0.141176, 0.784314)
+
+[node name="Continue" type="Button" parent="."]
+layout_mode = 0
+offset_left = 475.0
+offset_top = 200.0
+offset_right = 685.0
+offset_bottom = 299.0
+theme_override_font_sizes/font_size = 24
+text = "Continue"
+script = ExtResource("1_6ljbv")
+
+[node name="Settings" type="Button" parent="."]
+layout_mode = 0
+offset_left = 475.0
+offset_top = 300.0
+offset_right = 685.0
+offset_bottom = 399.0
+theme_override_font_sizes/font_size = 24
+text = "Settings"
+script = ExtResource("2_ec3q3")
+
+[node name="Save" type="Button" parent="."]
+layout_mode = 0
+offset_left = 475.0
+offset_top = 400.0
+offset_right = 685.0
+offset_bottom = 499.0
+theme_override_font_sizes/font_size = 24
+text = "Save Game"
+script = ExtResource("3_3dymg")
+
+[node name="Quit" type="Button" parent="."]
+layout_mode = 0
+offset_left = 475.0
+offset_top = 500.0
+offset_right = 685.0
+offset_bottom = 599.0
+theme_override_font_sizes/font_size = 24
+text = "Quit Game"
+script = ExtResource("4_3memw")

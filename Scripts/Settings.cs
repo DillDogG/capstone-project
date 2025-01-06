@@ -3,10 +3,10 @@ using System;
 
 public partial class Settings : Control
 {
-    [Export]
+    //[Export]
     public Game Game;
 
-    [Export]
+    //[Export]
     public Player Player;
 
     [Export]
@@ -41,8 +41,9 @@ public partial class Settings : Control
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
 	{
-        // make a load from a file
-	}
+        Game = GetTree().Root.GetNode<Game>("Node3D");
+        Player = GetTree().Root.GetNode<Player>("Node3D/Player");
+    }
 
     public void SaveSettings()
     {

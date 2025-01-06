@@ -1,0 +1,313 @@
+[gd_scene load_steps=20 format=3 uid="uid://83t51lgp7jip"]
+
+[ext_resource type="FontFile" uid="uid://7jc8lsmmfdi1" path="res://Fonts/DavysCrappyWrit.ttf" id="1_kleky"]
+[ext_resource type="Script" path="res://Scripts/TimerLabel.cs" id="2_outst"]
+[ext_resource type="Script" path="res://Scripts/CreditCount.cs" id="3_6fp1f"]
+[ext_resource type="Script" path="res://Scripts/AmmoLabel.cs" id="4_e3fur"]
+[ext_resource type="Texture2D" uid="uid://eiiv82akd2a7" path="res://Images/Crosshair.png" id="5_t4jkv"]
+[ext_resource type="Texture2D" uid="uid://canwlfiupuvto" path="res://Images/CircularProgressBar.png" id="6_6l2v2"]
+[ext_resource type="Script" path="res://Scripts/ReloadTimer.cs" id="7_og4fg"]
+[ext_resource type="Script" path="res://Scripts/HealthBar.cs" id="8_wh343"]
+[ext_resource type="Script" path="res://Scripts/HitMarker.cs" id="9_nnp4x"]
+[ext_resource type="Texture2D" uid="uid://sfg1wwfrywpj" path="res://Images/HitMarker.png" id="10_w5hw4"]
+[ext_resource type="Script" path="res://Scripts/Settings.cs" id="11_ndyhx"]
+[ext_resource type="Script" path="res://Scripts/SaveSettings.cs" id="12_6c8cw"]
+[ext_resource type="Script" path="res://Scripts/ResetSettings.cs" id="13_1d2cl"]
+[ext_resource type="Script" path="res://Scripts/DeathFade.cs" id="14_27xyk"]
+
+[sub_resource type="Theme" id="Theme_sff2g"]
+default_font_size = 22
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2qma5"]
+bg_color = Color(1, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ctnni"]
+bg_color = Color(0, 1, 0, 1)
+
+[sub_resource type="Theme" id="Theme_ph3d6"]
+Label/colors/font_color = Color(1, 1, 0, 1)
+Label/colors/font_outline_color = Color(1, 0, 0, 1)
+Label/constants/outline_size = 5
+
+[sub_resource type="Theme" id="Theme_2j52x"]
+
+[node name="UserInterface" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme = SubResource("Theme_sff2g")
+
+[node name="TotalTimer" type="Label" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 31.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("1_kleky")
+theme_override_font_sizes/font_size = 40
+text = "0.0"
+script = ExtResource("2_outst")
+
+[node name="CreditCount" type="Label" parent="."]
+layout_mode = 0
+offset_top = 41.0
+offset_right = 40.0
+offset_bottom = 119.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/line_spacing = -20
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("1_kleky")
+theme_override_font_sizes/font_size = 40
+text = "0
+0"
+script = ExtResource("3_6fp1f")
+
+[node name="AmmoLabel" type="Label" parent="."]
+layout_mode = 0
+offset_left = 5.0
+offset_top = 573.0
+offset_right = 45.0
+offset_bottom = 604.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("1_kleky")
+theme_override_font_sizes/font_size = 40
+text = "0/0"
+script = ExtResource("4_e3fur")
+
+[node name="Crosshair" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 536.0
+offset_top = 284.0
+offset_right = 576.0
+offset_bottom = 324.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_t4jkv")
+
+[node name="ReloadTimer" type="TextureProgressBar" parent="Crosshair"]
+layout_mode = 0
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 60.0
+offset_bottom = 60.0
+step = 0.01
+value = 10.0
+fill_mode = 4
+texture_under = ExtResource("6_6l2v2")
+texture_progress = ExtResource("6_6l2v2")
+tint_under = Color(0.180005, 0.180005, 0.180005, 1)
+tint_progress = Color(0.716296, 0.716296, 0.716296, 1)
+script = ExtResource("7_og4fg")
+
+[node name="HealthBar" type="ProgressBar" parent="."]
+layout_mode = 0
+offset_left = 5.0
+offset_top = 612.0
+offset_right = 197.0
+offset_bottom = 643.0
+theme_override_styles/background = SubResource("StyleBoxFlat_2qma5")
+theme_override_styles/fill = SubResource("StyleBoxFlat_ctnni")
+max_value = 150.0
+value = 80.0
+show_percentage = false
+script = ExtResource("8_wh343")
+
+[node name="HitMarker" type="Label" parent="."]
+layout_mode = 0
+offset_left = 607.0
+offset_top = 274.0
+offset_right = 651.0
+offset_bottom = 305.0
+rotation = 0.349066
+theme = SubResource("Theme_ph3d6")
+theme_override_fonts/font = ExtResource("1_kleky")
+theme_override_font_sizes/font_size = 40
+text = "20.0"
+script = ExtResource("9_nnp4x")
+
+[node name="Crosshair2" type="TextureRect" parent="HitMarker"]
+layout_mode = 0
+offset_left = -21.606
+offset_top = 31.2759
+offset_right = 18.394
+offset_bottom = 71.2759
+rotation = 0.436332
+texture = ExtResource("10_w5hw4")
+
+[node name="Settings" type="Control" parent="." node_paths=PackedStringArray("FOV_Slider", "MouseSens_Slider", "FOV_Label", "MouseSens_Label", "Section", "Visuals", "Audio", "Controls", "Controller")]
+process_mode = 2
+anchors_preset = 0
+offset_left = 205.0
+offset_top = 124.0
+offset_right = 245.0
+offset_bottom = 164.0
+theme = SubResource("Theme_2j52x")
+script = ExtResource("11_ndyhx")
+FOV_Slider = NodePath("Visuals/VBoxContainer/FOV_Slider")
+MouseSens_Slider = NodePath("Controls/Mouse_Sens_Slider")
+FOV_Label = NodePath("Visuals/FOV_Value")
+MouseSens_Label = NodePath("Controls/Mouse_Sens_Value")
+Section = NodePath("TabBar")
+Visuals = NodePath("Visuals")
+Audio = NodePath("Audio")
+Controls = NodePath("Controls")
+Controller = NodePath("Controller")
+
+[node name="Background" type="ColorRect" parent="Settings"]
+custom_minimum_size = Vector2(1152, 648)
+layout_mode = 0
+offset_left = -205.0
+offset_top = -124.0
+offset_right = 947.0
+offset_bottom = 524.0
+color = Color(0.141176, 0.141176, 0.141176, 0.784314)
+
+[node name="TabBar" type="TabBar" parent="Settings"]
+layout_mode = 0
+offset_top = -30.0
+offset_right = 413.0
+offset_bottom = 10.0
+current_tab = 0
+clip_tabs = false
+tab_count = 4
+tab_0/title = "Visuals"
+tab_1/title = "Audio"
+tab_2/title = "Controls"
+tab_3/title = "Controller"
+
+[node name="SaveSettings" type="Button" parent="Settings" node_paths=PackedStringArray("Settings")]
+layout_mode = 2
+offset_left = 150.0
+offset_top = 231.0
+offset_right = 300.0
+offset_bottom = 281.0
+text = "Save Settings"
+script = ExtResource("12_6c8cw")
+Settings = NodePath("..")
+
+[node name="ResetSettings" type="Button" parent="Settings" node_paths=PackedStringArray("Settings")]
+layout_mode = 2
+offset_left = 431.0
+offset_top = 231.0
+offset_right = 581.0
+offset_bottom = 281.0
+text = "Reset Settings"
+script = ExtResource("13_1d2cl")
+Settings = NodePath("..")
+
+[node name="Visuals" type="Control" parent="Settings"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="Settings/Visuals"]
+layout_mode = 2
+offset_left = 510.0
+offset_top = 90.0
+offset_right = 696.0
+offset_bottom = 121.0
+text = "FOV"
+horizontal_alignment = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Settings/Visuals"]
+layout_mode = 0
+offset_top = 10.0
+offset_right = 500.0
+offset_bottom = 181.0
+theme_override_constants/separation = 50
+
+[node name="Resolution" type="MenuButton" parent="Settings/Visuals/VBoxContainer"]
+layout_mode = 2
+text = "Resolution"
+item_count = 1
+
+[node name="FOV_Slider" type="HSlider" parent="Settings/Visuals/VBoxContainer"]
+layout_mode = 2
+min_value = 65.0
+max_value = 110.0
+value = 75.0
+scrollable = false
+
+[node name="FOV_Value" type="SpinBox" parent="Settings/Visuals"]
+layout_mode = 0
+offset_left = 720.0
+offset_top = 90.0
+offset_right = 803.063
+offset_bottom = 121.0
+min_value = 65.0
+max_value = 110.0
+value = 75.0
+
+[node name="Audio" type="Control" parent="Settings"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Controls" type="Control" parent="Settings"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label2" type="Label" parent="Settings/Controls"]
+layout_mode = 2
+offset_left = 510.0
+offset_top = 156.0
+offset_right = 696.0
+offset_bottom = 187.0
+text = "Mouse Sensitivity"
+horizontal_alignment = 2
+
+[node name="Mouse_Sens_Slider" type="HSlider" parent="Settings/Controls"]
+layout_mode = 2
+offset_top = 165.0
+offset_right = 500.0
+offset_bottom = 181.0
+min_value = 0.1
+max_value = 5.0
+step = 0.05
+value = 1.0
+scrollable = false
+
+[node name="Mouse_Sens_Value" type="SpinBox" parent="Settings/Controls"]
+layout_mode = 0
+offset_left = 720.0
+offset_top = 156.0
+offset_right = 803.063
+offset_bottom = 187.0
+min_value = 0.1
+max_value = 5.0
+step = 0.05
+value = 1.0
+
+[node name="Controller" type="Control" parent="Settings"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="BuyDisplay" type="Label" parent="."]
+offset_left = 5.0
+offset_top = 550.0
+offset_right = 45.0
+offset_bottom = 581.0
+
+[node name="DeathFade" type="ColorRect" parent="."]
+process_mode = 2
+visible = false
+custom_minimum_size = Vector2(1152, 648)
+offset_right = 1152.0
+offset_bottom = 648.0
+color = Color(0, 0, 0, 0.784314)
+script = ExtResource("14_27xyk")

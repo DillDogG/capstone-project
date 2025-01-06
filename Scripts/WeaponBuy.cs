@@ -51,8 +51,12 @@ public partial class WeaponBuy : Node3D
                         {
                             player.AddCredits(-MainPrice);
                             Weapon gun = GunPrefab.Instantiate<Weapon>();
-                            player.AddGun("SniperBase", GunPrefab);
-                            if (gun is MeleeWeapon) QueueFree();
+                            if (gun is MeleeWeapon)
+                            {
+                                player.AddGun("SwordBase", GunPrefab);
+                                QueueFree();
+                            }
+                            else player.AddGun("SniperBase", GunPrefab);
                         }
                         else if (player.Credits >= AmmoPrice)
                         {

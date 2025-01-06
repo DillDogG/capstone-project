@@ -102,7 +102,7 @@ public partial class ReadFile : Node
         return true;
     }
 
-    public bool SaveGame(string CurrentLevel, double Time, double Health, int Credits, /*int Inventory, */int SniperAmmo, int SniperReserves)
+    public bool SaveGame(string CurrentLevel, int Checkpoint, double Time, double Health, int Credits, Weapon[] Inventory, int SniperAmmo, int SniperReserves)
     {
         var file = new ConfigFile();
         Error err = file.Load(SaveData);
@@ -112,12 +112,22 @@ public partial class ReadFile : Node
             return false;
         }
         file.SetValue("Level", "CurrentLevel", CurrentLevel);
+        file.SetValue("Level", "CurrentCheckpoint", Checkpoint);
         file.SetValue("Level", "Time", Time);
         file.SetValue("Player", "Health", Health);
         file.SetValue("Player", "Credits", Credits);
-        //file.SetValue("Player", "Inventory", Inventory);
         file.SetValue("Weapons", "SniperAmmo", SniperAmmo);
         file.SetValue("Weapons", "SniperReserves", SniperReserves);
+        foreach (var item in Inventory)
+        {
+            file.SetValue("Inventory", item.Name, "");
+            if (item is RangedWeapon)
+            {
+                RangedWeapon gun = (RangedWeapon)item;
+                file.SetValue("Ammo", item.Name, gun.AmmoCount);
+                file.SetValue("Reserves", item.Name, gun.AmmoReserves);
+            }
+        }
         file.Save(SaveData);
         return true;
     }
@@ -152,7 +162,67 @@ public partial class ReadFile : Node
         return CurrentLevel;
     }
 
-    public bool LoadGame(Player player)
+    public int LoadGame(Player player)
+    {
+        var file = new ConfigFile();
+        Error err = file.Load(SaveData);
+
+        if (err != Error.Ok)
+        {
+            return 0;
+        }
+        int Checkpoint = (int)file.GetValue("Level", "CurrentCheckpoint");
+        double Time = (double)file.GetValue("Level", "Time");
+        double Health = (double)file.GetValue("Player", "Health");
+        int Credits = (int)file.GetValue("Player", "Credits");
+        string[] Inventory = file.GetSectionKeys("Inventory");
+        string[] Ammo = file.GetSectionKeys("Ammo");
+        string[] Reserves = file.GetSectionKeys("Reserves");
+        //int SniperAmmo = (int)file.GetValue("Weapons", "SniperAmmo");
+        //int SniperReserves = (int)file.GetValue("Weapons", "SniperReserves");
+        player.GlobalTimer._timer = Time;
+        player.Health = Health;
+        player.Credits = Credits;
+        AddGuns(Inventory, player);
+        foreach (var Weapon in player.Inventory)
+        {
+            if (Weapon is RangedWeapon)
+            {
+                RangedWeapon gun = (RangedWeapon)Weapon;
+                foreach (var item in Ammo)
+                {
+                    if (item == Weapon.Name) gun.AmmoCount = (int)file.GetValue("Ammo", item);
+                    break;
+                }
+                foreach (var item in Reserves)
+                {
+                    if (item == Weapon.Name) gun.AmmoReserves = (int)file.GetValue("Ammo", item);
+                    break;
+                }
+                
+            }
+        }
+        return Checkpoint;
+    }
+
+    private bool AddGuns(string[] Inventory, Player player)
+    {
+        foreach (var Weapon in Inventory)
+        {
+            bool ifBreak = false;
+            foreach (var item in player.Inventory)
+            {
+                if (item.Name == Weapon) { ifBreak = true; break; }
+            }
+            if (ifBreak) { ifBreak = false; continue; }
+            PackedScene scene = ResourceLoader.Load<PackedScene>("res://Prefabs/" + Weapon + ".tscn");
+            player.AddGun("SniperBase", scene);
+            if (scene.Instantiate() is MeleeWeapon) QueueFree();
+        }
+        return true;
+    }
+
+    public bool LoadStats(Player player)
     {
         var file = new ConfigFile();
         Error err = file.Load(SaveData);
@@ -170,32 +240,6 @@ public partial class ReadFile : Node
         player.GlobalTimer._timer = Time;
         player.Health = Health;
         player.Credits = Credits;
-        foreach (var Weapon in player.Inventory)
-        {
-            if (Weapon is SniperRifleRanged)
-            {
-                SniperRifleRanged Sniper = (SniperRifleRanged)Weapon;
-                Sniper.AmmoCount = SniperAmmo;
-                Sniper.AmmoReserves = SniperReserves;
-            }
-        }
-        return true;
-    }
-
-    public bool LoadStats(Player player)
-    {
-        var file = new ConfigFile();
-        Error err = file.Load(SaveData);
-
-        if (err != Error.Ok)
-        {
-            return false;
-        }
-        double Health = (double)file.GetValue("Player", "Health");
-        //int Inventory = (int)file.GetValue("Player", "Inventory");
-        int SniperAmmo = (int)file.GetValue("Weapons", "SniperAmmo");
-        int SniperReserves = (int)file.GetValue("Weapons", "SniperReserves");
-        player.Health = Health;
         foreach (var Weapon in player.Inventory)
         {
             if (Weapon is SniperRifleRanged)

@@ -3,8 +3,12 @@ using System;
 
 public partial class SaveGameButton : Button
 {
-    [Export]
     public Game game;
+
+    public override void _Ready()
+    {
+        game = GetTree().Root.GetNode<Game>("Node3D");
+    }
 
     public override void _Pressed()
     {

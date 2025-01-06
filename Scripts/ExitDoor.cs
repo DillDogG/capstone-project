@@ -13,6 +13,11 @@ public partial class ExitDoor : Area3D
             {
                 if (Overlaps is Player)
                 {
+                    Game game = GetTree().Root.GetNode<Game>("Node3D");
+                    if (game != null)
+                    {
+                        game.SaveGame();
+                    }
                     GetTree().ChangeSceneToFile("res://Scenes/" + TargetScene + ".tscn");
                     return;
                 }

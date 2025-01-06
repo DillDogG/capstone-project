@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public partial class ReloadTimer : ProgressBar
+public partial class ReloadTimer : TextureProgressBar
 {
 	public override void _Ready()
 	{
@@ -17,6 +17,6 @@ public partial class ReloadTimer : ProgressBar
 	{
 		Visible = true;
 		Value = (ReloadTimer / ReloadDuration) * 100;
-		if (Value >= 100) Visible = false;
+		if (Value <= 0) Visible = false;
 	}
 }

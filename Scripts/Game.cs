@@ -1,6 +1,7 @@
 using Godot;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 public partial class Game : Node3D
 {
@@ -24,6 +25,10 @@ public partial class Game : Node3D
     public Player player { get; set; }
 
     [Export]
+    public Vector3[] Checkpoints { get; set; }
+    public int Checkpoint { get; set; }
+
+    [Export]
     public DeathFade Death;
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
@@ -39,10 +44,12 @@ public partial class Game : Node3D
         }
         if (ReadFile.WasGameLoaded())
         {
-            ReadFile.LoadGame(player);
+            Checkpoint = ReadFile.LoadGame(player);
+            player.Position = Checkpoints[Checkpoint];
         }
         else
         {
+            GD.Print("test");
             ReadFile.LoadStats(player);
         }
 	}
@@ -63,6 +70,12 @@ public partial class Game : Node3D
 	{
         Input.MouseMode = Input.MouseModeEnum.Captured;
         PauseMenu.Hide();
+        SettingsMenu.Hide();
+        if (SettingsMenu is Settings)
+        {
+            Settings menu = (Settings)SettingsMenu;
+            ReadFile.LoadSettings(menu);
+        }
         GetTree().Paused = false;
 	}
 
@@ -75,6 +88,11 @@ public partial class Game : Node3D
 	public void ExitSettings()
 	{
         PauseMenu.Show();
+        if (SettingsMenu is Settings)
+        {
+            Settings menu = (Settings)SettingsMenu;
+            ReadFile.LoadSettings(menu);
+        }
         SettingsMenu.Hide();
     }
 
@@ -92,11 +110,11 @@ public partial class Game : Node3D
             if (Weapon is SniperRifleRanged)
             {
                 SniperRifleRanged Sniper = (SniperRifleRanged)Weapon;
-                ReadFile.SaveGame(SceneName, player.GlobalTimer._timer, player.Health, player.Credits, Sniper.AmmoCount, Sniper.AmmoReserves);
+                ReadFile.SaveGame(SceneName, 0, player.GlobalTimer._timer, player.Health, player.Credits, player.Inventory.ToArray(), Sniper.AmmoCount, Sniper.AmmoReserves);
                 return;
             }
         }
-        ReadFile.SaveGame(SceneName, player.GlobalTimer._timer, player.Health, player.Credits, 0, 0);
+        ReadFile.SaveGame(SceneName, 0, player.GlobalTimer._timer, player.Health, player.Credits, new Weapon[0], 0, 0);
     }
 
     private void OnSpawnTimerTimeout()
