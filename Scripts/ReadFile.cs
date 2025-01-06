@@ -178,8 +178,6 @@ public partial class ReadFile : Node
         string[] Inventory = file.GetSectionKeys("Inventory");
         string[] Ammo = file.GetSectionKeys("Ammo");
         string[] Reserves = file.GetSectionKeys("Reserves");
-        //int SniperAmmo = (int)file.GetValue("Weapons", "SniperAmmo");
-        //int SniperReserves = (int)file.GetValue("Weapons", "SniperReserves");
         player.GlobalTimer._timer = Time;
         player.Health = Health;
         player.Credits = Credits;
@@ -191,13 +189,11 @@ public partial class ReadFile : Node
                 RangedWeapon gun = (RangedWeapon)Weapon;
                 foreach (var item in Ammo)
                 {
-                    if (item == Weapon.Name) gun.AmmoCount = (int)file.GetValue("Ammo", item);
-                    break;
+                    if (item == Weapon.Name) { gun.AmmoCount = (int)file.GetValue("Ammo", item); break; }
                 }
                 foreach (var item in Reserves)
                 {
-                    if (item == Weapon.Name) gun.AmmoReserves = (int)file.GetValue("Ammo", item);
-                    break;
+                    if (item == Weapon.Name) { gun.AmmoReserves = (int)file.GetValue("Reserves", item); break; }
                 }
                 
             }
@@ -234,19 +230,30 @@ public partial class ReadFile : Node
         double Time = (double)file.GetValue("Level", "Time");
         double Health = (double)file.GetValue("Player", "Health");
         int Credits = (int)file.GetValue("Player", "Credits");
-        //int Inventory = (int)file.GetValue("Player", "Inventory");
-        int SniperAmmo = (int)file.GetValue("Weapons", "SniperAmmo");
-        int SniperReserves = (int)file.GetValue("Weapons", "SniperReserves");
+        string[] Inventory = file.GetSectionKeys("Inventory");
+        string[] Ammo = file.GetSectionKeys("Ammo");
+        string[] Reserves = file.GetSectionKeys("Reserves");
         player.GlobalTimer._timer = Time;
         player.Health = Health;
         player.Credits = Credits;
+        AddGuns(Inventory, player);
         foreach (var Weapon in player.Inventory)
         {
-            if (Weapon is SniperRifleRanged)
+            GD.Print(Weapon.Name);
+            if (Weapon is RangedWeapon)
             {
-                SniperRifleRanged Sniper = (SniperRifleRanged)Weapon;
-                Sniper.AmmoCount = SniperAmmo;
-                Sniper.AmmoReserves = SniperReserves;
+                RangedWeapon gun = (RangedWeapon)Weapon;
+                foreach (var item in Ammo)
+                {
+                    if (item == Weapon.Name) gun.AmmoCount = (int)file.GetValue("Ammo", item);
+                    break;
+                }
+                foreach (var item in Reserves)
+                {
+                    if (item == Weapon.Name) gun.AmmoReserves = (int)file.GetValue("Reserves", item);
+                    break;
+                }
+
             }
         }
         return true;

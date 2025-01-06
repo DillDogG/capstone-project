@@ -49,7 +49,6 @@ public partial class Game : Node3D
         }
         else
         {
-            GD.Print("test");
             ReadFile.LoadStats(player);
         }
 	}

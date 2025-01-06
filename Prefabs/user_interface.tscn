@@ -298,6 +298,7 @@ offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="BuyDisplay" type="Label" parent="."]
+layout_mode = 0
 offset_left = 5.0
 offset_top = 550.0
 offset_right = 45.0
@@ -307,6 +308,7 @@ offset_bottom = 581.0
 process_mode = 2
 visible = false
 custom_minimum_size = Vector2(1152, 648)
+layout_mode = 0
 offset_right = 1152.0
 offset_bottom = 648.0
 color = Color(0, 0, 0, 0.784314)
