@@ -28,6 +28,11 @@ public partial class Game : Node3D
     public Vector3[] Checkpoints { get; set; }
     public int Checkpoint { get; set; }
 
+    // if negative number then it becomes variable based on the number of spawners
+    [Export]
+    public double SpawnTime { get; set; }
+    private double SpawnTimer { get; set; }
+
     [Export]
     public DeathFade Death;
     // Called when the node enters the scene tree for the first time.
@@ -46,6 +51,10 @@ public partial class Game : Node3D
         {
             Checkpoint = ReadFile.LoadGame(player);
             player.Position = Checkpoints[Checkpoint];
+            foreach (var spawn in Spawners)
+            {
+                spawn.DisabledOnLoad(Checkpoint);
+            }
         }
         else
         {
@@ -56,6 +65,18 @@ public partial class Game : Node3D
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
+        SpawnTimer -= delta;
+        if (SpawnTimer <= 0)
+        {
+            OnSpawnTimerTimeout();
+            if (SpawnTime >= 0) SpawnTimer = SpawnTime;
+            else
+            {
+                int spawnCount = 0;
+                foreach (var spawn in Spawners) if (spawn != null) spawnCount++;
+                SpawnTimer = (60 / Math.Abs(SpawnTime)) / spawnCount;
+            }
+        }
     }
 
     public void Pause()
@@ -109,11 +130,11 @@ public partial class Game : Node3D
             if (Weapon is SniperRifleRanged)
             {
                 SniperRifleRanged Sniper = (SniperRifleRanged)Weapon;
-                ReadFile.SaveGame(SceneName, 0, player.GlobalTimer._timer, player.Health, player.Credits, player.Inventory.ToArray(), Sniper.AmmoCount, Sniper.AmmoReserves);
+                ReadFile.SaveGame(SceneName, 0, player.GlobalTimer._timer, player.Health, player.Credits, player.Inventory.ToArray());
                 return;
             }
         }
-        ReadFile.SaveGame(SceneName, 0, player.GlobalTimer._timer, player.Health, player.Credits, new Weapon[0], 0, 0);
+        ReadFile.SaveGame(SceneName, 0, player.GlobalTimer._timer, player.Health, player.Credits, new Weapon[0]);
     }
 
     private void OnSpawnTimerTimeout()

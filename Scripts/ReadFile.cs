@@ -102,7 +102,7 @@ public partial class ReadFile : Node
         return true;
     }
 
-    public bool SaveGame(string CurrentLevel, int Checkpoint, double Time, double Health, int Credits, Weapon[] Inventory, int SniperAmmo, int SniperReserves)
+    public bool SaveGame(string CurrentLevel, int Checkpoint, double Time, double Health, int Credits, Weapon[] Inventory)
     {
         var file = new ConfigFile();
         Error err = file.Load(SaveData);
@@ -116,8 +116,6 @@ public partial class ReadFile : Node
         file.SetValue("Level", "Time", Time);
         file.SetValue("Player", "Health", Health);
         file.SetValue("Player", "Credits", Credits);
-        file.SetValue("Weapons", "SniperAmmo", SniperAmmo);
-        file.SetValue("Weapons", "SniperReserves", SniperReserves);
         foreach (var item in Inventory)
         {
             file.SetValue("Inventory", item.Name, "");
@@ -239,7 +237,6 @@ public partial class ReadFile : Node
         AddGuns(Inventory, player);
         foreach (var Weapon in player.Inventory)
         {
-            GD.Print(Weapon.Name);
             if (Weapon is RangedWeapon)
             {
                 RangedWeapon gun = (RangedWeapon)Weapon;
@@ -268,13 +265,16 @@ public partial class ReadFile : Node
         {
             return;
         }
-        file.SetValue("Level", "CurrentLevel", "Test Level");
+        file.EraseSection("Inventory");
+        file.SetValue("Level", "CurrentLevel", "");
+        file.SetValue("Level", "CurrentCheckpoint", 0);
         file.SetValue("Level", "Time", 0);
         file.SetValue("Player", "Health", 150);
         file.SetValue("Player", "Credits", 0);
-        //file.SetValue("Player", "Inventory", 2);
-        file.SetValue("Weapons", "SniperAmmo", 7);
-        file.SetValue("Weapons", "SniperReserves", 35);
+        file.SetValue("Inventory", "Sniper_Rifle", "");
+        file.SetValue("Ammo", "Sniper_Rifle", 7);
+        file.SetValue("Reserves", "Sniper_Rifle", 14);
+        file.SetValue("Inventory", "Sword", "");
         file.Save(SaveData);
     }
 }

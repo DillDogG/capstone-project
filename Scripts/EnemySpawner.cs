@@ -6,7 +6,6 @@ public partial class EnemySpawner : Node3D
 	[Export]
 	public Game game { get; set; }
 
-	[Export]
 	public int spawnerNumber { get; set; }
 
 	[Export]
@@ -15,6 +14,25 @@ public partial class EnemySpawner : Node3D
     // if 0 then won't reenable
     [Export]
     public double ReenableTime { get; set; } = 0;
+
+    [Export]
+    public int CheckpointDisable { get; set; }
+
+    public override void _Ready()
+    {
+        for (var x = 0; x < game.Spawners.Length; x++)
+        {
+            if (game.Spawners[x] == this) { spawnerNumber = x; break; }
+        }
+    }
+
+    public void DisabledOnLoad(int checkpoint)
+    {
+        if (checkpoint >= CheckpointDisable)
+        {
+            animationTime = 4;
+        }
+    }
 
 	public void DisableSpawning()
 	{
@@ -75,6 +93,7 @@ public partial class EnemySpawner : Node3D
         }
         else if (animationTime >= 4)
         {
+            animation.Play("Closing");
             animation.SpeedScale = 0;
             animation.Seek(4, true);
             DisableSpawning();
@@ -83,11 +102,13 @@ public partial class EnemySpawner : Node3D
         }
         else if (animationTime > PauseTime)
         {
+            animation.Play("Closing");
             animationTime -= delta * 2;
             animation.SpeedScale = -2;
         }
         else
         {
+            animation.Play("Closing");
             animationTime = PauseTime;
             animation.SpeedScale = 0;
             animation.Seek(animationTime, true);

@@ -43,10 +43,6 @@ public partial class WeaponBuy : Node3D
                     else BuyDisplay.Text = "Purchase " + WeaponName + " Ammo: Price " + AmmoPrice;
                     if (Input.IsActionJustPressed("Interact"))
                     {
-                        foreach (Weapon weapon in player.Inventory)
-                        {
-                            GD.Print(weapon.Name);
-                        }
                         if (playerSave == null && player.Credits >= MainPrice)
                         {
                             player.AddCredits(-MainPrice);

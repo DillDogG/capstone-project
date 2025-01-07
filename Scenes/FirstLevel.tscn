@@ -79,6 +79,7 @@ EnemyPrefab = ExtResource("2_c6icm")
 Spawners = [NodePath("Spawners/EnemySpawner")]
 SceneName = "FirstLevel"
 Checkpoints = PackedVector3Array(0, 1, 0)
+SpawnTime = 5.0
 Death = NodePath("UserInterface/DeathFade")
 
 [node name="Player" parent="." node_paths=PackedStringArray("ammoDisp", "healthDisp", "GlobalTimer", "CreditDisplay", "Game") instance=ExtResource("2_jolhm")]
@@ -91,14 +92,10 @@ Game = NodePath("..")
 [node name="UserInterface" parent="." instance=ExtResource("4_lmhmu")]
 
 [node name="BuyDisplay" parent="UserInterface" index="7"]
-layout_mode = 0
 offset_left = 0.0
 offset_top = 0.0
 offset_right = 40.0
 offset_bottom = 31.0
-
-[node name="DeathFade" parent="UserInterface" index="8"]
-layout_mode = 0
 
 [node name="PauseMenu" parent="." instance=ExtResource("5_8v535")]
 
@@ -109,10 +106,6 @@ navigation_mesh = SubResource("NavigationMesh_j5t0u")
 storage = ExtResource("11_w8mee")
 material = SubResource("Terrain3DMaterial_xdkvx")
 assets = SubResource("Terrain3DAssets_0lyq3")
-
-[node name="SpawnTimer" type="Timer" parent="."]
-wait_time = 5.0
-autostart = true
 
 [node name="Spawners" type="Node3D" parent="."]
 
@@ -128,8 +121,6 @@ shadow_enabled = true
 [node name="Enemy" parent="." node_paths=PackedStringArray("Player") instance=ExtResource("2_c6icm")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32.3599, 0, 0)
 Player = NodePath("../Player")
-
-[connection signal="timeout" from="SpawnTimer" to="." method="OnSpawnTimerTimeout"]
 
 [editable path="UserInterface"]
 [editable path="PauseMenu"]
