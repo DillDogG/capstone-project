@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://bbuwmk6dx03sm"]
+
+[ext_resource type="Script" path="res://Scripts/SavePoint.cs" id="1_hk2n6"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_0208p"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_nhjqm"]
+size = Vector3(5, 4, 5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_0u042"]
+size = Vector3(1, 2, 1)
+
+[node name="SavePoint" type="Node3D" node_paths=PackedStringArray("area")]
+script = ExtResource("1_hk2n6")
+area = NodePath("Area3D")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("CapsuleMesh_0208p")
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.999578, 0)
+shape = SubResource("BoxShape3D_nhjqm")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+collision_layer = 7
+collision_mask = 7
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("BoxShape3D_0u042")

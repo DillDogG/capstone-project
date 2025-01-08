@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public partial class SaveGameButton : Button
+public partial class ReloadGameButton : Button
 {
     public Game game;
 
@@ -13,6 +13,6 @@ public partial class SaveGameButton : Button
     public override void _Pressed()
     {
         base._Pressed();
-        game.SaveGame();
+        game.LoadGame();
     }
 }

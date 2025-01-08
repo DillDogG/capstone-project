@@ -41,12 +41,13 @@ public partial class ReadFile : Node
             file = new ConfigFile();
             file.SetValue("General", "LoadedFromSave", false);
             file.SetValue("Level", "CurrentLevel", "Test Level");
+            file.SetValue("Level", "CurrentCheckpoint", 0);
             file.SetValue("Level", "Time", 0);
-            file.SetValue("Player", "Health", 150);
             file.SetValue("Player", "Credits", 0);
-            //file.SetValue("Player", "Inventory", 2);
-            file.SetValue("Weapons", "SniperAmmo", 7);
-            file.SetValue("Weapons", "SniperReserves", 35);
+            file.SetValue("Inventory", "Sniper_Rifle", "");
+            file.SetValue("Ammo", "Sniper_Rifle", 7);
+            file.SetValue("Reserves", "Sniper_Rifle", 14);
+            file.SetValue("Inventory", "Sword", "");
         }
         file.Save(SaveData);
     }
@@ -102,7 +103,7 @@ public partial class ReadFile : Node
         return true;
     }
 
-    public bool SaveGame(string CurrentLevel, int Checkpoint, double Time, double Health, int Credits, Weapon[] Inventory)
+    public bool SaveGame(string CurrentLevel, int Checkpoint, double Time, int Credits, Weapon[] Inventory)
     {
         var file = new ConfigFile();
         Error err = file.Load(SaveData);
@@ -114,7 +115,6 @@ public partial class ReadFile : Node
         file.SetValue("Level", "CurrentLevel", CurrentLevel);
         file.SetValue("Level", "CurrentCheckpoint", Checkpoint);
         file.SetValue("Level", "Time", Time);
-        file.SetValue("Player", "Health", Health);
         file.SetValue("Player", "Credits", Credits);
         foreach (var item in Inventory)
         {
@@ -171,13 +171,11 @@ public partial class ReadFile : Node
         }
         int Checkpoint = (int)file.GetValue("Level", "CurrentCheckpoint");
         double Time = (double)file.GetValue("Level", "Time");
-        double Health = (double)file.GetValue("Player", "Health");
         int Credits = (int)file.GetValue("Player", "Credits");
         string[] Inventory = file.GetSectionKeys("Inventory");
         string[] Ammo = file.GetSectionKeys("Ammo");
         string[] Reserves = file.GetSectionKeys("Reserves");
         player.GlobalTimer._timer = Time;
-        player.Health = Health;
         player.Credits = Credits;
         AddGuns(Inventory, player);
         foreach (var Weapon in player.Inventory)
@@ -226,13 +224,11 @@ public partial class ReadFile : Node
             return false;
         }
         double Time = (double)file.GetValue("Level", "Time");
-        double Health = (double)file.GetValue("Player", "Health");
         int Credits = (int)file.GetValue("Player", "Credits");
         string[] Inventory = file.GetSectionKeys("Inventory");
         string[] Ammo = file.GetSectionKeys("Ammo");
         string[] Reserves = file.GetSectionKeys("Reserves");
         player.GlobalTimer._timer = Time;
-        player.Health = Health;
         player.Credits = Credits;
         AddGuns(Inventory, player);
         foreach (var Weapon in player.Inventory)
@@ -266,10 +262,9 @@ public partial class ReadFile : Node
             return;
         }
         file.EraseSection("Inventory");
-        file.SetValue("Level", "CurrentLevel", "");
+        file.SetValue("Level", "CurrentLevel", "Test Level");
         file.SetValue("Level", "CurrentCheckpoint", 0);
         file.SetValue("Level", "Time", 0);
-        file.SetValue("Player", "Health", 150);
         file.SetValue("Player", "Credits", 0);
         file.SetValue("Inventory", "Sniper_Rifle", "");
         file.SetValue("Ammo", "Sniper_Rifle", 7);

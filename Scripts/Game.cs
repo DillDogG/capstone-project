@@ -59,6 +59,7 @@ public partial class Game : Node3D
         else
         {
             ReadFile.LoadStats(player);
+            SaveGame();
         }
 	}
 
@@ -123,18 +124,25 @@ public partial class Game : Node3D
         GetTree().Paused = true;
     }
 
-    public void SaveGame()
+    public void SaveGame(int Checkpoint = 0)
     {
-        foreach (var Weapon in player.Inventory)
-        {
-            if (Weapon is SniperRifleRanged)
-            {
-                SniperRifleRanged Sniper = (SniperRifleRanged)Weapon;
-                ReadFile.SaveGame(SceneName, 0, player.GlobalTimer._timer, player.Health, player.Credits, player.Inventory.ToArray());
-                return;
-            }
-        }
-        ReadFile.SaveGame(SceneName, 0, player.GlobalTimer._timer, player.Health, player.Credits, new Weapon[0]);
+        ReadFile.SaveGame(SceneName, Checkpoint, player.GlobalTimer._timer, player.Credits, player.Inventory.ToArray());
+        //foreach (var Weapon in player.Inventory)
+        //{
+        //    if (Weapon is SniperRifleRanged)
+        //    {
+        //        SniperRifleRanged Sniper = (SniperRifleRanged)Weapon;
+        //        ReadFile.SaveGame(SceneName, 0, player.GlobalTimer._timer, player.Health, player.Credits, player.Inventory.ToArray());
+        //        return;
+        //    }
+        //}
+        //ReadFile.SaveGame(SceneName, 0, player.GlobalTimer._timer, player.Health, player.Credits, new Weapon[0]);
+    }
+
+    public void LoadGame()
+    {
+        GetTree().Paused = false;
+        GetTree().ChangeSceneToFile("res://Scenes/" + ReadFile.LoadGame() + ".tscn");
     }
 
     private void OnSpawnTimerTimeout()

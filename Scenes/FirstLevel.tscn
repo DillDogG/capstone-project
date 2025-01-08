@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://b0o2845gp0mpj"]
+[gd_scene load_steps=20 format=3 uid="uid://b0o2845gp0mpj"]
 
 [ext_resource type="Script" path="res://Scripts/Game.cs" id="1_81kqs"]
 [ext_resource type="Texture2D" uid="uid://qilxaj3b4nx0" path="res://Images/Grass/tileable-TT7002066-verydark.png" id="1_audgr"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://bud0xymsonut8" path="res://Images/Grass/tileable-TT7002066_nm.png" id="2_swgp5"]
 [ext_resource type="PackedScene" uid="uid://83t51lgp7jip" path="res://Prefabs/user_interface.tscn" id="4_lmhmu"]
 [ext_resource type="PackedScene" uid="uid://bdaaobcdhef0j" path="res://Prefabs/pause_menu.tscn" id="5_8v535"]
+[ext_resource type="PackedScene" uid="uid://bbuwmk6dx03sm" path="res://Prefabs/SavePoint.tscn" id="10_o7nqe"]
 [ext_resource type="Terrain3DStorage" uid="uid://b4bbfe7i60vll" path="res://Scenes/FirstLevel.res" id="11_w8mee"]
 [ext_resource type="PackedScene" uid="uid://d4me04o87nygi" path="res://Prefabs/enemy_spawner.tscn" id="22_4n6hq"]
 
@@ -78,7 +79,7 @@ SettingsMenu = NodePath("UserInterface/Settings")
 EnemyPrefab = ExtResource("2_c6icm")
 Spawners = [NodePath("Spawners/EnemySpawner")]
 SceneName = "FirstLevel"
-Checkpoints = PackedVector3Array(0, 1, 0)
+Checkpoints = PackedVector3Array(0, 1, 0, 285, 1, 36.894)
 SpawnTime = 5.0
 Death = NodePath("UserInterface/DeathFade")
 
@@ -90,12 +91,6 @@ CreditDisplay = NodePath("../UserInterface/CreditCount")
 Game = NodePath("..")
 
 [node name="UserInterface" parent="." instance=ExtResource("4_lmhmu")]
-
-[node name="BuyDisplay" parent="UserInterface" index="7"]
-offset_left = 0.0
-offset_top = 0.0
-offset_right = 40.0
-offset_bottom = 31.0
 
 [node name="PauseMenu" parent="." instance=ExtResource("5_8v535")]
 
@@ -118,9 +113,16 @@ transform = Transform3D(0.633907, 0, -0.773409, 0.0935581, 0.992656, 0.0766828, 
 light_color = Color(1, 0.627451, 0.627451, 1)
 shadow_enabled = true
 
-[node name="Enemy" parent="." node_paths=PackedStringArray("Player") instance=ExtResource("2_c6icm")]
+[node name="Enemy" parent="." node_paths=PackedStringArray("Player", "HitMarker") instance=ExtResource("2_c6icm")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32.3599, 0, 0)
 Player = NodePath("../Player")
+HitMarker = NodePath("../UserInterface/HitMarker")
+
+[node name="SavePoint" parent="." node_paths=PackedStringArray("TextDisplay", "game") instance=ExtResource("10_o7nqe")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 283.595, 1, 36.894)
+Checkpoint = 1
+TextDisplay = NodePath("../UserInterface/BuyDisplay")
+game = NodePath("..")
 
 [editable path="UserInterface"]
 [editable path="PauseMenu"]

@@ -67,7 +67,7 @@ public partial class WeaponBuy : Node3D
                     }
                     break;
                 }
-                BuyDisplay.Text = "";
+                if (BuyDisplay.Text == "Purchase " + WeaponName + ": Price " + MainPrice || BuyDisplay.Text == "Purchase " + WeaponName + " Ammo: Price " + AmmoPrice) BuyDisplay.Text = "";
             }
         }
     }
