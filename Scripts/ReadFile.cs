@@ -52,7 +52,7 @@ public partial class ReadFile : Node
         file.Save(SaveData);
     }
 
-    public bool SaveSettings(/*resolution save, */double FOV, double MouseSens)
+    public bool SaveSettings(/*resolution save, */double FOV, double MouseSens, double MasterVol, double MusicVol)
     {
         var file = new ConfigFile();
         Error err = file.Load(Settings);
@@ -63,6 +63,8 @@ public partial class ReadFile : Node
         }
         file.SetValue("Visual", "FOV", FOV);
         file.SetValue("Controls", "MouseSens", MouseSens);
+        file.SetValue("Controls", "MasterVol", MasterVol);
+        file.SetValue("Controls", "MusicVol", MusicVol);
         file.Save(Settings);
         return true;
     }
@@ -79,8 +81,12 @@ public partial class ReadFile : Node
 
         double FOV = (double)file.GetValue("Visual", "FOV");
         double MouseSens = (double)file.GetValue("Controls", "MouseSens");
+        double MasterVol = (double)file.GetValue("Controls", "MasterVol");
+        double MusicVol = (double)file.GetValue("Controls", "MusicVol");
         settings.FOV_Slider.Value = FOV;
         settings.MouseSens_Slider.Value = MouseSens;
+        settings.MasterVol_Slider.Value = MasterVol;
+        settings.MusicVol_Slider.Value = MusicVol;
         settings._Process(0);
         return true;
     }
@@ -97,8 +103,12 @@ public partial class ReadFile : Node
 
         double FOV = (double)file.GetValue("Visual", "FOV");
         double MouseSens = (double)file.GetValue("Controls", "MouseSens");
+        double MasterVol = (double)file.GetValue("Controls", "MasterVol");
+        double MusicVol = (double)file.GetValue("Controls", "MusicVol");
         settings.FOV_Slider.Value = FOV;
         settings.MouseSens_Slider.Value = MouseSens;
+        settings.MasterVol_Slider.Value = MasterVol;
+        settings.MusicVol_Slider.Value = MusicVol;
         settings._Process(0);
         return true;
     }

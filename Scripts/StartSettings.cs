@@ -13,10 +13,22 @@ public partial class StartSettings : Control
     public Slider MouseSens_Slider;
 
     [Export]
+    public Slider MasterVol_Slider;
+
+    [Export]
+    public Slider MusicVol_Slider;
+
+    [Export]
     public SpinBox FOV_Label;
 
     [Export]
     public SpinBox MouseSens_Label;
+
+    [Export]
+    public SpinBox MasterVol_Label;
+
+    [Export]
+    public SpinBox MusicVol_Label;
 
     [Export]
     public TabBar Section;
@@ -44,7 +56,7 @@ public partial class StartSettings : Control
     public void SaveSettings()
     {
         // make it save the settings
-        Game.ReadFile.SaveSettings(FOV_Slider.Value, MouseSens_Slider.Value);
+        Game.ReadFile.SaveSettings(FOV_Slider.Value, MouseSens_Slider.Value, MasterVol_Slider.Value, MusicVol_Slider.Value);
         currTab = 0;
         Game.ExitSettings();
     }
@@ -57,6 +69,8 @@ public partial class StartSettings : Control
 
     private double prevFOV = 75;
     private double prevMouseSens = 1;
+    private double prevMasterVol = 100;
+    private double prevMusicVol = 100;
     public override void _Process(double delta)
     {
         if (Section.CurrentTab != currTab) SetVisibleSection();
@@ -90,6 +104,36 @@ public partial class StartSettings : Control
             }
             MouseSens_Slider.Value = Math.Round(MouseSens_Label.Value, 2);
             prevMouseSens = MouseSens_Slider.Value;
+        }
+
+        if (MasterVol_Slider.Value != prevMasterVol)
+        {
+            MasterVol_Label.Value = MasterVol_Slider.Value;
+            //Player.BaseFOV = FOV_Slider.Value;
+            //Player.SmoothFOV(FOV_Slider.Value, 0);
+            prevMasterVol = MasterVol_Slider.Value;
+        }
+        else if (MasterVol_Label.Value != prevMasterVol)
+        {
+            MasterVol_Slider.Value = MasterVol_Label.Value;
+            //Player.BaseFOV = FOV_Slider.Value;
+            //Player.SmoothFOV(FOV_Slider.Value, 0);
+            prevMasterVol = MasterVol_Slider.Value;
+        }
+
+        if (MusicVol_Slider.Value != prevMusicVol)
+        {
+            MusicVol_Label.Value = MusicVol_Slider.Value;
+            //Player.BaseFOV = FOV_Slider.Value;
+            //Player.SmoothFOV(FOV_Slider.Value, 0);
+            prevMusicVol = MusicVol_Slider.Value;
+        }
+        else if (MusicVol_Label.Value != prevMusicVol)
+        {
+            MusicVol_Slider.Value = MusicVol_Label.Value;
+            //Player.BaseFOV = FOV_Slider.Value;
+            //Player.SmoothFOV(FOV_Slider.Value, 0);
+            prevMusicVol = MusicVol_Slider.Value;
         }
     }
 

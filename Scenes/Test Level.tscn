@@ -94,6 +94,15 @@ Game = NodePath("..")
 
 [node name="UserInterface" parent="." instance=ExtResource("4_bqbhu")]
 
+[node name="Sliders" parent="UserInterface/Settings/Audio" index="0"]
+layout_mode = 0
+
+[node name="Labels" parent="UserInterface/Settings/Audio" index="1"]
+layout_mode = 0
+
+[node name="Values" parent="UserInterface/Settings/Audio" index="2"]
+layout_mode = 0
+
 [node name="PauseMenu" parent="." instance=ExtResource("18_38umj")]
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
@@ -109,6 +118,7 @@ collision_mask = 7
 [node name="Spawners" type="Node3D" parent="."]
 
 [node name="EnemySpawner1" parent="Spawners" node_paths=PackedStringArray("game") instance=ExtResource("22_30aan")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.80478, 0, 0)
 game = NodePath("../..")
 CheckpointDisable = 2
 

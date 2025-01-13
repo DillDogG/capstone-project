@@ -10,7 +10,7 @@
 [ext_resource type="Script" path="res://Scripts/SaveSettingsStart.cs" id="6_fg8y7"]
 [ext_resource type="Script" path="res://Scripts/ResetSettingsStart.cs" id="7_gn0ud"]
 
-[sub_resource type="Theme" id="Theme_hmbx4"]
+[sub_resource type="Theme" id="Theme_i8aki"]
 
 [node name="StartScreen" type="Node2D" node_paths=PackedStringArray("PauseMenu", "SettingsMenu")]
 process_mode = 3
@@ -87,25 +87,38 @@ theme_override_font_sizes/font_size = 24
 text = "Quit Game"
 script = ExtResource("4_me061")
 
-[node name="Settings" type="Control" parent="." node_paths=PackedStringArray("Game", "FOV_Slider", "MouseSens_Slider", "FOV_Label", "MouseSens_Label", "Section", "Visuals", "Audio", "Controls", "Controller")]
+[node name="Settings" type="Control" parent="." node_paths=PackedStringArray("Game", "FOV_Slider", "MouseSens_Slider", "MasterVol_Slider", "MusicVol_Slider", "FOV_Label", "MouseSens_Label", "MasterVol_Label", "MusicVol_Label", "Section", "Visuals", "Audio", "Controls", "Controller")]
 layout_mode = 3
 anchors_preset = 0
 offset_left = 205.0
 offset_top = 124.0
 offset_right = 245.0
 offset_bottom = 164.0
-theme = SubResource("Theme_hmbx4")
+theme = SubResource("Theme_i8aki")
 script = ExtResource("5_ugr8y")
 Game = NodePath("..")
 FOV_Slider = NodePath("Visuals/VBoxContainer/FOV_Slider")
 MouseSens_Slider = NodePath("Controls/Mouse_Sens_Slider")
+MasterVol_Slider = NodePath("Audio/Sliders/Master_Volume_Slider")
+MusicVol_Slider = NodePath("Audio/Sliders/Music_Volume_Slider")
 FOV_Label = NodePath("Visuals/FOV_Value")
 MouseSens_Label = NodePath("Controls/Mouse_Sens_Value")
+MasterVol_Label = NodePath("Audio/Values/Master_Volume_Value")
+MusicVol_Label = NodePath("Audio/Values/Music_Volume_Value")
 Section = NodePath("TabBar")
 Visuals = NodePath("Visuals")
 Audio = NodePath("Audio")
 Controls = NodePath("Controls")
 Controller = NodePath("Controller")
+
+[node name="Background" type="ColorRect" parent="Settings"]
+custom_minimum_size = Vector2(1152, 648)
+layout_mode = 0
+offset_left = -205.0
+offset_top = -124.0
+offset_right = 947.0
+offset_bottom = 524.0
+color = Color(0.141176, 0.141176, 0.141176, 0.784314)
 
 [node name="TabBar" type="TabBar" parent="Settings"]
 layout_mode = 0
@@ -189,6 +202,54 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
+[node name="Sliders" type="VBoxContainer" parent="Settings/Audio"]
+offset_top = 40.0
+offset_right = 500.0
+offset_bottom = 211.0
+theme_override_constants/separation = 50
+
+[node name="Master_Volume_Slider" type="HSlider" parent="Settings/Audio/Sliders"]
+layout_mode = 2
+value = 100.0
+scrollable = false
+
+[node name="Music_Volume_Slider" type="HSlider" parent="Settings/Audio/Sliders"]
+layout_mode = 2
+value = 100.0
+scrollable = false
+
+[node name="Labels" type="VBoxContainer" parent="Settings/Audio"]
+offset_left = 510.0
+offset_top = 32.0
+offset_right = 696.0
+offset_bottom = 203.0
+theme_override_constants/separation = 36
+
+[node name="MasterLabel" type="Label" parent="Settings/Audio/Labels"]
+layout_mode = 2
+text = "Master Volume"
+horizontal_alignment = 2
+
+[node name="MusicLabel" type="Label" parent="Settings/Audio/Labels"]
+layout_mode = 2
+text = "Music Volume"
+horizontal_alignment = 2
+
+[node name="Values" type="VBoxContainer" parent="Settings/Audio"]
+offset_left = 720.0
+offset_top = 32.0
+offset_right = 824.0
+offset_bottom = 203.0
+theme_override_constants/separation = 32
+
+[node name="Master_Volume_Value" type="SpinBox" parent="Settings/Audio/Values"]
+layout_mode = 2
+value = 100.0
+
+[node name="Music_Volume_Value" type="SpinBox" parent="Settings/Audio/Values"]
+layout_mode = 2
+value = 100.0
+
 [node name="Controls" type="Control" parent="Settings"]
 layout_mode = 3
 anchors_preset = 0
@@ -198,17 +259,17 @@ offset_bottom = 40.0
 [node name="Label2" type="Label" parent="Settings/Controls"]
 layout_mode = 2
 offset_left = 510.0
-offset_top = 156.0
+offset_top = 32.0
 offset_right = 696.0
-offset_bottom = 187.0
+offset_bottom = 63.0
 text = "Mouse Sensitivity"
 horizontal_alignment = 2
 
 [node name="Mouse_Sens_Slider" type="HSlider" parent="Settings/Controls"]
 layout_mode = 2
-offset_top = 165.0
+offset_top = 40.0
 offset_right = 500.0
-offset_bottom = 181.0
+offset_bottom = 56.0
 min_value = 0.1
 max_value = 5.0
 step = 0.05
@@ -218,9 +279,9 @@ scrollable = false
 [node name="Mouse_Sens_Value" type="SpinBox" parent="Settings/Controls"]
 layout_mode = 0
 offset_left = 720.0
-offset_top = 156.0
-offset_right = 803.063
-offset_bottom = 187.0
+offset_top = 32.0
+offset_right = 824.0
+offset_bottom = 71.0
 min_value = 0.1
 max_value = 5.0
 step = 0.05
