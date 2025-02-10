@@ -72,12 +72,13 @@ normal_texture = ExtResource("2_swgp5")
 mesh_list = Array[Terrain3DMeshAsset]([SubResource("Terrain3DMeshAsset_djhf4")])
 texture_list = Array[Terrain3DTextureAsset]([SubResource("Terrain3DTextureAsset_34tnl")])
 
-[node name="Node3D" type="Node3D" node_paths=PackedStringArray("PauseMenu", "SettingsMenu", "Spawners", "Death")]
+[node name="Node3D" type="Node3D" node_paths=PackedStringArray("PauseMenu", "SettingsMenu", "Spawners", "Doors", "Death")]
 script = ExtResource("1_81kqs")
 PauseMenu = NodePath("PauseMenu")
 SettingsMenu = NodePath("UserInterface/Settings")
 EnemyPrefab = ExtResource("2_c6icm")
 Spawners = [NodePath("Spawners/EnemySpawner")]
+Doors = []
 SceneName = "FirstLevel"
 Checkpoints = PackedVector3Array(0, 1, 0, 285, 1, 36.894)
 SpawnTime = 5.0
@@ -91,6 +92,15 @@ CreditDisplay = NodePath("../UserInterface/CreditCount")
 Game = NodePath("..")
 
 [node name="UserInterface" parent="." instance=ExtResource("4_lmhmu")]
+
+[node name="Sliders" parent="UserInterface/Settings/Audio" index="0"]
+layout_mode = 0
+
+[node name="Labels" parent="UserInterface/Settings/Audio" index="1"]
+layout_mode = 0
+
+[node name="Values" parent="UserInterface/Settings/Audio" index="2"]
+layout_mode = 0
 
 [node name="PauseMenu" parent="." instance=ExtResource("5_8v535")]
 

@@ -1,10 +1,11 @@
-[gd_scene load_steps=22 format=3 uid="uid://cqtpwqoty3pxd"]
+[gd_scene load_steps=23 format=3 uid="uid://cqtpwqoty3pxd"]
 
 [ext_resource type="Script" path="res://Scripts/Game.cs" id="1_4awxq"]
 [ext_resource type="PackedScene" uid="uid://cctntsygmnc80" path="res://Prefabs/player.tscn" id="1_sr6c0"]
 [ext_resource type="Terrain3DStorage" uid="uid://blbayoklwmwm4" path="res://Scenes/Test Level.res" id="3_381tp"]
 [ext_resource type="PackedScene" uid="uid://83t51lgp7jip" path="res://Prefabs/user_interface.tscn" id="4_bqbhu"]
 [ext_resource type="PackedScene" uid="uid://b50ul6mjmrdjk" path="res://Prefabs/Enemy.tscn" id="4_cgvfi"]
+[ext_resource type="PackedScene" uid="uid://cq810djdcqr7j" path="res://Prefabs/BlockedDoor.tscn" id="10_sq0op"]
 [ext_resource type="PackedScene" uid="uid://seg3hudp2oft" path="res://Prefabs/WeaponBuy.tscn" id="16_fd4bh"]
 [ext_resource type="PackedScene" uid="uid://bdaaobcdhef0j" path="res://Prefabs/pause_menu.tscn" id="18_38umj"]
 [ext_resource type="Texture2D" uid="uid://qilxaj3b4nx0" path="res://Images/Grass/tileable-TT7002066-verydark.png" id="18_pb75f"]
@@ -74,12 +75,13 @@ normal_texture = ExtResource("19_hc43c")
 mesh_list = Array[Terrain3DMeshAsset]([SubResource("Terrain3DMeshAsset_5rwbj")])
 texture_list = Array[Terrain3DTextureAsset]([SubResource("Terrain3DTextureAsset_ofyha")])
 
-[node name="Node3D" type="Node3D" node_paths=PackedStringArray("PauseMenu", "SettingsMenu", "Spawners", "Death")]
+[node name="Node3D" type="Node3D" node_paths=PackedStringArray("PauseMenu", "SettingsMenu", "Spawners", "Doors", "Death")]
 script = ExtResource("1_4awxq")
 PauseMenu = NodePath("PauseMenu")
 SettingsMenu = NodePath("UserInterface/Settings")
 EnemyPrefab = ExtResource("4_cgvfi")
 Spawners = [NodePath("Spawners/EnemySpawner1"), NodePath("Spawners/EnemySpawner2"), NodePath("Spawners/EnemySpawner3"), NodePath("Spawners/EnemySpawner4"), NodePath("Spawners/EnemySpawner5"), NodePath("Spawners/EnemySpawner6")]
+Doors = []
 SceneName = "Test Level"
 Checkpoints = PackedVector3Array(0, 1.889, 0, 22, 1, 140.761)
 SpawnTime = 10.0
@@ -96,12 +98,22 @@ Game = NodePath("..")
 
 [node name="Sliders" parent="UserInterface/Settings/Audio" index="0"]
 layout_mode = 0
+offset_top = 0.0
+offset_bottom = 171.0
 
 [node name="Labels" parent="UserInterface/Settings/Audio" index="1"]
 layout_mode = 0
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 186.0
+offset_bottom = 171.0
 
 [node name="Values" parent="UserInterface/Settings/Audio" index="2"]
 layout_mode = 0
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 104.0
+offset_bottom = 171.0
 
 [node name="PauseMenu" parent="." instance=ExtResource("18_38umj")]
 
@@ -172,6 +184,11 @@ HitMarker = NodePath("../UserInterface/HitMarker")
 transform = Transform3D(0.633907, 0, -0.773409, 0.0935581, 0.992656, 0.0766828, 0.767729, -0.120968, 0.629252, 0, 0, 0)
 light_color = Color(1, 0.627451, 0.627451, 1)
 shadow_enabled = true
+
+[node name="BlockedDoor" parent="." node_paths=PackedStringArray("TextDisplay", "game") instance=ExtResource("10_sq0op")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.1474, 3.05165, 64.4888)
+TextDisplay = NodePath("../UserInterface/BuyDisplay")
+game = NodePath("..")
 
 [node name="ExitDoor" parent="." instance=ExtResource("20_mo2mr")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 140, 2.5, 0)

@@ -203,6 +203,7 @@ offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="Sliders" type="VBoxContainer" parent="Settings/Audio"]
+layout_mode = 0
 offset_top = 40.0
 offset_right = 500.0
 offset_bottom = 211.0
@@ -219,6 +220,7 @@ value = 100.0
 scrollable = false
 
 [node name="Labels" type="VBoxContainer" parent="Settings/Audio"]
+layout_mode = 0
 offset_left = 510.0
 offset_top = 32.0
 offset_right = 696.0
@@ -236,6 +238,7 @@ text = "Music Volume"
 horizontal_alignment = 2
 
 [node name="Values" type="VBoxContainer" parent="Settings/Audio"]
+layout_mode = 0
 offset_left = 720.0
 offset_top = 32.0
 offset_right = 824.0

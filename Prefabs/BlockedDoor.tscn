@@ -1,0 +1,49 @@
+[gd_scene load_steps=7 format=3 uid="uid://cq810djdcqr7j"]
+
+[ext_resource type="PackedScene" uid="uid://dyaug3wpvlh1f" path="res://Models/BlockedDoor/BlockedDoor.glb" id="1_fso6r"]
+[ext_resource type="Script" path="res://Scripts/BlockedDoor.cs" id="1_p41e8"]
+[ext_resource type="Script" path="res://Scripts/ExitDoor.cs" id="2_hj5to"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ehqin"]
+size = Vector3(3, 5, 3)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_y05qd"]
+size = Vector3(0.75, 5.53682, 4.00836)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_42kjt"]
+size = Vector3(0.498901, 5.00303, 2.98694)
+
+[node name="Node3D" type="Node3D" node_paths=PackedStringArray("animation", "start", "end", "area")]
+script = ExtResource("1_p41e8")
+Price = 250
+animation = NodePath("BlockedDoor/AnimationPlayer")
+start = NodePath("Starting")
+end = NodePath("Ending")
+area = NodePath("Area3D")
+
+[node name="BlockedDoor" parent="." instance=ExtResource("1_fso6r")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+
+[node name="Area3D" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.25, 0, 0)
+script = ExtResource("2_hj5to")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("BoxShape3D_ehqin")
+
+[node name="Starting" type="StaticBody3D" parent="."]
+collision_layer = 7
+collision_mask = 7
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Starting"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.281592, -0.0138245)
+shape = SubResource("BoxShape3D_y05qd")
+
+[node name="Ending" type="StaticBody3D" parent="."]
+process_mode = 4
+collision_layer = 7
+collision_mask = 7
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ending"]
+transform = Transform3D(0.879075, 0, 0.476683, 0, 1, 0, -0.476683, 0, 0.879075, -0.714025, 0.000536919, -2.83936)
+shape = SubResource("BoxShape3D_42kjt")

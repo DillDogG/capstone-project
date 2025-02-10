@@ -15,6 +15,8 @@ public partial class InteractableObject : Node3D
     [Export]
     public Game game { get; set; }
 
+    protected Player player;
+
     public override void _PhysicsProcess(double delta)
     {
         if (area.HasOverlappingBodies())
@@ -23,7 +25,7 @@ public partial class InteractableObject : Node3D
             {
                 if (Overlaps is Player)
                 {
-                    Player player = (Player)Overlaps;
+                    player = (Player)Overlaps;
 
                     if (Useable) TextDisplay.Text = DisplayText();
                     else { TextDisplay.Text = ""; return; }

@@ -20,6 +20,9 @@ public partial class Game : Node3D
     public EnemySpawner?[] Spawners { get; set; }
 
     [Export]
+    public BlockedDoor?[] Doors { get; set; }
+
+    [Export]
     public string SceneName { get; set; }
 
     public Player player { get; set; }
@@ -54,6 +57,11 @@ public partial class Game : Node3D
             foreach (var spawn in Spawners)
             {
                 spawn.DisabledOnLoad(Checkpoint);
+            }
+
+            foreach (var door in Doors)
+            {
+                door.DisabledOnLoad(Checkpoint);
             }
         }
         else
