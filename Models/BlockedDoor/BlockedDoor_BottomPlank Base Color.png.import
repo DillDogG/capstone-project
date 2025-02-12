@@ -2,14 +2,11 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bq6ncr2e037dx"
+uid="uid://cdcjqabxbb0rt"
 path.s3tc="res://.godot/imported/BlockedDoor_BottomPlank Base Color.png-c24348db9685799bdede802dbc78151a.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
-}
-generator_parameters={
-"md5": "ebda455021fa7587071c4956cccca812"
 }
 
 [deps]

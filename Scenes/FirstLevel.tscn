@@ -94,13 +94,20 @@ Game = NodePath("..")
 [node name="UserInterface" parent="." instance=ExtResource("4_lmhmu")]
 
 [node name="Sliders" parent="UserInterface/Settings/Audio" index="0"]
-layout_mode = 0
+offset_top = 0.0
+offset_bottom = 171.0
 
 [node name="Labels" parent="UserInterface/Settings/Audio" index="1"]
-layout_mode = 0
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 186.0
+offset_bottom = 171.0
 
 [node name="Values" parent="UserInterface/Settings/Audio" index="2"]
-layout_mode = 0
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 104.0
+offset_bottom = 171.0
 
 [node name="PauseMenu" parent="." instance=ExtResource("5_8v535")]
 

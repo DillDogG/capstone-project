@@ -3,6 +3,7 @@ using System;
 
 public partial class BlockedDoor : InteractableObject
 {
+    // if 0 then won't reenable
     [Export]
     public int CheckpointDisable { get; set; }
 

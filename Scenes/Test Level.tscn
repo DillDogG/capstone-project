@@ -81,7 +81,7 @@ PauseMenu = NodePath("PauseMenu")
 SettingsMenu = NodePath("UserInterface/Settings")
 EnemyPrefab = ExtResource("4_cgvfi")
 Spawners = [NodePath("Spawners/EnemySpawner1"), NodePath("Spawners/EnemySpawner2"), NodePath("Spawners/EnemySpawner3"), NodePath("Spawners/EnemySpawner4"), NodePath("Spawners/EnemySpawner5"), NodePath("Spawners/EnemySpawner6")]
-Doors = []
+Doors = [NodePath("WeaponBuy")]
 SceneName = "Test Level"
 Checkpoints = PackedVector3Array(0, 1.889, 0, 22, 1, 140.761)
 SpawnTime = 10.0
@@ -97,19 +97,16 @@ Game = NodePath("..")
 [node name="UserInterface" parent="." instance=ExtResource("4_bqbhu")]
 
 [node name="Sliders" parent="UserInterface/Settings/Audio" index="0"]
-layout_mode = 0
 offset_top = 0.0
 offset_bottom = 171.0
 
 [node name="Labels" parent="UserInterface/Settings/Audio" index="1"]
-layout_mode = 0
 offset_left = 0.0
 offset_top = 0.0
 offset_right = 186.0
 offset_bottom = 171.0
 
 [node name="Values" parent="UserInterface/Settings/Audio" index="2"]
-layout_mode = 0
 offset_left = 0.0
 offset_top = 0.0
 offset_right = 104.0
@@ -187,6 +184,7 @@ shadow_enabled = true
 
 [node name="BlockedDoor" parent="." node_paths=PackedStringArray("TextDisplay", "game") instance=ExtResource("10_sq0op")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.1474, 3.05165, 64.4888)
+CheckpointDisable = 1
 TextDisplay = NodePath("../UserInterface/BuyDisplay")
 game = NodePath("..")
 
