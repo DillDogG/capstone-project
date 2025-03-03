@@ -67,6 +67,10 @@ public partial class Game : Node3D
         else
         {
             ReadFile.LoadStats(player);
+            foreach (var spawn in Spawners)
+            {
+                spawn.DisabledOnLoad(0);
+            }
             SaveGame();
         }
 	}
@@ -74,16 +78,18 @@ public partial class Game : Node3D
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
-        SpawnTimer -= delta;
+        int spawnCount = 0;
+        foreach (var spawn in Spawners) if (spawn != null) spawnCount++;
+        if (spawnCount > 0) SpawnTimer -= delta;
         if (SpawnTimer <= 0)
         {
             OnSpawnTimerTimeout();
-            if (SpawnTime >= 0) SpawnTimer = SpawnTime;
+            if (SpawnTime > 0) SpawnTimer = SpawnTime;
             else
             {
-                int spawnCount = 0;
-                foreach (var spawn in Spawners) if (spawn != null) spawnCount++;
-                SpawnTimer = (60 / Math.Abs(SpawnTime)) / spawnCount;
+                if (spawnCount <= 0) spawnCount = 1;
+                // SpawnTimer = (60 / Math.Abs(SpawnTime)) / spawnCount;
+                SpawnTimer = 60 / spawnCount;
             }
         }
     }
@@ -132,9 +138,10 @@ public partial class Game : Node3D
         GetTree().Paused = true;
     }
 
-    public void SaveGame(int Checkpoint = 0)
+    public void SaveGame(int newCheckpoint = 0)
     {
-        ReadFile.SaveGame(SceneName, Checkpoint, player.GlobalTimer._timer, player.Credits, player.Inventory.ToArray());
+        ReadFile.SaveGame(SceneName, newCheckpoint, player.GlobalTimer._timer, player.Credits, player.Inventory.ToArray());
+        Checkpoint = newCheckpoint;
         //foreach (var Weapon in player.Inventory)
         //{
         //    if (Weapon is SniperRifleRanged)

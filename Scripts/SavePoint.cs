@@ -12,7 +12,7 @@ public partial class SavePoint : InteractableObject
 
     public override string DisplayText()
     {
-        return "Would you like to save the game here?";
+        return "Would you like to save the game here? (press E)";
     }
 
     public override void Interacted()

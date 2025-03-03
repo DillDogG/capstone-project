@@ -81,7 +81,6 @@ Spawners = [NodePath("Spawners/EnemySpawner")]
 Doors = []
 SceneName = "FirstLevel"
 Checkpoints = PackedVector3Array(0, 1, 0, 285, 1, 36.894)
-SpawnTime = 5.0
 Death = NodePath("UserInterface/DeathFade")
 
 [node name="Player" parent="." node_paths=PackedStringArray("ammoDisp", "healthDisp", "GlobalTimer", "CreditDisplay", "Game") instance=ExtResource("2_jolhm")]
@@ -92,22 +91,6 @@ CreditDisplay = NodePath("../UserInterface/CreditCount")
 Game = NodePath("..")
 
 [node name="UserInterface" parent="." instance=ExtResource("4_lmhmu")]
-
-[node name="Sliders" parent="UserInterface/Settings/Audio" index="0"]
-offset_top = 0.0
-offset_bottom = 171.0
-
-[node name="Labels" parent="UserInterface/Settings/Audio" index="1"]
-offset_left = 0.0
-offset_top = 0.0
-offset_right = 186.0
-offset_bottom = 171.0
-
-[node name="Values" parent="UserInterface/Settings/Audio" index="2"]
-offset_left = 0.0
-offset_top = 0.0
-offset_right = 104.0
-offset_bottom = 171.0
 
 [node name="PauseMenu" parent="." instance=ExtResource("5_8v535")]
 

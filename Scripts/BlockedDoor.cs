@@ -28,8 +28,8 @@ public partial class BlockedDoor : InteractableObject
     {
         if (checkpoint >= CheckpointDisable)
         {
-            animation.Play("Closing");
             Useable = false;
+            animation.Play("Closing");
             start.ProcessMode = ProcessModeEnum.Disabled;
             end.ProcessMode = ProcessModeEnum.Inherit;
         }
@@ -37,7 +37,7 @@ public partial class BlockedDoor : InteractableObject
 
     public override string DisplayText()
     {
-        return "Would you like to open this door? (" + Price + " credits)";
+        return "Would you like to open this door? (" + Price + " credits, Press E)";
     }
 
     public override void Interacted()
@@ -49,6 +49,18 @@ public partial class BlockedDoor : InteractableObject
             start.ProcessMode = ProcessModeEnum.Disabled;
             end.ProcessMode = ProcessModeEnum.Inherit;
             player.AddCredits(-Price);
+        }
+    }
+
+    public override void _PhysicsProcess(double delta)
+    {
+        base._PhysicsProcess(delta);
+        if (game.Checkpoint >= CheckpointDisable && Useable)
+        {
+            Useable = false;
+            animation.Play("Closing");
+            start.ProcessMode = ProcessModeEnum.Disabled;
+            end.ProcessMode = ProcessModeEnum.Inherit;
         }
     }
 }

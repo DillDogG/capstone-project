@@ -39,8 +39,8 @@ public partial class WeaponBuy : Node3D
                             break;
                         }
                     }
-                    if (playerSave == null) BuyDisplay.Text = "Purchase " + WeaponName + ": Price " + MainPrice;
-                    else BuyDisplay.Text = "Purchase " + WeaponName + " Ammo: Price " + AmmoPrice;
+                    if (playerSave == null) BuyDisplay.Text = "Purchase " + WeaponName + ": Price " + MainPrice + " (Press E)";
+                    else BuyDisplay.Text = "Purchase " + WeaponName + " Ammo: Price " + AmmoPrice + " (Press E)";
                     if (Input.IsActionJustPressed("Interact"))
                     {
                         if (playerSave == null && player.Credits >= MainPrice)
@@ -67,7 +67,7 @@ public partial class WeaponBuy : Node3D
                     }
                     break;
                 }
-                if (BuyDisplay.Text == "Purchase " + WeaponName + ": Price " + MainPrice || BuyDisplay.Text == "Purchase " + WeaponName + " Ammo: Price " + AmmoPrice) BuyDisplay.Text = "";
+                if (BuyDisplay.Text == "Purchase " + WeaponName + ": Price " + MainPrice + " (Press E)" || BuyDisplay.Text == "Purchase " + WeaponName + " Ammo: Price " + AmmoPrice + " (Press E)") BuyDisplay.Text = "";
             }
         }
     }

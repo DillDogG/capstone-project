@@ -1,8 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://cq810djdcqr7j"]
+[gd_scene load_steps=6 format=3 uid="uid://cq810djdcqr7j"]
 
 [ext_resource type="PackedScene" uid="uid://dyaug3wpvlh1f" path="res://Models/BlockedDoor/BlockedDoor.glb" id="1_fso6r"]
 [ext_resource type="Script" path="res://Scripts/BlockedDoor.cs" id="1_p41e8"]
-[ext_resource type="Script" path="res://Scripts/ExitDoor.cs" id="2_hj5to"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ehqin"]
 size = Vector3(3, 5, 3)
@@ -26,7 +25,6 @@ transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
 
 [node name="Area3D" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.25, 0, 0)
-script = ExtResource("2_hj5to")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
 shape = SubResource("BoxShape3D_ehqin")

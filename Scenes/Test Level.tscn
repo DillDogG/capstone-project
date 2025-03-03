@@ -81,10 +81,9 @@ PauseMenu = NodePath("PauseMenu")
 SettingsMenu = NodePath("UserInterface/Settings")
 EnemyPrefab = ExtResource("4_cgvfi")
 Spawners = [NodePath("Spawners/EnemySpawner1"), NodePath("Spawners/EnemySpawner2"), NodePath("Spawners/EnemySpawner3"), NodePath("Spawners/EnemySpawner4"), NodePath("Spawners/EnemySpawner5"), NodePath("Spawners/EnemySpawner6")]
-Doors = [NodePath("WeaponBuy")]
+Doors = [NodePath("BlockedDoor")]
 SceneName = "Test Level"
 Checkpoints = PackedVector3Array(0, 1.889, 0, 22, 1, 140.761)
-SpawnTime = 10.0
 Death = NodePath("UserInterface/DeathFade")
 
 [node name="Player" parent="." node_paths=PackedStringArray("ammoDisp", "healthDisp", "GlobalTimer", "CreditDisplay", "Game") instance=ExtResource("1_sr6c0")]
@@ -95,22 +94,6 @@ CreditDisplay = NodePath("../UserInterface/CreditCount")
 Game = NodePath("..")
 
 [node name="UserInterface" parent="." instance=ExtResource("4_bqbhu")]
-
-[node name="Sliders" parent="UserInterface/Settings/Audio" index="0"]
-offset_top = 0.0
-offset_bottom = 171.0
-
-[node name="Labels" parent="UserInterface/Settings/Audio" index="1"]
-offset_left = 0.0
-offset_top = 0.0
-offset_right = 186.0
-offset_bottom = 171.0
-
-[node name="Values" parent="UserInterface/Settings/Audio" index="2"]
-offset_left = 0.0
-offset_top = 0.0
-offset_right = 104.0
-offset_bottom = 171.0
 
 [node name="PauseMenu" parent="." instance=ExtResource("18_38umj")]
 
@@ -129,12 +112,12 @@ collision_mask = 7
 [node name="EnemySpawner1" parent="Spawners" node_paths=PackedStringArray("game") instance=ExtResource("22_30aan")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.80478, 0, 0)
 game = NodePath("../..")
+CheckpointEnable = 1
 CheckpointDisable = 2
 
 [node name="EnemySpawner2" parent="Spawners" node_paths=PackedStringArray("game") instance=ExtResource("22_30aan")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.80445, 0, -29.1229)
 game = NodePath("../..")
-CheckpointDisable = 1
 
 [node name="EnemySpawner3" parent="Spawners" node_paths=PackedStringArray("game") instance=ExtResource("22_30aan")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.9049, 0, 33.4996)

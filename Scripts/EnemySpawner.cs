@@ -16,7 +16,10 @@ public partial class EnemySpawner : Node3D
     public double ReenableTime { get; set; } = 0;
 
     [Export]
-    public int CheckpointDisable { get; set; }
+    public int CheckpointEnable { get; set; } = 0;
+
+    [Export]
+    public int CheckpointDisable { get; set; } = 1;
 
     public override void _Ready()
     {
@@ -29,6 +32,10 @@ public partial class EnemySpawner : Node3D
     public void DisabledOnLoad(int checkpoint)
     {
         if (checkpoint >= CheckpointDisable)
+        {
+            animationTime = 4;
+        }
+        else if (checkpoint < CheckpointEnable)
         {
             animationTime = 4;
         }
@@ -53,18 +60,30 @@ public partial class EnemySpawner : Node3D
     public override void _PhysicsProcess(double delta)
     {
         if (DoMain) MainUpdate(delta);
-        if (ReenableTimer > 0)
+        if (game.Checkpoint < CheckpointDisable && game.Checkpoint >= CheckpointEnable)
         {
-            ReenableTimer -= delta;
-            if (ReenableTimer <= 0)
+            if (ReenableTimer > 0)
             {
-                DoMain = true;
-                game.Spawners[spawnerNumber] = this;
-                animationTime = 0;
-                PauseTime = 0;
-                animation.SpeedScale = 0;
-                animation.Seek(animationTime, true);
+                ReenableTimer -= delta;
+                if (ReenableTimer <= 0)
+                {
+                    DoMain = true;
+                    game.Spawners[spawnerNumber] = this;
+                    animationTime = 0;
+                    PauseTime = 0;
+                    animation.SpeedScale = 0;
+                    animation.Seek(animationTime, true);
+                }
             }
+        }
+        else
+        {
+            animation.Play("Closing");
+            animation.SpeedScale = 0;
+            animation.Seek(4, true);
+            DisableSpawning();
+            ReenableTimer = 1;
+            DoMain = false;
         }
     }
 
