@@ -207,7 +207,7 @@ public partial class Player : CharacterBody3D, Damageable
         Vector3 momentum = _targetVelocity;
         momentum.Y = 0;
         if (momentum.Length() / 20 <= 0.5) ApplyDamage((5 - momentum.Length()) / 20);
-        else if (Health <= 150) Health += momentum.Length() / 400;
+        else if (Health <= MaxHealth) Health += momentum.Length() / 300;
         //GD.Print((momentum.Length() / 20));
         //Health += _targetVelocity.Length() / 20;
 	}

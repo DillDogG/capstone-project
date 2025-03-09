@@ -38,6 +38,13 @@ public partial class Game : Node3D
 
     [Export]
     public DeathFade Death;
+
+    [Export]
+    public bool EndlessMode { get; private set; } = false;
+    private double EndlessTimer;
+    [Export]
+    public EndlessHighScore endlessHighScore { get; set; }
+
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
 	{
@@ -73,6 +80,7 @@ public partial class Game : Node3D
             }
             SaveGame();
         }
+        if (EndlessMode) ReadFile.LoadBestTime(endlessHighScore);
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -84,13 +92,25 @@ public partial class Game : Node3D
         if (SpawnTimer <= 0)
         {
             OnSpawnTimerTimeout();
-            if (SpawnTime > 0) SpawnTimer = SpawnTime;
+            if (SpawnTime > 0)
+            {
+                if (spawnCount <= 0) spawnCount = 1;
+                SpawnTimer = (60 / spawnCount) / SpawnTime;
+            }
             else
             {
                 if (spawnCount <= 0) spawnCount = 1;
-                // SpawnTimer = (60 / Math.Abs(SpawnTime)) / spawnCount;
                 SpawnTimer = 60 / spawnCount;
             }
+            if (SpawnTimer < 3) SpawnTimer = 3;
+        }
+        if (EndlessMode)
+        {
+            EndlessTimer += delta;
+            if (EndlessTimer > 60 && Checkpoint == 0) Checkpoint = 1;
+            if (EndlessTimer > 180 && Checkpoint <= 1) Checkpoint = 2;
+            if (EndlessTimer > 300 && Checkpoint <= 2) Checkpoint = 3;
+            if (EndlessTimer > 600 && Checkpoint <= 3) Checkpoint = 4;
         }
     }
 
@@ -152,6 +172,11 @@ public partial class Game : Node3D
         //    }
         //}
         //ReadFile.SaveGame(SceneName, 0, player.GlobalTimer._timer, player.Health, player.Credits, new Weapon[0]);
+    }
+
+    public void SaveBestTime(double newBestTime)
+    {
+        ReadFile.SaveGame(newBestTime);
     }
 
     public void LoadGame()

@@ -32,6 +32,13 @@ public partial class StartScreen : Node
     {
         GetTree().Paused = false;
         ReadFile.ResetGame();
+        GetTree().ChangeSceneToFile("res://Scenes/FirstLevel.tscn");
+    }
+
+    public void Endless()
+    {
+        GetTree().Paused = false;
+        //ReadFile.ResetGame();
         GetTree().ChangeSceneToFile("res://Scenes/Test Level.tscn");
     }
 

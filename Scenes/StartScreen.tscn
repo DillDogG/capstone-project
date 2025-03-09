@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://cwmqhs88eueto"]
+[gd_scene load_steps=12 format=3 uid="uid://cwmqhs88eueto"]
 
 [ext_resource type="Script" path="res://Scripts/StartScreen.cs" id="1_kagiq"]
 [ext_resource type="FontFile" uid="uid://7jc8lsmmfdi1" path="res://Fonts/DavysCrappyWrit.ttf" id="1_spnxb"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://Scripts/LoadGame.cs" id="3_rp1gh"]
 [ext_resource type="Script" path="res://Scripts/SettingsButtonStart.cs" id="3_soygs"]
 [ext_resource type="Script" path="res://Scripts/QuitGameButton.cs" id="4_me061"]
+[ext_resource type="Script" path="res://Scripts/Endless.cs" id="5_lir87"]
 [ext_resource type="Script" path="res://Scripts/StartSettings.cs" id="5_ugr8y"]
 [ext_resource type="Script" path="res://Scripts/SaveSettingsStart.cs" id="6_fg8y7"]
 [ext_resource type="Script" path="res://Scripts/ResetSettingsStart.cs" id="7_gn0ud"]
@@ -57,13 +58,23 @@ Game = NodePath("../..")
 
 [node name="New" type="Button" parent="PauseMenu" node_paths=PackedStringArray("game")]
 layout_mode = 0
-offset_left = 475.0
+offset_left = 369.5
 offset_top = 300.0
-offset_right = 685.0
+offset_right = 579.5
 offset_bottom = 399.0
 theme_override_font_sizes/font_size = 24
 text = "New Game"
 script = ExtResource("3_0nw0h")
+game = NodePath("../..")
+
+[node name="Endless" type="Button" parent="PauseMenu" node_paths=PackedStringArray("game")]
+offset_left = 580.5
+offset_top = 300.0
+offset_right = 790.5
+offset_bottom = 399.0
+theme_override_font_sizes/font_size = 24
+text = "Endless"
+script = ExtResource("5_lir87")
 game = NodePath("../..")
 
 [node name="Settings" type="Button" parent="PauseMenu" node_paths=PackedStringArray("Game")]
@@ -88,6 +99,7 @@ text = "Quit Game"
 script = ExtResource("4_me061")
 
 [node name="Settings" type="Control" parent="." node_paths=PackedStringArray("Game", "FOV_Slider", "MouseSens_Slider", "MasterVol_Slider", "MusicVol_Slider", "FOV_Label", "MouseSens_Label", "MasterVol_Label", "MusicVol_Label", "Section", "Visuals", "Audio", "Controls", "Controller")]
+visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_left = 205.0

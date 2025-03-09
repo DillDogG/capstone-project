@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://Scripts/BlockedDoor.cs" id="1_p41e8"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ehqin"]
-size = Vector3(3, 5, 3)
+size = Vector3(3.47803, 5, 3)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_y05qd"]
 size = Vector3(0.75, 5.53682, 4.00836)
@@ -27,6 +27,7 @@ transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.25, 0, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.239014, 0, 0)
 shape = SubResource("BoxShape3D_ehqin")
 
 [node name="Starting" type="StaticBody3D" parent="."]

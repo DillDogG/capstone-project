@@ -140,6 +140,20 @@ public partial class ReadFile : Node
         return true;
     }
 
+    public bool SaveGame(double BestTime)
+    {
+        var file = new ConfigFile();
+        Error err = file.Load(SaveData);
+
+        if (err != Error.Ok)
+        {
+            return false;
+        }
+        file.SetValue("Endless", "BestTime", BestTime);
+        file.Save(SaveData);
+        return true;
+    }
+
     public bool WasGameLoaded()
     {
         var file = new ConfigFile();
@@ -259,6 +273,20 @@ public partial class ReadFile : Node
 
             }
         }
+        return true;
+    }
+
+    public bool LoadBestTime(EndlessHighScore timer)
+    {
+        var file = new ConfigFile();
+        Error err = file.Load(SaveData);
+
+        if (err != Error.Ok)
+        {
+            return false;
+        }
+        double Time = (double)file.GetValue("Endless", "BestTime");
+        timer.bestTime = Time;
         return true;
     }
 

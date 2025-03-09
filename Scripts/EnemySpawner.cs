@@ -21,6 +21,9 @@ public partial class EnemySpawner : Node3D
     [Export]
     public int CheckpointDisable { get; set; } = 1;
 
+    [Export]
+    public Label TextDisplay { get; set; }
+
     public override void _Ready()
     {
         for (var x = 0; x < game.Spawners.Length; x++)
@@ -88,6 +91,7 @@ public partial class EnemySpawner : Node3D
     }
 
     bool DoMain = true;
+    bool PlayerRecentlyHere = false;
     // exists purely to be able to disable main function
 	public void MainUpdate(double delta)
 	{
@@ -95,12 +99,16 @@ public partial class EnemySpawner : Node3D
         {
             foreach (var Overlaps in area.GetOverlappingBodies())
             {
-                if (Overlaps is Player && Input.IsActionPressed("Interact"))
+                if (Overlaps is Player)
                 {
-                    AnimationPlaying = true;
+                    if (Input.IsActionPressed("Interact")) AnimationPlaying = true;
+                    else AnimationPlaying = false;
+                    TextDisplay.Text = "Block up door (Hold E)";
+                    PlayerRecentlyHere = true;
                     break;
                 }
-                else AnimationPlaying = false;
+                //else AnimationPlaying = false;
+                if (TextDisplay.Text == "Block up door (Hold E)" && PlayerRecentlyHere) { TextDisplay.Text = ""; PlayerRecentlyHere = false; }
             }
         }
         if (AnimationPlaying && animationTime < 4)
@@ -118,6 +126,7 @@ public partial class EnemySpawner : Node3D
             DisableSpawning();
             ReenableTimer = ReenableTime;
             DoMain = false;
+            if (TextDisplay.Text == "Block up door (Hold E)") TextDisplay.Text = "";
         }
         else if (animationTime > PauseTime)
         {

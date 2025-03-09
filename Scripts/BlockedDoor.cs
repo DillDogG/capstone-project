@@ -51,7 +51,7 @@ public partial class BlockedDoor : InteractableObject
             player.AddCredits(-Price);
         }
     }
-
+    //private bool Open = false;
     public override void _PhysicsProcess(double delta)
     {
         base._PhysicsProcess(delta);
@@ -62,5 +62,10 @@ public partial class BlockedDoor : InteractableObject
             start.ProcessMode = ProcessModeEnum.Disabled;
             end.ProcessMode = ProcessModeEnum.Inherit;
         }
+        //if (!animation.IsPlaying() && !Useable && !Open)
+        //{
+        //    animation.Play("DoorAction_001");
+        //    Open = true;
+        //}
     }
 }
