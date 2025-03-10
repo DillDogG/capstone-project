@@ -68,6 +68,7 @@ script = ExtResource("3_0nw0h")
 game = NodePath("../..")
 
 [node name="Endless" type="Button" parent="PauseMenu" node_paths=PackedStringArray("game")]
+layout_mode = 0
 offset_left = 580.5
 offset_top = 300.0
 offset_right = 790.5

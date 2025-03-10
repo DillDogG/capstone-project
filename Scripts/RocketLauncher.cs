@@ -35,9 +35,16 @@ public partial class RocketLauncher : RangedWeapon
         if (FireCooldown > 0) return;
         if (HitCheck.IsColliding())
         {
-            Node3D hitObject = (Node3D)HitCheck.GetCollider();
-            explosion.Transform.Translated(hitObject.Position);
-            explosionOuter.Transform.Translated(hitObject.Position);
+            //var origin = HitCheck.GlobalTransform.Origin;
+            //var collision_point = HitCheck.GetCollisionPoint();
+            //var distance = origin.DistanceTo(collision_point);
+            //GD.Print(distance);
+            //GD.Print(Vector3.Forward * distance);
+            //Node3D hitObject = (Node3D)HitCheck.GetCollider();
+            //explosion.Transform.Translated(Vector3.Forward * distance);
+            //explosion.Position = (Vector3.Forward * distance);
+            //explosionOuter.Transform.Translated(Vector3.Forward * distance);
+            //explosionOuter.Position = (Vector3.Forward * distance);
             foreach (var hits in explosionOuter.GetOverlappingBodies())
             {
                 if (hits is Damageable)
