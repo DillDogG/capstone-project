@@ -376,7 +376,7 @@ BuyDisplay = NodePath("../UserInterface/BuyDisplay")
 
 [node name="WeaponBuy2" parent="." node_paths=PackedStringArray("BuyDisplay") instance=ExtResource("16_fd4bh")]
 transform = Transform3D(-1, 0, -8.9407e-08, 0, 1, 0, 8.9407e-08, 0, -1, -35.8457, 0, -14.6016)
-MainPrice = 100
+MainPrice = 3000
 AmmoPrice = 250
 GunPrefab = ExtResource("13_cl8at")
 WeaponName = "RocketLauncher"
