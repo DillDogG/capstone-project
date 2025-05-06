@@ -7,10 +7,7 @@ public partial class RocketLauncher : RangedWeapon
     AnimationPlayer animation;
 
     [Export]
-    Area3D explosion;
-
-    [Export]
-    Area3D explosionOuter;
+    PackedScene RocketPrefab;
     public RocketLauncher()
     {
         if (MaxAmmoCount == 0) MaxAmmoCount = 1;
@@ -35,26 +32,8 @@ public partial class RocketLauncher : RangedWeapon
         if (FireCooldown > 0) return;
         if (HitCheck.IsColliding())
         {
-            //var origin = HitCheck.GlobalTransform.Origin;
-            //var collision_point = HitCheck.GetCollisionPoint();
-            //var distance = origin.DistanceTo(collision_point);
-            //GD.Print(distance);
-            //GD.Print(Vector3.Forward * distance);
-            //Node3D hitObject = (Node3D)HitCheck.GetCollider();
-            //explosion.Transform.Translated(Vector3.Forward * distance);
-            //explosion.Position = (Vector3.Forward * distance);
-            //explosionOuter.Transform.Translated(Vector3.Forward * distance);
-            //explosionOuter.Position = (Vector3.Forward * distance);
-            foreach (var hits in explosionOuter.GetOverlappingBodies())
-            {
-                if (hits is Damageable)
-                {
-                    Damageable damageable = hits as Damageable;
-                    
-                    if (explosion.GetOverlappingBodies().Contains(hits)) damageable.ApplyDamage(200);
-                    else damageable.ApplyDamage(75);
-                }
-            }
+            RocketAmmo rocket = RocketPrefab.Instantiate<RocketAmmo>();
+
         }
         FireCooldown = FireRate;
         AmmoCount--;
