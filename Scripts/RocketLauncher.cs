@@ -30,11 +30,10 @@ public partial class RocketLauncher : RangedWeapon
             return;
         }
         if (FireCooldown > 0) return;
-        if (HitCheck.IsColliding())
-        {
-            RocketAmmo rocket = RocketPrefab.Instantiate<RocketAmmo>();
-
-        }
+        RocketAmmo rocket = RocketPrefab.Instantiate<RocketAmmo>();
+        GetTree().Root.AddChild(rocket);
+        rocket.Transform = GetParent().GetParent().GetParent().GetNode<Node3D>("Pivot").Transform;
+        rocket.Initialize(GetNode<Node3D>("Sniper_Rifle").GlobalPosition);
         FireCooldown = FireRate;
         AmmoCount--;
         if (AmmoCount != startAmmo) animation.Play("Shoot");

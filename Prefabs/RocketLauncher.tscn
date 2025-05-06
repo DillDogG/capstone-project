@@ -1,6 +1,7 @@
-[gd_scene load_steps=11 format=4 uid="uid://cd45gi7hweufd"]
+[gd_scene load_steps=12 format=4 uid="uid://cd45gi7hweufd"]
 
 [ext_resource type="Script" path="res://Scripts/RocketLauncher.cs" id="1_xpwxv"]
+[ext_resource type="PackedScene" uid="uid://j4ek42brw1pa" path="res://Prefabs/RocketAmmo.tscn" id="2_hkrqs"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_u3eg7"]
 resource_name = "KSR29sniperrifle"
@@ -89,11 +90,10 @@ radius = 15.0
 [sub_resource type="SphereShape3D" id="SphereShape3D_054cs"]
 radius = 30.0
 
-[node name="RocketLanuncher" type="Node3D" node_paths=PackedStringArray("animation", "explosion", "explosionOuter", "Model")]
+[node name="RocketLanuncher" type="Node3D" node_paths=PackedStringArray("animation", "Model")]
 script = ExtResource("1_xpwxv")
 animation = NodePath("AnimationPlayer")
-explosion = NodePath("Hitbox")
-explosionOuter = NodePath("Hitbox2")
+RocketPrefab = ExtResource("2_hkrqs")
 Model = NodePath("Sniper_Rifle")
 
 [node name="Sniper_Rifle" type="MeshInstance3D" parent="."]

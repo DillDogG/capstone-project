@@ -1,23 +1,35 @@
-[gd_scene load_steps=4 format=3 uid="uid://j4ek42brw1pa"]
+[gd_scene load_steps=7 format=3 uid="uid://j4ek42brw1pa"]
 
 [ext_resource type="Script" path="res://Scripts/RocketAmmo.cs" id="1_ujn64"]
 
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ldjbt"]
+
 [sub_resource type="SphereShape3D" id="SphereShape3D_syrq0"]
-radius = 1.5049
+radius = 15.0
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_njl4j"]
 radius = 30.0
 
-[node name="RocketAmmo" type="Node3D"]
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_jebgq"]
+radius = 1.11972
+height = 3.59659
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_c6ha6"]
+
+[node name="RocketAmmo" type="RigidBody3D" node_paths=PackedStringArray("explosion", "explosionOuter")]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
+collision_layer = 8
+collision_mask = 8
+axis_lock_angular_x = true
+axis_lock_angular_z = true
+physics_material_override = SubResource("PhysicsMaterial_ldjbt")
+gravity_scale = 0.25
+contact_monitor = true
+max_contacts_reported = 10
 script = ExtResource("1_ujn64")
-
-[node name="CollisionBox" type="Area3D" parent="."]
-collision_layer = 4
-collision_mask = 4
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="CollisionBox"]
-transform = Transform3D(0.475271, -0.879839, 0, 0.879839, 0.475271, 0, 0, 0, 1, -0.664084, 0.35664, 0)
-shape = SubResource("SphereShape3D_syrq0")
+explosion = NodePath("InnerExplosion")
+explosionOuter = NodePath("OuterExplosion")
+velocity = 40.0
 
 [node name="InnerExplosion" type="Area3D" parent="."]
 collision_layer = 4
@@ -34,3 +46,9 @@ collision_mask = 4
 [node name="CollisionShape3D" type="CollisionShape3D" parent="OuterExplosion"]
 transform = Transform3D(0.475271, -0.879839, 0, 0.879839, 0.475271, 0, 0, 0, 1, -0.664084, 0.35664, 0)
 shape = SubResource("SphereShape3D_njl4j")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_jebgq")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("CapsuleMesh_c6ha6")
