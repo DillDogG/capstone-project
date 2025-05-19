@@ -32,7 +32,8 @@ public partial class RocketLauncher : RangedWeapon
         if (FireCooldown > 0) return;
         RocketAmmo rocket = RocketPrefab.Instantiate<RocketAmmo>();
         GetTree().Root.AddChild(rocket);
-        rocket.Transform = GetParent().GetParent().GetParent().GetNode<Node3D>("Pivot").Transform;
+        Node3D PivotPoint = GetParent().GetParent().GetParent().GetNode<Node3D>("Pivot");
+        rocket.Transform = PivotPoint.Transform;
         rocket.Initialize(GetNode<Node3D>("Sniper_Rifle").GlobalPosition);
         FireCooldown = FireRate;
         AmmoCount--;

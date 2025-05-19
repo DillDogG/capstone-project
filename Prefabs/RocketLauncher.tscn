@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=4 uid="uid://cd45gi7hweufd"]
+[gd_scene load_steps=10 format=4 uid="uid://cd45gi7hweufd"]
 
 [ext_resource type="Script" path="res://Scripts/RocketLauncher.cs" id="1_xpwxv"]
 [ext_resource type="PackedScene" uid="uid://j4ek42brw1pa" path="res://Prefabs/RocketAmmo.tscn" id="2_hkrqs"]
@@ -84,13 +84,7 @@ _data = {
 "Shoot": SubResource("Animation_21fma")
 }
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_p2bje"]
-radius = 15.0
-
-[sub_resource type="SphereShape3D" id="SphereShape3D_054cs"]
-radius = 30.0
-
-[node name="RocketLanuncher" type="Node3D" node_paths=PackedStringArray("animation", "Model")]
+[node name="RocketLauncher" type="Node3D" node_paths=PackedStringArray("animation", "Model")]
 script = ExtResource("1_xpwxv")
 animation = NodePath("AnimationPlayer")
 RocketPrefab = ExtResource("2_hkrqs")
@@ -106,19 +100,3 @@ surface_material_override/0 = SubResource("StandardMaterial3D_pengc")
 libraries = {
 "": SubResource("AnimationLibrary_l6miu")
 }
-
-[node name="Hitbox" type="Area3D" parent="."]
-collision_layer = 4
-collision_mask = 4
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Hitbox"]
-transform = Transform3D(0.475271, -0.879839, 0, 0.879839, 0.475271, 0, 0, 0, 1, -0.664084, 0.35664, 0)
-shape = SubResource("SphereShape3D_p2bje")
-
-[node name="Hitbox2" type="Area3D" parent="."]
-collision_layer = 4
-collision_mask = 4
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Hitbox2"]
-transform = Transform3D(0.475271, -0.879839, 0, 0.879839, 0.475271, 0, 0, 0, 1, -0.664084, 0.35664, 0)
-shape = SubResource("SphereShape3D_054cs")

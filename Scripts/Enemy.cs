@@ -78,7 +78,11 @@ public partial class Enemy : CharacterBody3D, Damageable
 
     public bool InAttackRange()
     {
-        return GlobalPosition.DistanceTo(Player.GlobalPosition) <= AttackRange;
+        Vector3 EnemyPosition = GlobalPosition;
+        EnemyPosition.Y = 0;
+        Vector3 PlayerPosition = Player.GlobalPosition;
+        PlayerPosition.Y = 0;
+        return EnemyPosition.DistanceTo(PlayerPosition) <= AttackRange;
     }
 
     public void ApplyDamage(double damage)

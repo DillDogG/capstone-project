@@ -11,20 +11,26 @@ public partial class RocketAmmo : RigidBody3D
 
     [Export]
     public float velocity;
+
+    [Export]
+    public float lifeSpan = 5;
+
+    private float lifeTime;
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
 	{
-       
+        lifeTime = lifeSpan;
     }
 
     public void Initialize(Vector3 startPosition)
     {
         Position = startPosition;
+        Rotation = new Vector3(-Rotation.X, Rotation.Y, Rotation.Z);
+        RotateZ(Mathf.DegToRad(-5));
         RotateY(Mathf.DegToRad(-90));
         LinearVelocity = GlobalTransform.Basis * new Vector3(0, 0, -velocity);
         RotateY(Mathf.DegToRad(90));
-        RotateZ(Mathf.DegToRad(90));
-        GD.Print("rocket");
+        Translate(new Vector3(0, 0, -1));
     }
 
     // Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -47,6 +53,7 @@ public partial class RocketAmmo : RigidBody3D
                 QueueFree();
             }
         }
-        
+        lifeTime -= (float)delta;
+        if (lifeTime < 0) QueueFree();
     }
 }

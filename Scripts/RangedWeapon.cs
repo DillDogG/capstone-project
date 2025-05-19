@@ -53,9 +53,7 @@ public partial class RangedWeapon : Weapon
         base.Equip();
         if (AutoReloadTime + AutoReloadSpeed + ReloadSpeed - GlobalTimer._timer <= 0)
         {
-            if (AmmoCount + 2 > MaxAmmoCount - 2) AmmoCount += 2;
-            else AmmoCount = MaxAmmoCount - 2;
-            if (AmmoCount > MaxAmmoCount) AmmoCount = MaxAmmoCount;
+            Reload(-ReloadSpeed);
         }
     }
 

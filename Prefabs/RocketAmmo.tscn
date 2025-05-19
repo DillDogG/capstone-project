@@ -5,10 +5,10 @@
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ldjbt"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_syrq0"]
-radius = 15.0
+radius = 7.5
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_njl4j"]
-radius = 30.0
+radius = 15.0
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_jebgq"]
 radius = 1.11972
@@ -17,15 +17,13 @@ height = 3.59659
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_c6ha6"]
 
 [node name="RocketAmmo" type="RigidBody3D" node_paths=PackedStringArray("explosion", "explosionOuter")]
-transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
 collision_layer = 8
 collision_mask = 8
-axis_lock_angular_x = true
-axis_lock_angular_z = true
 physics_material_override = SubResource("PhysicsMaterial_ldjbt")
 gravity_scale = 0.25
 contact_monitor = true
 max_contacts_reported = 10
+angular_damp = 5.0
 script = ExtResource("1_ujn64")
 explosion = NodePath("InnerExplosion")
 explosionOuter = NodePath("OuterExplosion")
@@ -48,7 +46,9 @@ transform = Transform3D(0.475271, -0.879839, 0, 0.879839, 0.475271, 0, 0, 0, 1, 
 shape = SubResource("SphereShape3D_njl4j")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(-2.18557e-08, -0.5, 0, 0.5, -2.18557e-08, 0, 0, 0, 0.5, 0, 0, 0)
 shape = SubResource("CapsuleShape3D_jebgq")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(-2.18557e-08, -0.5, 0, 0.5, -2.18557e-08, 0, 0, 0, 0.5, 0, 0, 0)
 mesh = SubResource("CapsuleMesh_c6ha6")
