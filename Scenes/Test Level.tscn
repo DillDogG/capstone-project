@@ -1,8 +1,7 @@
-[gd_scene load_steps=23 format=3 uid="uid://cqtpwqoty3pxd"]
+[gd_scene load_steps=22 format=3 uid="uid://cqtpwqoty3pxd"]
 
 [ext_resource type="Script" path="res://Scripts/Game.cs" id="1_4awxq"]
 [ext_resource type="PackedScene" uid="uid://cctntsygmnc80" path="res://Prefabs/player.tscn" id="1_sr6c0"]
-[ext_resource type="Terrain3DStorage" uid="uid://blbayoklwmwm4" path="res://Scenes/Test Level.res" id="3_381tp"]
 [ext_resource type="PackedScene" uid="uid://83t51lgp7jip" path="res://Prefabs/user_interface.tscn" id="4_bqbhu"]
 [ext_resource type="PackedScene" uid="uid://b50ul6mjmrdjk" path="res://Prefabs/Enemy.tscn" id="4_cgvfi"]
 [ext_resource type="FontFile" uid="uid://7jc8lsmmfdi1" path="res://Fonts/DavysCrappyWrit.ttf" id="5_v171b"]
@@ -62,7 +61,6 @@ backlight = Color(0.5, 0.5, 0.5, 1)
 
 [sub_resource type="Terrain3DMeshAsset" id="Terrain3DMeshAsset_5rwbj"]
 height_offset = 0.5
-density = 10.0
 material_override = SubResource("StandardMaterial3D_wdfvg")
 generated_type = 1
 
@@ -122,11 +120,13 @@ game = NodePath("../..")
 navigation_mesh = SubResource("NavigationMesh_s6y4x")
 
 [node name="Terrain3D" type="Terrain3D" parent="NavigationRegion3D"]
-storage = ExtResource("3_381tp")
+data_directory = "res://Scenes/TestLevelTerrain"
 material = SubResource("Terrain3DMaterial_tj0d8")
 assets = SubResource("Terrain3DAssets_ayl1x")
 collision_layer = 7
 collision_mask = 7
+top_level = true
+metadata/_edit_lock_ = true
 
 [node name="Spawners" type="Node3D" parent="."]
 

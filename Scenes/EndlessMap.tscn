@@ -1,0 +1,123 @@
+[gd_scene load_steps=19 format=3 uid="uid://bmmt1uxjmmv3c"]
+
+[ext_resource type="PackedScene" uid="uid://cctntsygmnc80" path="res://Prefabs/player.tscn" id="1_5lq7p"]
+[ext_resource type="Script" path="res://Scripts/Game.cs" id="1_yyawc"]
+[ext_resource type="PackedScene" uid="uid://b50ul6mjmrdjk" path="res://Prefabs/Enemy.tscn" id="2_ncx5l"]
+[ext_resource type="PackedScene" uid="uid://83t51lgp7jip" path="res://Prefabs/user_interface.tscn" id="4_1va8b"]
+[ext_resource type="FontFile" uid="uid://7jc8lsmmfdi1" path="res://Fonts/DavysCrappyWrit.ttf" id="5_lu83n"]
+[ext_resource type="Script" path="res://Scripts/EndlessHighScore.cs" id="6_bqoyx"]
+[ext_resource type="PackedScene" uid="uid://bdaaobcdhef0j" path="res://Prefabs/pause_menu.tscn" id="7_mowrp"]
+[ext_resource type="Texture2D" uid="uid://qilxaj3b4nx0" path="res://Images/Grass/tileable-TT7002066-verydark.png" id="9_4gmcr"]
+[ext_resource type="Texture2D" uid="uid://bud0xymsonut8" path="res://Images/Grass/tileable-TT7002066_nm.png" id="10_uqqp0"]
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_aoxul"]
+
+[sub_resource type="Gradient" id="Gradient_y0f68"]
+offsets = PackedFloat32Array(0.2, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_a73nm"]
+noise_type = 2
+frequency = 0.03
+cellular_jitter = 3.0
+cellular_return_type = 0
+domain_warp_enabled = true
+domain_warp_type = 1
+domain_warp_amplitude = 50.0
+domain_warp_fractal_type = 2
+domain_warp_fractal_lacunarity = 1.5
+domain_warp_fractal_gain = 1.0
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_vb23m"]
+seamless = true
+color_ramp = SubResource("Gradient_y0f68")
+noise = SubResource("FastNoiseLite_a73nm")
+
+[sub_resource type="Terrain3DMaterial" id="Terrain3DMaterial_0nwp8"]
+_shader_parameters = {
+"blend_sharpness": 0.87,
+"height_blending": true,
+"macro_variation1": Color(1, 1, 1, 1),
+"macro_variation2": Color(1, 1, 1, 1),
+"noise1_angle": 0.0,
+"noise1_offset": Vector2(0.5, 0.5),
+"noise1_scale": 0.04,
+"noise2_scale": 0.076,
+"noise3_scale": 0.225,
+"noise_texture": SubResource("NoiseTexture2D_vb23m"),
+"vertex_normals_distance": 128.0
+}
+world_background = 0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mbqcw"]
+cull_mode = 2
+vertex_color_use_as_albedo = true
+backlight_enabled = true
+backlight = Color(0.5, 0.5, 0.5, 1)
+
+[sub_resource type="Terrain3DMeshAsset" id="Terrain3DMeshAsset_rryuo"]
+height_offset = 0.5
+material_override = SubResource("StandardMaterial3D_mbqcw")
+generated_type = 1
+
+[sub_resource type="Terrain3DTextureAsset" id="Terrain3DTextureAsset_5j2f0"]
+name = "tileable-TT7002066-grey"
+albedo_texture = ExtResource("9_4gmcr")
+normal_texture = ExtResource("10_uqqp0")
+
+[sub_resource type="Terrain3DAssets" id="Terrain3DAssets_rhsc7"]
+mesh_list = Array[Terrain3DMeshAsset]([SubResource("Terrain3DMeshAsset_rryuo")])
+texture_list = Array[Terrain3DTextureAsset]([SubResource("Terrain3DTextureAsset_5j2f0")])
+
+[node name="Node3D" type="Node3D" node_paths=PackedStringArray("PauseMenu", "SettingsMenu", "Spawners", "Doors", "Death", "endlessHighScore")]
+script = ExtResource("1_yyawc")
+PauseMenu = NodePath("PauseMenu")
+SettingsMenu = NodePath("UserInterface/Settings")
+EnemyPrefab = ExtResource("2_ncx5l")
+Spawners = []
+Doors = []
+SceneName = "EndlessMap"
+Death = NodePath("UserInterface/DeathFade")
+EndlessMode = true
+endlessHighScore = NodePath("UserInterface/TotalTimer2")
+
+[node name="Player" parent="." node_paths=PackedStringArray("ammoDisp", "healthDisp", "GlobalTimer", "CreditDisplay", "Game") instance=ExtResource("1_5lq7p")]
+ammoDisp = NodePath("../UserInterface/AmmoLabel")
+healthDisp = NodePath("../UserInterface/HealthBar")
+GlobalTimer = NodePath("../UserInterface/TotalTimer")
+CreditDisplay = NodePath("../UserInterface/CreditCount")
+Game = NodePath("..")
+
+[node name="UserInterface" parent="." instance=ExtResource("4_1va8b")]
+
+[node name="CreditCount" parent="UserInterface" index="1"]
+offset_top = 82.0
+offset_bottom = 160.0
+
+[node name="TotalTimer2" type="Label" parent="UserInterface" node_paths=PackedStringArray("timer")]
+layout_mode = 0
+offset_top = 41.0
+offset_right = 40.0
+offset_bottom = 90.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("5_lu83n")
+theme_override_font_sizes/font_size = 40
+text = "0.0"
+script = ExtResource("6_bqoyx")
+timer = NodePath("../TotalTimer")
+
+[node name="PauseMenu" parent="." instance=ExtResource("7_mowrp")]
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
+navigation_mesh = SubResource("NavigationMesh_aoxul")
+
+[node name="Terrain3D" type="Terrain3D" parent="NavigationRegion3D"]
+data_directory = "res://Scenes/EndlessTerrain"
+material = SubResource("Terrain3DMaterial_0nwp8")
+assets = SubResource("Terrain3DAssets_rhsc7")
+top_level = true
+
+[editable path="UserInterface"]
+[editable path="PauseMenu"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://b0o2845gp0mpj"]
+[gd_scene load_steps=28 format=3 uid="uid://b0o2845gp0mpj"]
 
 [ext_resource type="Script" path="res://Scripts/Game.cs" id="1_81kqs"]
 [ext_resource type="Texture2D" uid="uid://qilxaj3b4nx0" path="res://Images/Grass/tileable-TT7002066-verydark.png" id="1_audgr"]
@@ -9,7 +9,6 @@
 [ext_resource type="PackedScene" uid="uid://bdaaobcdhef0j" path="res://Prefabs/pause_menu.tscn" id="5_8v535"]
 [ext_resource type="PackedScene" uid="uid://bbuwmk6dx03sm" path="res://Prefabs/SavePoint.tscn" id="10_o7nqe"]
 [ext_resource type="PackedScene" uid="uid://cq810djdcqr7j" path="res://Prefabs/BlockedDoor.tscn" id="11_ghtao"]
-[ext_resource type="Terrain3DStorage" uid="uid://b4bbfe7i60vll" path="res://Scenes/FirstLevel.res" id="11_w8mee"]
 [ext_resource type="PackedScene" uid="uid://seg3hudp2oft" path="res://Prefabs/WeaponBuy.tscn" id="12_ukrlj"]
 [ext_resource type="PackedScene" uid="uid://d4me04o87nygi" path="res://Prefabs/enemy_spawner.tscn" id="22_4n6hq"]
 
@@ -61,7 +60,6 @@ backlight = Color(0.5, 0.5, 0.5, 1)
 
 [sub_resource type="Terrain3DMeshAsset" id="Terrain3DMeshAsset_djhf4"]
 height_offset = 0.5
-density = 10.0
 material_override = SubResource("StandardMaterial3D_vcloi")
 generated_type = 1
 
@@ -123,10 +121,12 @@ Game = NodePath("..")
 navigation_mesh = SubResource("NavigationMesh_j5t0u")
 
 [node name="Terrain3D" type="Terrain3D" parent="NavigationRegion3D"]
-storage = ExtResource("11_w8mee")
+data_directory = "res://Scenes/Level1Terrain"
 material = SubResource("Terrain3DMaterial_xdkvx")
 assets = SubResource("Terrain3DAssets_0lyq3")
 collision_layer = 7
+top_level = true
+metadata/_edit_lock_ = true
 
 [node name="InvisibleWalls" type="Node3D" parent="."]
 
