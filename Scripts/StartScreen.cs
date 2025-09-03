@@ -38,8 +38,7 @@ public partial class StartScreen : Node
     public void Endless()
     {
         GetTree().Paused = false;
-        //ReadFile.ResetGame();
-        GetTree().ChangeSceneToFile("res://Scenes/Test Level.tscn");
+        GetTree().ChangeSceneToFile("res://Scenes/EndlessMap.tscn");
     }
 
     public void Settings()
