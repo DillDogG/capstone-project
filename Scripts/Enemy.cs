@@ -34,6 +34,9 @@ public partial class Enemy : CharacterBody3D, Damageable
     [Export]
     public int CredValue { get; set; }
 
+    [Export]
+    CollisionShape3D collision { get; set; }
+
     private bool Dead = false;
 
     public override void _Ready()
@@ -96,6 +99,7 @@ public partial class Enemy : CharacterBody3D, Damageable
             Speed = 0;
             animation.Play("Zombie/ZombieDying");
             Player.AddCredits(CredValue);
+            collision.Disabled = true;
         }
         else
         {

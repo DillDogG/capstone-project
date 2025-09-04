@@ -21,7 +21,7 @@ _data = {
 "ZombieRun": ExtResource("6_30o1u")
 }
 
-[node name="Enemy" type="CharacterBody3D" node_paths=PackedStringArray("NavAgent", "Weapon", "animation")]
+[node name="Enemy" type="CharacterBody3D" node_paths=PackedStringArray("NavAgent", "Weapon", "animation", "collision")]
 collision_layer = 13
 collision_mask = 5
 script = ExtResource("1_f1ge3")
@@ -30,7 +30,8 @@ NavAgent = NodePath("NavigationAgent3D")
 AttackRange = 1.5
 Weapon = NodePath("Node3D")
 animation = NodePath("Zombie Run/AnimationPlayer2")
-CredValue = 100
+CredValue = 125
+collision = NodePath("CollisionShape3D")
 
 [node name="Pivot" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.5, 0)
@@ -44,6 +45,7 @@ shape = SubResource("CapsuleShape3D_5ytvo")
 [node name="Node3D" type="Node3D" parent="." node_paths=PackedStringArray("HitCheck")]
 script = ExtResource("3_kwswh")
 HitCheck = NodePath("EnemyAttack")
+Damage = 50.0
 
 [node name="EnemyAttack" type="Area3D" parent="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.75981, -0.17823)
