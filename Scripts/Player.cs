@@ -194,7 +194,7 @@ public partial class Player : CharacterBody3D, Damageable
         PlayerSpeedMult();
 
 		// gravity
-		if (!IsOnFloor()) _targetVelocity.Y -= FallAcceleration * (float)delta;
+		if (!IsOnFloor() && CoyoteTime <= 0) _targetVelocity.Y -= FallAcceleration * (float)delta;
 
 		PlayerJumpFunction();
 
