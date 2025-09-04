@@ -26,7 +26,7 @@ public partial class BlockedDoor : InteractableObject
 
     public void DisabledOnLoad(int checkpoint)
     {
-        if (checkpoint >= CheckpointDisable)
+        if (checkpoint >= CheckpointDisable && CheckpointDisable != -1)
         {
             Useable = false;
             animation.Play("Closing");
@@ -55,7 +55,7 @@ public partial class BlockedDoor : InteractableObject
     public override void _PhysicsProcess(double delta)
     {
         base._PhysicsProcess(delta);
-        if (game.Checkpoint >= CheckpointDisable && Useable)
+        if (game.Checkpoint >= CheckpointDisable && CheckpointDisable != -1 && Useable)
         {
             Useable = false;
             animation.Play("Closing");

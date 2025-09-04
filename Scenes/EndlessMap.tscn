@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://bmmt1uxjmmv3c"]
+[gd_scene load_steps=24 format=3 uid="uid://bmmt1uxjmmv3c"]
 
 [ext_resource type="PackedScene" uid="uid://cctntsygmnc80" path="res://Prefabs/player.tscn" id="1_5lq7p"]
 [ext_resource type="Script" path="res://Scripts/Game.cs" id="1_yyawc"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://qilxaj3b4nx0" path="res://Images/Grass/tileable-TT7002066-verydark.png" id="9_4gmcr"]
 [ext_resource type="PackedScene" uid="uid://d4me04o87nygi" path="res://Prefabs/enemy_spawner.tscn" id="10_4p43b"]
 [ext_resource type="Texture2D" uid="uid://bud0xymsonut8" path="res://Images/Grass/tileable-TT7002066_nm.png" id="10_uqqp0"]
+[ext_resource type="PackedScene" uid="uid://cq810djdcqr7j" path="res://Prefabs/BlockedDoor.tscn" id="11_ylk4w"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_aoxul"]
 vertices = PackedVector3Array(126.376, 0.25025, -256.757, 126.376, 0.25025, -383.633, -127.628, 0.25025, -383.633, -127.878, 0.25025, -255.505, -255.505, 0.25025, 254.254, 254.254, 0.25025, 254.254, 127.628, 0.25025, -255.505, -255.505, 0.25025, -255.505, 254.254, 0.25025, -255.505)
@@ -78,6 +79,9 @@ alpha_scissor_threshold = 0.75
 alpha_antialiasing_mode = 1
 alpha_antialiasing_edge = 0.3
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_370fo"]
+albedo_color = Color(0.462291, 0.462291, 0.462291, 1)
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ueg3b"]
 albedo_color = Color(0.485703, 0.485704, 0.485703, 1)
 metallic = 0.75
@@ -88,7 +92,7 @@ PauseMenu = NodePath("PauseMenu")
 SettingsMenu = NodePath("UserInterface/Settings")
 EnemyPrefab = ExtResource("2_ncx5l")
 Spawners = [NodePath("EnemySpawners/Spawner"), NodePath("EnemySpawners/Spawner2"), NodePath("EnemySpawners/Spawner3"), NodePath("EnemySpawners/Spawner4"), NodePath("EnemySpawners/Spawner5"), NodePath("EnemySpawners/Spawner6"), NodePath("EnemySpawners/Spawner7"), NodePath("EnemySpawners/Spawner8")]
-Doors = []
+Doors = [NodePath("OuterDome/BlockedDoorSideRoom")]
 SceneName = "EndlessMap"
 Death = NodePath("UserInterface/DeathFade")
 EndlessMode = true
@@ -158,6 +162,7 @@ TextDisplay = NodePath("../../UserInterface/BuyDisplay")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -114.25, 0, -325)
 game = NodePath("../..")
 ReenableTime = 45.0
+CheckpointEnable = 2
 CheckpointDisable = 5
 TextDisplay = NodePath("../../UserInterface/BuyDisplay")
 
@@ -165,6 +170,7 @@ TextDisplay = NodePath("../../UserInterface/BuyDisplay")
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 114.25, 0, -325)
 game = NodePath("../..")
 ReenableTime = 45.0
+CheckpointEnable = 2
 CheckpointDisable = 5
 TextDisplay = NodePath("../../UserInterface/BuyDisplay")
 
@@ -186,6 +192,7 @@ TextDisplay = NodePath("../../UserInterface/BuyDisplay")
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -25, 0, -371.5)
 game = NodePath("../..")
 ReenableTime = 45.0
+CheckpointEnable = 2
 CheckpointDisable = 5
 TextDisplay = NodePath("../../UserInterface/BuyDisplay")
 
@@ -193,6 +200,7 @@ TextDisplay = NodePath("../../UserInterface/BuyDisplay")
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 25, 0, -371.5)
 game = NodePath("../..")
 ReenableTime = 45.0
+CheckpointEnable = 2
 CheckpointDisable = 5
 TextDisplay = NodePath("../../UserInterface/BuyDisplay")
 
@@ -280,13 +288,85 @@ size = Vector3(2, 30, 475)
 material = SubResource("StandardMaterial3D_52ei1")
 
 [node name="SouthWall" type="CSGBox3D" parent="OuterDome"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -255, 100, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -255, 100, -117.5)
 layers = 7
 use_collision = true
 collision_layer = 7
 collision_mask = 7
-size = Vector3(2, 200, 475)
+size = Vector3(2, 200, 237.5)
 material = SubResource("StandardMaterial3D_52ei1")
+
+[node name="SouthWall2" type="CSGBox3D" parent="OuterDome"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -255, 100, 176.25)
+layers = 7
+use_collision = true
+collision_layer = 7
+collision_mask = 7
+size = Vector3(2, 200, 117.5)
+material = SubResource("StandardMaterial3D_52ei1")
+
+[node name="SouthWall3" type="CSGBox3D" parent="OuterDome"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -255, 112.5, 57.5)
+layers = 7
+use_collision = true
+collision_layer = 7
+collision_mask = 7
+size = Vector3(2, 175, 117.5)
+material = SubResource("StandardMaterial3D_52ei1")
+
+[node name="WestWall8" type="CSGBox3D" parent="OuterDome"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -310, 25, 57.5)
+layers = 7
+use_collision = true
+collision_layer = 7
+collision_mask = 7
+size = Vector3(2, 50, 120)
+material = SubResource("StandardMaterial3D_370fo")
+
+[node name="WestWall9" type="CSGBox3D" parent="OuterDome"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -285, 25, 0)
+layers = 7
+use_collision = true
+collision_layer = 7
+collision_mask = 7
+size = Vector3(2, 50, 60)
+material = SubResource("StandardMaterial3D_370fo")
+
+[node name="WestWall10" type="CSGBox3D" parent="OuterDome"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -285, 25, 117.5)
+layers = 7
+use_collision = true
+collision_layer = 7
+collision_mask = 7
+size = Vector3(2, 50, 60)
+material = SubResource("StandardMaterial3D_370fo")
+
+[node name="WestWall11" type="CSGBox3D" parent="OuterDome"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -285, 50, 57.5)
+layers = 7
+use_collision = true
+collision_layer = 7
+collision_mask = 7
+size = Vector3(60, 2, 120)
+material = SubResource("StandardMaterial3D_370fo")
+
+[node name="WestWall12" type="CSGBox3D" parent="OuterDome"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -255, 12.5, 28)
+layers = 7
+use_collision = true
+collision_layer = 7
+collision_mask = 7
+size = Vector3(2, 25, 55)
+material = SubResource("StandardMaterial3D_370fo")
+
+[node name="WestWall13" type="CSGBox3D" parent="OuterDome"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -255, 12.5, 88)
+layers = 7
+use_collision = true
+collision_layer = 7
+collision_mask = 7
+size = Vector3(2, 25, 57.5)
+material = SubResource("StandardMaterial3D_370fo")
 
 [node name="SouthWestRoof" type="CSGBox3D" parent="OuterDome"]
 transform = Transform3D(0.5, 0.5, -0.707107, -0.707107, 0.707107, 0, 0.5, 0.5, 0.707107, -237.5, 210, -237.5)
@@ -321,25 +401,25 @@ layers = 7
 use_collision = true
 collision_layer = 7
 collision_mask = 7
-size = Vector3(2, 150, 475)
+size = Vector3(2, 150, 240)
 material = SubResource("StandardMaterial3D_52ei1")
 
 [node name="WestWall2" type="CSGBox3D" parent="OuterDome"]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -176.25, 25, -255)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -176.25, 100, -255)
 layers = 7
 use_collision = true
 collision_layer = 7
 collision_mask = 7
-size = Vector3(2, 50, 117.5)
+size = Vector3(2, 200, 117.5)
 material = SubResource("StandardMaterial3D_52ei1")
 
 [node name="WestWall3" type="CSGBox3D" parent="OuterDome"]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 176.25, 25, -255)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 176.25, 100, -255)
 layers = 7
 use_collision = true
 collision_layer = 7
 collision_mask = 7
-size = Vector3(2, 50, 117.5)
+size = Vector3(2, 200, 117.5)
 material = SubResource("StandardMaterial3D_52ei1")
 
 [node name="WestWall4" type="CSGBox3D" parent="OuterDome"]
@@ -349,7 +429,7 @@ use_collision = true
 collision_layer = 7
 collision_mask = 7
 size = Vector3(2, 50, 120)
-material = SubResource("StandardMaterial3D_52ei1")
+material = SubResource("StandardMaterial3D_370fo")
 
 [node name="WestWall5" type="CSGBox3D" parent="OuterDome"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 117.5, 25, -315)
@@ -358,7 +438,7 @@ use_collision = true
 collision_layer = 7
 collision_mask = 7
 size = Vector3(2, 50, 120)
-material = SubResource("StandardMaterial3D_52ei1")
+material = SubResource("StandardMaterial3D_370fo")
 
 [node name="WestWall6" type="CSGBox3D" parent="OuterDome"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 25, -375)
@@ -367,7 +447,16 @@ use_collision = true
 collision_layer = 7
 collision_mask = 7
 size = Vector3(2, 50, 235)
-material = SubResource("StandardMaterial3D_52ei1")
+material = SubResource("StandardMaterial3D_370fo")
+
+[node name="WestWall7" type="CSGBox3D" parent="OuterDome"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 50, -315)
+layers = 7
+use_collision = true
+collision_layer = 7
+collision_mask = 7
+size = Vector3(120, 2, 235)
+material = SubResource("StandardMaterial3D_370fo")
 
 [node name="NorthWestRoof" type="CSGBox3D" parent="OuterDome"]
 transform = Transform3D(0.5, -0.5, 0.707107, 0.707107, 0.707107, 0, -0.5, 0.5, 0.707107, 237.5, 210, -237.5)
@@ -697,6 +786,15 @@ collision_mask = 7
 size = Vector3(4, 200, 4)
 material = SubResource("StandardMaterial3D_ueg3b")
 
+[node name="SouthRoof2" type="CSGBox3D" parent="OuterDome/MetalBars/Walls"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -255, 25, 57.5)
+layers = 7
+use_collision = true
+collision_layer = 7
+collision_mask = 7
+size = Vector3(4, 117.5, 4)
+material = SubResource("StandardMaterial3D_ueg3b")
+
 [node name="WallToRoof" type="Node3D" parent="OuterDome/MetalBars"]
 
 [node name="NorthRoof" type="CSGBox3D" parent="OuterDome/MetalBars/WallToRoof"]
@@ -863,14 +961,23 @@ collision_mask = 7
 size = Vector3(4, 475, 4)
 material = SubResource("StandardMaterial3D_ueg3b")
 
-[node name="WestWall7" type="CSGBox3D" parent="OuterDome"]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 50, -315)
+[node name="BlockedDoorSideRoom" parent="OuterDome" node_paths=PackedStringArray("TextDisplay", "game") instance=ExtResource("11_ylk4w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -254, 2.5, 57.5)
+CheckpointDisable = -1
+Price = 1000
+TextDisplay = NodePath("../../UserInterface/BuyDisplay")
+game = NodePath("../..")
+
+[node name="WestWall14" type="CSGBox3D" parent="OuterDome"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -255, 15, 57.5)
 layers = 7
 use_collision = true
 collision_layer = 7
 collision_mask = 7
-size = Vector3(120, 2, 235)
-material = SubResource("StandardMaterial3D_52ei1")
+size = Vector3(2, 20, 4)
+material = SubResource("StandardMaterial3D_370fo")
+
+[node name="TallBuilding" type="Node3D" parent="."]
 
 [editable path="UserInterface"]
 [editable path="PauseMenu"]

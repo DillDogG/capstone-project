@@ -3,6 +3,14 @@
   "WorkspaceRootPath": "C:\\Users\\dyarbrough\\capstone-project\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{C4D11A91-9E0E-4071-AE91-90213DB10F7E}|Capstone Project.csproj|c:\\users\\dyarbrough\\capstone-project\\scripts\\blockeddoor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C4D11A91-9E0E-4071-AE91-90213DB10F7E}|Capstone Project.csproj|solutionrelative:scripts\\blockeddoor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C4D11A91-9E0E-4071-AE91-90213DB10F7E}|Capstone Project.csproj|c:\\users\\dyarbrough\\capstone-project\\scripts\\startscreen.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C4D11A91-9E0E-4071-AE91-90213DB10F7E}|Capstone Project.csproj|solutionrelative:scripts\\startscreen.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{C4D11A91-9E0E-4071-AE91-90213DB10F7E}|Capstone Project.csproj|c:\\users\\dyarbrough\\capstone-project\\scripts\\endless.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{C4D11A91-9E0E-4071-AE91-90213DB10F7E}|Capstone Project.csproj|solutionrelative:scripts\\endless.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -63,16 +71,8 @@
       "RelativeMoniker": "D:0:0:{C4D11A91-9E0E-4071-AE91-90213DB10F7E}|Capstone Project.csproj|solutionrelative:scripts\\timerlabel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C4D11A91-9E0E-4071-AE91-90213DB10F7E}|Capstone Project.csproj|c:\\users\\dyarbrough\\capstone-project\\scripts\\startscreen.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C4D11A91-9E0E-4071-AE91-90213DB10F7E}|Capstone Project.csproj|solutionrelative:scripts\\startscreen.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{C4D11A91-9E0E-4071-AE91-90213DB10F7E}|Capstone Project.csproj|c:\\users\\dyarbrough\\capstone-project\\scripts\\interactableobject.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{C4D11A91-9E0E-4071-AE91-90213DB10F7E}|Capstone Project.csproj|solutionrelative:scripts\\interactableobject.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C4D11A91-9E0E-4071-AE91-90213DB10F7E}|Capstone Project.csproj|c:\\users\\dyarbrough\\capstone-project\\scripts\\blockeddoor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C4D11A91-9E0E-4071-AE91-90213DB10F7E}|Capstone Project.csproj|solutionrelative:scripts\\blockeddoor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{C4D11A91-9E0E-4071-AE91-90213DB10F7E}|Capstone Project.csproj|c:\\users\\dyarbrough\\capstone-project\\scripts\\player.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -170,31 +170,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "NewGameButton.cs",
-              "DocumentMoniker": "C:\\Users\\dyarbrough\\capstone-project\\Scripts\\NewGameButton.cs",
-              "RelativeDocumentMoniker": "Scripts\\NewGameButton.cs",
-              "ToolTip": "C:\\Users\\dyarbrough\\capstone-project\\Scripts\\NewGameButton.cs",
-              "RelativeToolTip": "Scripts\\NewGameButton.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-09T13:41:44.904Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "EnemySpawner.cs",
-              "DocumentMoniker": "C:\\Users\\dyarbrough\\capstone-project\\Scripts\\EnemySpawner.cs",
-              "RelativeDocumentMoniker": "Scripts\\EnemySpawner.cs",
-              "ToolTip": "C:\\Users\\dyarbrough\\capstone-project\\Scripts\\EnemySpawner.cs",
-              "RelativeToolTip": "Scripts\\EnemySpawner.cs",
-              "ViewState": "AgIAAFsAAAAAAAAAAAAuwAsAAAATAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-20T20:55:07.847Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 3,
               "Title": "Enemy.cs",
               "DocumentMoniker": "C:\\Users\\dyarbrough\\capstone-project\\Scripts\\Enemy.cs",
               "RelativeDocumentMoniker": "Scripts\\Enemy.cs",
@@ -202,12 +178,11 @@
               "RelativeToolTip": "Scripts\\Enemy.cs",
               "ViewState": "AgIAADgAAAAAAAAAAAAUwFQAAABHAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-21T16:44:28.536Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-21T16:44:28.536Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 6,
               "Title": "RocketLauncher.cs",
               "DocumentMoniker": "C:\\Users\\dyarbrough\\capstone-project\\Scripts\\RocketLauncher.cs",
               "RelativeDocumentMoniker": "Scripts\\RocketLauncher.cs",
@@ -219,7 +194,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 10,
               "Title": "Game.cs",
               "DocumentMoniker": "C:\\Users\\dyarbrough\\capstone-project\\Scripts\\Game.cs",
               "RelativeDocumentMoniker": "Scripts\\Game.cs",
@@ -231,7 +206,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 11,
               "Title": "ExitDoor.cs",
               "DocumentMoniker": "C:\\Users\\dyarbrough\\capstone-project\\Scripts\\ExitDoor.cs",
               "RelativeDocumentMoniker": "Scripts\\ExitDoor.cs",
@@ -243,7 +218,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 15,
               "Title": "ReadFile.cs",
               "DocumentMoniker": "C:\\Users\\dyarbrough\\capstone-project\\Scripts\\ReadFile.cs",
               "RelativeDocumentMoniker": "Scripts\\ReadFile.cs",
@@ -255,7 +230,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 5,
               "Title": "WeaponBuy.cs",
               "DocumentMoniker": "C:\\Users\\dyarbrough\\capstone-project\\Scripts\\WeaponBuy.cs",
               "RelativeDocumentMoniker": "Scripts\\WeaponBuy.cs",
@@ -267,7 +242,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 4,
               "Title": "RangedWeapon.cs",
               "DocumentMoniker": "C:\\Users\\dyarbrough\\capstone-project\\Scripts\\RangedWeapon.cs",
               "RelativeDocumentMoniker": "Scripts\\RangedWeapon.cs",
@@ -279,7 +254,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 2,
               "Title": "Endless.cs",
               "DocumentMoniker": "C:\\Users\\dyarbrough\\capstone-project\\Scripts\\Endless.cs",
               "RelativeDocumentMoniker": "Scripts\\Endless.cs",
@@ -287,12 +262,60 @@
               "RelativeToolTip": "Scripts\\Endless.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAXAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-09T13:47:42.996Z",
+              "WhenOpened": "2025-03-09T13:47:42.996Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "StartScreen.cs",
+              "DocumentMoniker": "C:\\Users\\dyarbrough\\capstone-project\\Scripts\\StartScreen.cs",
+              "RelativeDocumentMoniker": "Scripts\\StartScreen.cs",
+              "ToolTip": "C:\\Users\\dyarbrough\\capstone-project\\Scripts\\StartScreen.cs",
+              "RelativeToolTip": "Scripts\\StartScreen.cs",
+              "ViewState": "AgIAAA0AAAAAAAAAAAAkwCgAAABEAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-06T19:17:39.487Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "BlockedDoor.cs",
+              "DocumentMoniker": "C:\\Users\\dyarbrough\\capstone-project\\Scripts\\BlockedDoor.cs",
+              "RelativeDocumentMoniker": "Scripts\\BlockedDoor.cs",
+              "ToolTip": "C:\\Users\\dyarbrough\\capstone-project\\Scripts\\BlockedDoor.cs*",
+              "RelativeToolTip": "Scripts\\BlockedDoor.cs*",
+              "ViewState": "AgIAACUAAAAAAAAAAAAkwDkAAABXAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-10T20:06:32.889Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 8,
+              "Title": "EnemySpawner.cs",
+              "DocumentMoniker": "C:\\Users\\dyarbrough\\capstone-project\\Scripts\\EnemySpawner.cs",
+              "RelativeDocumentMoniker": "Scripts\\EnemySpawner.cs",
+              "ToolTip": "C:\\Users\\dyarbrough\\capstone-project\\Scripts\\EnemySpawner.cs",
+              "RelativeToolTip": "Scripts\\EnemySpawner.cs",
+              "ViewState": "AgIAAFsAAAAAAAAAAAAuwAsAAAATAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-20T20:55:07.847Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "NewGameButton.cs",
+              "DocumentMoniker": "C:\\Users\\dyarbrough\\capstone-project\\Scripts\\NewGameButton.cs",
+              "RelativeDocumentMoniker": "Scripts\\NewGameButton.cs",
+              "ToolTip": "C:\\Users\\dyarbrough\\capstone-project\\Scripts\\NewGameButton.cs",
+              "RelativeToolTip": "Scripts\\NewGameButton.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-09T13:41:44.904Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
               "Title": "RocketAmmo.cs",
               "DocumentMoniker": "C:\\Users\\dyarbrough\\capstone-project\\Scripts\\RocketAmmo.cs",
               "RelativeDocumentMoniker": "Scripts\\RocketAmmo.cs",
@@ -304,7 +327,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 12,
               "Title": "Weapon.cs",
               "DocumentMoniker": "C:\\Users\\dyarbrough\\capstone-project\\Scripts\\Weapon.cs",
               "RelativeDocumentMoniker": "Scripts\\Weapon.cs",
@@ -316,7 +339,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 14,
               "Title": "MeleeWeapon.cs",
               "DocumentMoniker": "C:\\Users\\dyarbrough\\capstone-project\\Scripts\\MeleeWeapon.cs",
               "RelativeDocumentMoniker": "Scripts\\MeleeWeapon.cs",
@@ -328,7 +351,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 13,
               "Title": "SniperRifleRanged.cs",
               "DocumentMoniker": "C:\\Users\\dyarbrough\\capstone-project\\Scripts\\SniperRifleRanged.cs",
               "RelativeDocumentMoniker": "Scripts\\SniperRifleRanged.cs",
@@ -340,7 +363,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 16,
               "Title": "TimerLabel.cs",
               "DocumentMoniker": "C:\\Users\\dyarbrough\\capstone-project\\Scripts\\TimerLabel.cs",
               "RelativeDocumentMoniker": "Scripts\\TimerLabel.cs",
@@ -364,30 +387,6 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 17,
-              "Title": "BlockedDoor.cs",
-              "DocumentMoniker": "C:\\Users\\dyarbrough\\capstone-project\\Scripts\\BlockedDoor.cs",
-              "RelativeDocumentMoniker": "Scripts\\BlockedDoor.cs",
-              "ToolTip": "C:\\Users\\dyarbrough\\capstone-project\\Scripts\\BlockedDoor.cs",
-              "RelativeToolTip": "Scripts\\BlockedDoor.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAADYAAAA2AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-10T20:06:32.889Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 15,
-              "Title": "StartScreen.cs",
-              "DocumentMoniker": "C:\\Users\\dyarbrough\\capstone-project\\Scripts\\StartScreen.cs",
-              "RelativeDocumentMoniker": "Scripts\\StartScreen.cs",
-              "ToolTip": "C:\\Users\\dyarbrough\\capstone-project\\Scripts\\StartScreen.cs",
-              "RelativeToolTip": "Scripts\\StartScreen.cs",
-              "ViewState": "AgIAAAsAAAAAAAAAAAA3wCcAAAAhAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-06T19:17:39.487Z"
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 18,
               "Title": "Player.cs",
               "DocumentMoniker": "C:\\Users\\dyarbrough\\capstone-project\\Scripts\\Player.cs",
@@ -400,7 +399,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 16,
+              "DocumentIndex": 17,
               "Title": "InteractableObject.cs",
               "DocumentMoniker": "C:\\Users\\dyarbrough\\capstone-project\\Scripts\\InteractableObject.cs",
               "RelativeDocumentMoniker": "Scripts\\InteractableObject.cs",
