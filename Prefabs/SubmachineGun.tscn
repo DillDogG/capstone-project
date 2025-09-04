@@ -86,7 +86,7 @@ _data = {
 [node name="SubmachineGun" type="Node3D" node_paths=PackedStringArray("animation", "Model")]
 script = ExtResource("1_qgsd2")
 animation = NodePath("AnimationPlayer")
-Damage = 3.0
+Damage = 4.0
 Model = NodePath("Sniper_Rifle")
 
 [node name="Sniper_Rifle" type="MeshInstance3D" parent="."]
