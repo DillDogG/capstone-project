@@ -5,6 +5,12 @@ public partial class ExitDoor : Area3D
 {
     [Export]
     public string TargetScene { get; set; }
+
+    [Export]
+    public bool needsInteraction { get; set; } = false;
+
+    [Export]
+    public Label BuyDisplay { get; set; }
     public override void _PhysicsProcess(double delta)
     {
         if (HasOverlappingBodies())
@@ -13,14 +19,31 @@ public partial class ExitDoor : Area3D
             {
                 if (Overlaps is Player)
                 {
-                    Game game = GetTree().Root.GetNode<Game>("Node3D");
-                    if (game != null)
+                    if (!needsInteraction)
                     {
-                        game.SaveGame();
+                        Game game = GetTree().Root.GetNode<Game>("Node3D");
+                        if (game != null)
+                        {
+                            game.SaveGame();
+                        }
+                        GetTree().ChangeSceneToFile("res://Scenes/" + TargetScene + ".tscn");
+                        return;
+                    } else if (Input.IsActionJustPressed("Interact"))
+                    {
+                        Game game = GetTree().Root.GetNode<Game>("Node3D");
+                        if (game != null)
+                        {
+                            game.SaveGame();
+                        }
+                        GetTree().ChangeSceneToFile("res://Scenes/" + TargetScene + ".tscn");
+                        return;
+                    } else
+                    {
+                        BuyDisplay.Text = "Would you like to travel to " + TargetScene + "? Warning, \n this is an unfinished endless map. It is recommended you stay here.";
+                        return;
                     }
-                    GetTree().ChangeSceneToFile("res://Scenes/" + TargetScene + ".tscn");
-                    return;
                 }
+                if (BuyDisplay.Text == "Would you like to travel to " + TargetScene + "? Warning, \n this is an unfinished endless map. It is recommended you stay here.") BuyDisplay.Text = "";
             }
         }
     }

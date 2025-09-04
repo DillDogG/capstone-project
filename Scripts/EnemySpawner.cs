@@ -47,15 +47,13 @@ public partial class EnemySpawner : Node3D
 	public void DisableSpawning()
 	{
 		game.Spawners[spawnerNumber] = null;
+        if (ReenableTime > 0) ReenableTimer = ReenableTime;
+        DoMain = false;
 	}
 
 	double animationTime = 0;
 	public bool AnimationPlaying = false;
     int PauseTime = 0;
-	//bool BottomPlankPlaced = false;
-	//bool MidBottomPlankPlaced = false;
-	//bool MidTopPlankPlaced = false;
-	//bool TopPlankPlaced = false;
 
     [Export]
     AnimationPlayer animation;
@@ -71,11 +69,8 @@ public partial class EnemySpawner : Node3D
                 if (ReenableTimer <= 0)
                 {
                     DoMain = true;
+                    resetting = true;
                     game.Spawners[spawnerNumber] = this;
-                    animationTime = 0;
-                    PauseTime = 0;
-                    animation.SpeedScale = 0;
-                    animation.Seek(animationTime, true);
                 }
             }
         }
@@ -92,6 +87,7 @@ public partial class EnemySpawner : Node3D
 
     bool DoMain = true;
     bool PlayerRecentlyHere = false;
+    bool resetting = false;
     // exists purely to be able to disable main function
 	public void MainUpdate(double delta)
 	{
@@ -108,10 +104,29 @@ public partial class EnemySpawner : Node3D
                     break;
                 }
                 //else AnimationPlaying = false;
-                if (TextDisplay.Text == "Block up door (Hold E)" && PlayerRecentlyHere) { TextDisplay.Text = ""; PlayerRecentlyHere = false; }
+                if (TextDisplay.Text == "Block up door (Hold E)" && PlayerRecentlyHere) {
+                    TextDisplay.Text = "";
+                    PlayerRecentlyHere = false;
+                    AnimationPlaying = false;
+                }
             }
         }
-        if (AnimationPlaying && animationTime < 4)
+        if (animationTime > 0 && resetting)
+        {
+            animation.Play("Closing");
+            animationTime -= delta * 2;
+            animation.SpeedScale = -2;
+            if (animationTime <= 0)
+            {
+                resetting = false;
+                animation.Seek(0, true);
+                animation.SpeedScale = 0;
+                AnimationPlaying = false;
+                PauseTime = 0;
+                animationTime = 0;
+            }
+        }
+        else if (AnimationPlaying && animationTime < 4)
         {
             animationTime += delta;
             animation.SpeedScale = 1;
@@ -124,8 +139,6 @@ public partial class EnemySpawner : Node3D
             animation.SpeedScale = 0;
             animation.Seek(4, true);
             DisableSpawning();
-            ReenableTimer = ReenableTime;
-            DoMain = false;
             if (TextDisplay.Text == "Block up door (Hold E)") TextDisplay.Text = "";
         }
         else if (animationTime > PauseTime)

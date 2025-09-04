@@ -57,7 +57,8 @@ public partial class Game : Node3D
             Settings menu = (Settings)SettingsMenu;
 			ReadFile.LoadSettings(menu);
         }
-        if (ReadFile.WasGameLoaded())
+        if (EndlessMode) ReadFile.LoadBestTime(endlessHighScore);
+        else if (ReadFile.WasGameLoaded())
         {
             Checkpoint = ReadFile.LoadGame(player);
             player.Position = Checkpoints[Checkpoint];
@@ -80,7 +81,6 @@ public partial class Game : Node3D
             }
             SaveGame();
         }
-        if (EndlessMode) ReadFile.LoadBestTime(endlessHighScore);
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
