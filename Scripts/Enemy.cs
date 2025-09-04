@@ -58,6 +58,8 @@ public partial class Enemy : CharacterBody3D, Damageable
         if (Weapon != null) Weapon.MainUpdate(delta);
         if (Weapon.AttackDuration <= 0 && !Dead) Speed = BaseSpeed;
         if (!animation.IsPlaying() && Dead) QueueFree();
+        if (animation.CurrentAnimation == "Zombie/ZombieRun") animation.SpeedScale = 2;
+        else animation.SpeedScale = 1;
     }
 
     public override void _PhysicsProcess(double delta)
