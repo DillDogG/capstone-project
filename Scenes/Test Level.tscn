@@ -73,7 +73,7 @@ normal_texture = ExtResource("19_hc43c")
 mesh_list = Array[Terrain3DMeshAsset]([SubResource("Terrain3DMeshAsset_5rwbj")])
 texture_list = Array[Terrain3DTextureAsset]([SubResource("Terrain3DTextureAsset_ofyha")])
 
-[node name="Node3D" type="Node3D" node_paths=PackedStringArray("PauseMenu", "SettingsMenu", "Spawners", "Doors", "Death", "endlessHighScore")]
+[node name="Node3D2" type="Node3D" node_paths=PackedStringArray("PauseMenu", "SettingsMenu", "Spawners", "Doors", "Death", "endlessHighScore")]
 script = ExtResource("1_4awxq")
 PauseMenu = NodePath("PauseMenu")
 SettingsMenu = NodePath("UserInterface/Settings")

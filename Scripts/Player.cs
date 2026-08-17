@@ -261,8 +261,8 @@ public partial class Player : CharacterBody3D, Damageable
         // Moving the character if sliding / else not sliding
         if (Crouching && IsOnFloor())
         {
-            _targetVelocity.X = (Math.Abs(Velocity.X) > Math.Abs(_targetVelocity.X) * 0.5f) ? Velocity.X - (Velocity.X / Math.Abs(Velocity.X) * 0.1f) : _targetVelocity.X * 0.5f;
-            _targetVelocity.Z = (Math.Abs(Velocity.Z) > Math.Abs(_targetVelocity.Z) * 0.5f) ? Velocity.Z - (Velocity.Z / Math.Abs(Velocity.Z) * 0.1f) : _targetVelocity.Z * 0.5f;
+            _targetVelocity.X = (Math.Abs(Velocity.X) > Math.Abs(_targetVelocity.X) * 0.5f) ? Velocity.X - (Velocity.X / Math.Abs(Velocity.X) * 0.25f) : _targetVelocity.X * 0.5f;
+            _targetVelocity.Z = (Math.Abs(Velocity.Z) > Math.Abs(_targetVelocity.Z) * 0.5f) ? Velocity.Z - (Velocity.Z / Math.Abs(Velocity.Z) * 0.25f) : _targetVelocity.Z * 0.5f;
             // enable to slow down sliding at a point
             Vector3 momentum = _targetVelocity;
             momentum.Y = 0;
