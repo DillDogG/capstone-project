@@ -43,7 +43,6 @@ public partial class Player : CharacterBody3D, Damageable
 
 	private int JumpCount { get; set; }
     private double CoyoteTime { get; set; }
-    //private double InvincibilityTime { get; set; }
 	private double JumpSaveTime { get; set; } = 0;
     public float MouseSensitivity { get; set; } = 0.01f;
 
@@ -60,6 +59,8 @@ public partial class Player : CharacterBody3D, Damageable
     public AmmoLabel ammoDisp { get; set; }
     [Export]
     public HealthBar healthDisp { get; set; }
+    [Export]
+    public SpeedDisplay speedDisp { get; set; }
     [Export]
     public TimerLabel GlobalTimer { get; set; }
     [Export]
@@ -208,9 +209,11 @@ public partial class Player : CharacterBody3D, Damageable
         momentum.Y = 0;
         if (momentum.Length() / 20 <= 0.5) ApplyDamage((5 - momentum.Length()) / 20);
         else if (Health <= MaxHealth) Health += momentum.Length() / 300;
-        //GD.Print((momentum.Length() / 20));
-        //Health += _targetVelocity.Length() / 20;
-	}
+        if (speedDisp != null)
+        {
+            speedDisp.MainUpdate(momentum.Length());
+        }
+    }
 
     public void PlayerSpeedMult()
     {
@@ -258,11 +261,16 @@ public partial class Player : CharacterBody3D, Damageable
         // Moving the character if sliding / else not sliding
         if (Crouching && IsOnFloor())
         {
-            _targetVelocity.X = (Math.Abs(Velocity.X) > Math.Abs(_targetVelocity.X) * 0.5f) ? Velocity.X * 0.99f : _targetVelocity.X * 0.5f;
-            _targetVelocity.Z = (Math.Abs(Velocity.Z) > Math.Abs(_targetVelocity.Z) * 0.5f) ? Velocity.Z * 0.99f : _targetVelocity.Z * 0.5f;
+            _targetVelocity.X = (Math.Abs(Velocity.X) > Math.Abs(_targetVelocity.X) * 0.5f) ? Velocity.X - (Velocity.X / Math.Abs(Velocity.X) * 0.1f) : _targetVelocity.X * 0.5f;
+            _targetVelocity.Z = (Math.Abs(Velocity.Z) > Math.Abs(_targetVelocity.Z) * 0.5f) ? Velocity.Z - (Velocity.Z / Math.Abs(Velocity.Z) * 0.1f) : _targetVelocity.Z * 0.5f;
             // enable to slow down sliding at a point
-            _targetVelocity.X = (Math.Abs(_targetVelocity.X) < 2) ? 0 : _targetVelocity.X;
-            _targetVelocity.Z = (Math.Abs(_targetVelocity.Z) < 2) ? 0 : _targetVelocity.Z;
+            Vector3 momentum = _targetVelocity;
+            momentum.Y = 0;
+            if (momentum.Length() < 2)
+            {
+                _targetVelocity.X = 0;
+                _targetVelocity.Z = 0;
+            }
 			return;
         }
         else if (!IsOnFloor())

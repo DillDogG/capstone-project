@@ -3,8 +3,24 @@
   "WorkspaceRootPath": "C:\\Users\\dilld\\Documents\\GitHub\\capstone-project\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{C4D11A91-9E0E-4071-AE91-90213DB10F7E}|Capstone Project.csproj|c:\\users\\dilld\\documents\\github\\capstone-project\\scripts\\timerlabel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C4D11A91-9E0E-4071-AE91-90213DB10F7E}|Capstone Project.csproj|solutionrelative:scripts\\timerlabel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C4D11A91-9E0E-4071-AE91-90213DB10F7E}|Capstone Project.csproj|c:\\users\\dilld\\documents\\github\\capstone-project\\scripts\\endlesshighscore.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C4D11A91-9E0E-4071-AE91-90213DB10F7E}|Capstone Project.csproj|solutionrelative:scripts\\endlesshighscore.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C4D11A91-9E0E-4071-AE91-90213DB10F7E}|Capstone Project.csproj|c:\\users\\dilld\\documents\\github\\capstone-project\\scripts\\speeddisplay.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C4D11A91-9E0E-4071-AE91-90213DB10F7E}|Capstone Project.csproj|solutionrelative:scripts\\speeddisplay.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{C4D11A91-9E0E-4071-AE91-90213DB10F7E}|Capstone Project.csproj|c:\\users\\dilld\\documents\\github\\capstone-project\\scripts\\player.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{C4D11A91-9E0E-4071-AE91-90213DB10F7E}|Capstone Project.csproj|solutionrelative:scripts\\player.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C4D11A91-9E0E-4071-AE91-90213DB10F7E}|Capstone Project.csproj|c:\\users\\dilld\\documents\\github\\capstone-project\\scripts\\ammolabel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C4D11A91-9E0E-4071-AE91-90213DB10F7E}|Capstone Project.csproj|solutionrelative:scripts\\ammolabel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{C4D11A91-9E0E-4071-AE91-90213DB10F7E}|Capstone Project.csproj|c:\\users\\dilld\\documents\\github\\capstone-project\\scripts\\game.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -55,10 +71,6 @@
       "RelativeMoniker": "D:0:0:{C4D11A91-9E0E-4071-AE91-90213DB10F7E}|Capstone Project.csproj|solutionrelative:scripts\\enemyspawner.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C4D11A91-9E0E-4071-AE91-90213DB10F7E}|Capstone Project.csproj|c:\\users\\dilld\\documents\\github\\capstone-project\\scripts\\endlesshighscore.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C4D11A91-9E0E-4071-AE91-90213DB10F7E}|Capstone Project.csproj|solutionrelative:scripts\\endlesshighscore.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{C4D11A91-9E0E-4071-AE91-90213DB10F7E}|Capstone Project.csproj|c:\\users\\dilld\\documents\\github\\capstone-project\\scripts\\startscreen.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{C4D11A91-9E0E-4071-AE91-90213DB10F7E}|Capstone Project.csproj|solutionrelative:scripts\\startscreen.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -91,20 +103,12 @@
       "RelativeMoniker": "D:0:0:{C4D11A91-9E0E-4071-AE91-90213DB10F7E}|Capstone Project.csproj|solutionrelative:scripts\\meleeweapon.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C4D11A91-9E0E-4071-AE91-90213DB10F7E}|Capstone Project.csproj|c:\\users\\dilld\\documents\\github\\capstone-project\\scripts\\timerlabel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C4D11A91-9E0E-4071-AE91-90213DB10F7E}|Capstone Project.csproj|solutionrelative:scripts\\timerlabel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{C4D11A91-9E0E-4071-AE91-90213DB10F7E}|Capstone Project.csproj|c:\\users\\dilld\\documents\\github\\capstone-project\\scripts\\interactableobject.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{C4D11A91-9E0E-4071-AE91-90213DB10F7E}|Capstone Project.csproj|solutionrelative:scripts\\interactableobject.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{C4D11A91-9E0E-4071-AE91-90213DB10F7E}|Capstone Project.csproj|c:\\users\\dilld\\documents\\github\\capstone-project\\scripts\\savepoint.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{C4D11A91-9E0E-4071-AE91-90213DB10F7E}|Capstone Project.csproj|solutionrelative:scripts\\savepoint.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C4D11A91-9E0E-4071-AE91-90213DB10F7E}|Capstone Project.csproj|c:\\users\\dilld\\documents\\github\\capstone-project\\scripts\\ammolabel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C4D11A91-9E0E-4071-AE91-90213DB10F7E}|Capstone Project.csproj|solutionrelative:scripts\\ammolabel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{C4D11A91-9E0E-4071-AE91-90213DB10F7E}|Capstone Project.csproj|c:\\users\\dilld\\documents\\github\\capstone-project\\scripts\\savesettings.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -146,8 +150,21 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 7,
+          "SelectedChildIndex": 19,
           "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "SpeedDisplay.cs",
+              "DocumentMoniker": "C:\\USERS\\DILLD\\DOCUMENTS\\GITHUB\\CAPSTONE-PROJECT\\Scripts\\SpeedDisplay.cs",
+              "RelativeDocumentMoniker": "Scripts\\SpeedDisplay.cs",
+              "ToolTip": "C:\\USERS\\DILLD\\DOCUMENTS\\GITHUB\\CAPSTONE-PROJECT\\Scripts\\SpeedDisplay.cs",
+              "RelativeToolTip": "Scripts\\SpeedDisplay.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAvAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-08-17T02:41:27.203Z",
+              "EditorCaption": ""
+            },
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{004be353-6879-467c-9d1e-9ac23cdf6d49}"
@@ -170,82 +187,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
-              "Title": "EndlessHighScore.cs",
-              "DocumentMoniker": "C:\\Users\\dilld\\Documents\\GitHub\\capstone-project\\Scripts\\EndlessHighScore.cs",
-              "RelativeDocumentMoniker": "Scripts\\EndlessHighScore.cs",
-              "ToolTip": "C:\\Users\\dilld\\Documents\\GitHub\\capstone-project\\Scripts\\EndlessHighScore.cs",
-              "RelativeToolTip": "Scripts\\EndlessHighScore.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-09T14:07:50.74Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 12,
-              "Title": "EnemySpawner.cs",
-              "DocumentMoniker": "C:\\Users\\dilld\\Documents\\GitHub\\capstone-project\\Scripts\\EnemySpawner.cs",
-              "RelativeDocumentMoniker": "Scripts\\EnemySpawner.cs",
-              "ToolTip": "C:\\Users\\dilld\\Documents\\GitHub\\capstone-project\\Scripts\\EnemySpawner.cs",
-              "RelativeToolTip": "Scripts\\EnemySpawner.cs",
-              "ViewState": "AgIAAGoAAAAAAAAAAAAAAH0AAAAiAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-20T20:55:07.847Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 3,
               "Title": "Player.cs",
               "DocumentMoniker": "C:\\Users\\dilld\\Documents\\GitHub\\capstone-project\\Scripts\\Player.cs",
               "RelativeDocumentMoniker": "Scripts\\Player.cs",
               "ToolTip": "C:\\Users\\dilld\\Documents\\GitHub\\capstone-project\\Scripts\\Player.cs",
               "RelativeToolTip": "Scripts\\Player.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAJAAAAAAAAAA==",
+              "ViewState": "AgIAAK8AAAAAAAAAAADwv7oAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-10-02T21:55:17.25Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Game.cs",
-              "DocumentMoniker": "C:\\Users\\dilld\\Documents\\GitHub\\capstone-project\\Scripts\\Game.cs",
-              "RelativeDocumentMoniker": "Scripts\\Game.cs",
-              "ToolTip": "C:\\Users\\dilld\\Documents\\GitHub\\capstone-project\\Scripts\\Game.cs",
-              "RelativeToolTip": "Scripts\\Game.cs",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAAADwAAAANAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-06T23:13:10.736Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 6,
-              "Title": "ExitDoor.cs",
-              "DocumentMoniker": "C:\\Users\\dilld\\Documents\\GitHub\\capstone-project\\Scripts\\ExitDoor.cs",
-              "RelativeDocumentMoniker": "Scripts\\ExitDoor.cs",
-              "ToolTip": "C:\\Users\\dilld\\Documents\\GitHub\\capstone-project\\Scripts\\ExitDoor.cs",
-              "RelativeToolTip": "Scripts\\ExitDoor.cs",
-              "ViewState": "AgIAAA4AAAAAAAAAAAAUwC0AAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-06T20:08:39.903Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "EnemyMelee.cs",
-              "DocumentMoniker": "C:\\Users\\dilld\\Documents\\GitHub\\capstone-project\\Scripts\\EnemyMelee.cs",
-              "RelativeDocumentMoniker": "Scripts\\EnemyMelee.cs",
-              "ToolTip": "C:\\Users\\dilld\\Documents\\GitHub\\capstone-project\\Scripts\\EnemyMelee.cs",
-              "RelativeToolTip": "Scripts\\EnemyMelee.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-11T22:57:21.955Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
               "Title": "Enemy.cs",
               "DocumentMoniker": "C:\\Users\\dilld\\Documents\\GitHub\\capstone-project\\Scripts\\Enemy.cs",
               "RelativeDocumentMoniker": "Scripts\\Enemy.cs",
@@ -253,12 +208,11 @@
               "RelativeToolTip": "Scripts\\Enemy.cs",
               "ViewState": "AgIAAE4AAAAAAAAAAAAtwGcAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-21T16:44:28.536Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-21T16:44:28.536Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 18,
               "Title": "RangedWeapon.cs",
               "DocumentMoniker": "C:\\Users\\dilld\\Documents\\GitHub\\capstone-project\\Scripts\\RangedWeapon.cs",
               "RelativeDocumentMoniker": "Scripts\\RangedWeapon.cs",
@@ -270,7 +224,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 13,
               "Title": "WeaponBuy.cs",
               "DocumentMoniker": "C:\\Users\\dilld\\Documents\\GitHub\\capstone-project\\Scripts\\WeaponBuy.cs",
               "RelativeDocumentMoniker": "Scripts\\WeaponBuy.cs",
@@ -282,7 +236,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 9,
               "Title": "ReadFile.cs",
               "DocumentMoniker": "C:\\Users\\dilld\\Documents\\GitHub\\capstone-project\\Scripts\\ReadFile.cs",
               "RelativeDocumentMoniker": "Scripts\\ReadFile.cs",
@@ -290,12 +244,11 @@
               "RelativeToolTip": "Scripts\\ReadFile.cs",
               "ViewState": "AgIAAAYAAAAAAAAAAAApwEAAAAA6AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-06T18:25:33.59Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-06T18:25:33.59Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 16,
+              "DocumentIndex": 19,
               "Title": "RocketLauncher.cs",
               "DocumentMoniker": "C:\\Users\\dilld\\Documents\\GitHub\\capstone-project\\Scripts\\RocketLauncher.cs",
               "RelativeDocumentMoniker": "Scripts\\RocketLauncher.cs",
@@ -307,7 +260,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 18,
+              "DocumentIndex": 21,
               "Title": "NewGameButton.cs",
               "DocumentMoniker": "C:\\Users\\dilld\\Documents\\GitHub\\capstone-project\\Scripts\\NewGameButton.cs",
               "RelativeDocumentMoniker": "Scripts\\NewGameButton.cs",
@@ -319,7 +272,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 17,
+              "DocumentIndex": 20,
               "Title": "RocketAmmo.cs",
               "DocumentMoniker": "C:\\Users\\dilld\\Documents\\GitHub\\capstone-project\\Scripts\\RocketAmmo.cs",
               "RelativeDocumentMoniker": "Scripts\\RocketAmmo.cs",
@@ -331,7 +284,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 11,
               "Title": "ReloadGameButton.cs",
               "DocumentMoniker": "C:\\Users\\dilld\\Documents\\GitHub\\capstone-project\\Scripts\\ReloadGameButton.cs",
               "RelativeDocumentMoniker": "Scripts\\ReloadGameButton.cs",
@@ -339,12 +292,11 @@
               "RelativeToolTip": "Scripts\\ReloadGameButton.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-06T18:02:44.008Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-06T18:02:44.008Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 8,
               "Title": "StartSettings.cs",
               "DocumentMoniker": "C:\\Users\\dilld\\Documents\\GitHub\\capstone-project\\Scripts\\StartSettings.cs",
               "RelativeDocumentMoniker": "Scripts\\StartSettings.cs",
@@ -352,12 +304,11 @@
               "RelativeToolTip": "Scripts\\StartSettings.cs",
               "ViewState": "AgIAACwAAAAAAAAAAAAAwDsAAAAUAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-13T17:27:05.932Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-13T17:27:05.932Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 7,
               "Title": "Settings.cs",
               "DocumentMoniker": "C:\\Users\\dilld\\Documents\\GitHub\\capstone-project\\Scripts\\Settings.cs",
               "RelativeDocumentMoniker": "Scripts\\Settings.cs",
@@ -365,12 +316,98 @@
               "RelativeToolTip": "Scripts\\Settings.cs",
               "ViewState": "AgIAAFkAAAAAAAAAAAD4v2wAAAA4AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-15T22:07:46.716Z",
+              "WhenOpened": "2024-11-15T22:07:46.716Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "AmmoLabel.cs",
+              "DocumentMoniker": "C:\\Users\\dilld\\Documents\\GitHub\\capstone-project\\Scripts\\AmmoLabel.cs",
+              "RelativeDocumentMoniker": "Scripts\\AmmoLabel.cs",
+              "ToolTip": "C:\\Users\\dilld\\Documents\\GitHub\\capstone-project\\Scripts\\AmmoLabel.cs",
+              "RelativeToolTip": "Scripts\\AmmoLabel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-18T21:13:47.141Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "EndlessHighScore.cs",
+              "DocumentMoniker": "C:\\Users\\dilld\\Documents\\GitHub\\capstone-project\\Scripts\\EndlessHighScore.cs",
+              "RelativeDocumentMoniker": "Scripts\\EndlessHighScore.cs",
+              "ToolTip": "C:\\Users\\dilld\\Documents\\GitHub\\capstone-project\\Scripts\\EndlessHighScore.cs",
+              "RelativeToolTip": "Scripts\\EndlessHighScore.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABoAAAATAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-09T14:07:50.74Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "TimerLabel.cs",
+              "DocumentMoniker": "C:\\Users\\dilld\\Documents\\GitHub\\capstone-project\\Scripts\\TimerLabel.cs",
+              "RelativeDocumentMoniker": "Scripts\\TimerLabel.cs",
+              "ToolTip": "C:\\Users\\dilld\\Documents\\GitHub\\capstone-project\\Scripts\\TimerLabel.cs",
+              "RelativeToolTip": "Scripts\\TimerLabel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAACAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-04T22:33:49.314Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "EnemyMelee.cs",
+              "DocumentMoniker": "C:\\Users\\dilld\\Documents\\GitHub\\capstone-project\\Scripts\\EnemyMelee.cs",
+              "RelativeDocumentMoniker": "Scripts\\EnemyMelee.cs",
+              "ToolTip": "C:\\Users\\dilld\\Documents\\GitHub\\capstone-project\\Scripts\\EnemyMelee.cs",
+              "RelativeToolTip": "Scripts\\EnemyMelee.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-11T22:57:21.955Z"
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 10,
+              "Title": "ExitDoor.cs",
+              "DocumentMoniker": "C:\\Users\\dilld\\Documents\\GitHub\\capstone-project\\Scripts\\ExitDoor.cs",
+              "RelativeDocumentMoniker": "Scripts\\ExitDoor.cs",
+              "ToolTip": "C:\\Users\\dilld\\Documents\\GitHub\\capstone-project\\Scripts\\ExitDoor.cs",
+              "RelativeToolTip": "Scripts\\ExitDoor.cs",
+              "ViewState": "AgIAAA4AAAAAAAAAAAAUwC0AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-06T20:08:39.903Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Game.cs",
+              "DocumentMoniker": "C:\\Users\\dilld\\Documents\\GitHub\\capstone-project\\Scripts\\Game.cs",
+              "RelativeDocumentMoniker": "Scripts\\Game.cs",
+              "ToolTip": "C:\\Users\\dilld\\Documents\\GitHub\\capstone-project\\Scripts\\Game.cs",
+              "RelativeToolTip": "Scripts\\Game.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAADwAAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-06T23:13:10.736Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "EnemySpawner.cs",
+              "DocumentMoniker": "C:\\Users\\dilld\\Documents\\GitHub\\capstone-project\\Scripts\\EnemySpawner.cs",
+              "RelativeDocumentMoniker": "Scripts\\EnemySpawner.cs",
+              "ToolTip": "C:\\Users\\dilld\\Documents\\GitHub\\capstone-project\\Scripts\\EnemySpawner.cs",
+              "RelativeToolTip": "Scripts\\EnemySpawner.cs",
+              "ViewState": "AgIAAGoAAAAAAAAAAAAAAH0AAAAiAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-20T20:55:07.847Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
               "Title": "BlockedDoor.cs",
               "DocumentMoniker": "C:\\Users\\dilld\\Documents\\GitHub\\capstone-project\\Scripts\\BlockedDoor.cs",
               "RelativeDocumentMoniker": "Scripts\\BlockedDoor.cs",
@@ -382,7 +419,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 17,
               "Title": "StartScreen.cs",
               "DocumentMoniker": "C:\\Users\\dilld\\Documents\\GitHub\\capstone-project\\Scripts\\StartScreen.cs",
               "RelativeDocumentMoniker": "Scripts\\StartScreen.cs",
@@ -394,7 +431,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 15,
               "Title": "Endless.cs",
               "DocumentMoniker": "C:\\Users\\dilld\\Documents\\GitHub\\capstone-project\\Scripts\\Endless.cs",
               "RelativeDocumentMoniker": "Scripts\\Endless.cs",
@@ -406,7 +443,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 19,
+              "DocumentIndex": 22,
               "Title": "Weapon.cs",
               "DocumentMoniker": "C:\\Users\\dilld\\Documents\\GitHub\\capstone-project\\Scripts\\Weapon.cs",
               "RelativeDocumentMoniker": "Scripts\\Weapon.cs",
@@ -418,7 +455,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 21,
+              "DocumentIndex": 24,
               "Title": "MeleeWeapon.cs",
               "DocumentMoniker": "C:\\Users\\dilld\\Documents\\GitHub\\capstone-project\\Scripts\\MeleeWeapon.cs",
               "RelativeDocumentMoniker": "Scripts\\MeleeWeapon.cs",
@@ -430,7 +467,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 20,
+              "DocumentIndex": 23,
               "Title": "SniperRifleRanged.cs",
               "DocumentMoniker": "C:\\Users\\dilld\\Documents\\GitHub\\capstone-project\\Scripts\\SniperRifleRanged.cs",
               "RelativeDocumentMoniker": "Scripts\\SniperRifleRanged.cs",
@@ -442,19 +479,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 22,
-              "Title": "TimerLabel.cs",
-              "DocumentMoniker": "C:\\Users\\dilld\\Documents\\GitHub\\capstone-project\\Scripts\\TimerLabel.cs",
-              "RelativeDocumentMoniker": "Scripts\\TimerLabel.cs",
-              "ToolTip": "C:\\Users\\dilld\\Documents\\GitHub\\capstone-project\\Scripts\\TimerLabel.cs",
-              "RelativeToolTip": "Scripts\\TimerLabel.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAACEAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-04T22:33:49.314Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 23,
+              "DocumentIndex": 25,
               "Title": "InteractableObject.cs",
               "DocumentMoniker": "C:\\Users\\dilld\\Documents\\GitHub\\capstone-project\\Scripts\\InteractableObject.cs",
               "RelativeDocumentMoniker": "Scripts\\InteractableObject.cs",
@@ -466,7 +491,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 24,
+              "DocumentIndex": 26,
               "Title": "SavePoint.cs",
               "DocumentMoniker": "C:\\Users\\dilld\\Documents\\GitHub\\capstone-project\\Scripts\\SavePoint.cs",
               "RelativeDocumentMoniker": "Scripts\\SavePoint.cs",
@@ -478,19 +503,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 25,
-              "Title": "AmmoLabel.cs",
-              "DocumentMoniker": "C:\\Users\\dilld\\Documents\\GitHub\\capstone-project\\Scripts\\AmmoLabel.cs",
-              "RelativeDocumentMoniker": "Scripts\\AmmoLabel.cs",
-              "ToolTip": "C:\\Users\\dilld\\Documents\\GitHub\\capstone-project\\Scripts\\AmmoLabel.cs",
-              "RelativeToolTip": "Scripts\\AmmoLabel.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-18T21:13:47.141Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 26,
+              "DocumentIndex": 27,
               "Title": "SaveSettings.cs",
               "DocumentMoniker": "C:\\Users\\dilld\\Documents\\GitHub\\capstone-project\\Scripts\\SaveSettings.cs",
               "RelativeDocumentMoniker": "Scripts\\SaveSettings.cs",
@@ -502,7 +515,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 27,
+              "DocumentIndex": 28,
               "Title": "PauseContinue.cs",
               "DocumentMoniker": "C:\\Users\\dilld\\Documents\\GitHub\\capstone-project\\Scripts\\PauseContinue.cs",
               "RelativeDocumentMoniker": "Scripts\\PauseContinue.cs",
@@ -514,7 +527,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 29,
+              "DocumentIndex": 30,
               "Title": "ReloadTimer.cs",
               "DocumentMoniker": "C:\\Users\\dilld\\Documents\\GitHub\\capstone-project\\Scripts\\ReloadTimer.cs",
               "RelativeDocumentMoniker": "Scripts\\ReloadTimer.cs",
@@ -526,7 +539,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 30,
+              "DocumentIndex": 31,
               "Title": "HitMarker.cs",
               "DocumentMoniker": "C:\\Users\\dilld\\Documents\\GitHub\\capstone-project\\Scripts\\HitMarker.cs",
               "RelativeDocumentMoniker": "Scripts\\HitMarker.cs",
@@ -538,7 +551,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 28,
+              "DocumentIndex": 29,
               "Title": "SettingsButton.cs",
               "DocumentMoniker": "C:\\Users\\dilld\\Documents\\GitHub\\capstone-project\\Scripts\\SettingsButton.cs",
               "RelativeDocumentMoniker": "Scripts\\SettingsButton.cs",
@@ -550,7 +563,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 31,
+              "DocumentIndex": 32,
               "Title": "CreditCount.cs",
               "DocumentMoniker": "C:\\Users\\dilld\\Documents\\GitHub\\capstone-project\\Scripts\\CreditCount.cs",
               "RelativeDocumentMoniker": "Scripts\\CreditCount.cs",
@@ -562,7 +575,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 33,
+              "DocumentIndex": 34,
               "Title": "Damageable.cs",
               "DocumentMoniker": "C:\\Users\\dilld\\Documents\\GitHub\\capstone-project\\Scripts\\Damageable.cs",
               "RelativeDocumentMoniker": "Scripts\\Damageable.cs",
@@ -574,7 +587,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 32,
+              "DocumentIndex": 33,
               "Title": "QuitGameButton.cs",
               "DocumentMoniker": "C:\\Users\\dilld\\Documents\\GitHub\\capstone-project\\Scripts\\QuitGameButton.cs",
               "RelativeDocumentMoniker": "Scripts\\QuitGameButton.cs",

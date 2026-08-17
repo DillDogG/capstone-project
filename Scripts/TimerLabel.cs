@@ -19,15 +19,15 @@ public partial class TimerLabel : Label
 
 	public string TimerFormat(double time)
 	{
-		time = Math.Round(time, 2);
-		if (time <= 60) return time.ToString();
+		//time = Math.Round(time, 2);
+		if (time <= 60) return time.ToString("#.00");
 		int minutes = (int)time / 60;
 		time %= 60;
 		time = Math.Round(time, 2);
-		if (minutes <= 60) return $"{minutes}:{time}";
+		if (minutes <= 60) return $"{minutes}:{time.ToString("00.00")}";
 
 		int hours = (int)minutes / 60;
 		minutes %= 60;
-		return $"{hours}:{minutes}:{time}";
+		return $"{hours}:{minutes.ToString("00")}:{time.ToString("00.00")}";
 	}
 }

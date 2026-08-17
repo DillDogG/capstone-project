@@ -105,9 +105,10 @@ Death = NodePath("UserInterface/DeathFade")
 EndlessMode = true
 endlessHighScore = NodePath("UserInterface/TotalTimer2")
 
-[node name="Player" parent="." node_paths=PackedStringArray("ammoDisp", "healthDisp", "GlobalTimer", "CreditDisplay", "Game") instance=ExtResource("1_5lq7p")]
+[node name="Player" parent="." node_paths=PackedStringArray("ammoDisp", "healthDisp", "speedDisp", "GlobalTimer", "CreditDisplay", "Game") instance=ExtResource("1_5lq7p")]
 ammoDisp = NodePath("../UserInterface/AmmoLabel")
 healthDisp = NodePath("../UserInterface/HealthBar")
+speedDisp = NodePath("../UserInterface/SpeedDisp")
 GlobalTimer = NodePath("../UserInterface/TotalTimer")
 CreditDisplay = NodePath("../UserInterface/CreditCount")
 Game = NodePath("..")
@@ -119,6 +120,7 @@ offset_top = 82.0
 offset_bottom = 160.0
 
 [node name="Not_Implemented" type="Label" parent="UserInterface/Settings/Controller" index="0"]
+layout_mode = 0
 offset_left = 150.0
 offset_top = 74.0
 offset_right = 336.0

@@ -1,9 +1,10 @@
-[gd_scene load_steps=20 format=3 uid="uid://83t51lgp7jip"]
+[gd_scene load_steps=21 format=3 uid="uid://83t51lgp7jip"]
 
 [ext_resource type="FontFile" uid="uid://7jc8lsmmfdi1" path="res://Fonts/DavysCrappyWrit.ttf" id="1_kleky"]
 [ext_resource type="Script" path="res://Scripts/TimerLabel.cs" id="2_outst"]
 [ext_resource type="Script" path="res://Scripts/CreditCount.cs" id="3_6fp1f"]
 [ext_resource type="Script" path="res://Scripts/AmmoLabel.cs" id="4_e3fur"]
+[ext_resource type="Script" path="res://Scripts/SpeedDisplay.cs" id="5_oynlc"]
 [ext_resource type="Texture2D" uid="uid://eiiv82akd2a7" path="res://Images/Crosshair.png" id="5_t4jkv"]
 [ext_resource type="Texture2D" uid="uid://canwlfiupuvto" path="res://Images/CircularProgressBar.png" id="6_6l2v2"]
 [ext_resource type="Script" path="res://Scripts/ReloadTimer.cs" id="7_og4fg"]
@@ -78,6 +79,20 @@ theme_override_fonts/font = ExtResource("1_kleky")
 theme_override_font_sizes/font_size = 40
 text = "0/0"
 script = ExtResource("4_e3fur")
+
+[node name="SpeedDisp" type="Label" parent="."]
+layout_mode = 0
+offset_left = 5.0
+offset_top = 533.0
+offset_right = 45.0
+offset_bottom = 582.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("1_kleky")
+theme_override_font_sizes/font_size = 40
+text = "0/0"
+script = ExtResource("5_oynlc")
 
 [node name="Crosshair" type="TextureRect" parent="."]
 layout_mode = 1
