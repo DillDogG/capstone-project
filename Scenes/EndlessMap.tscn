@@ -118,6 +118,15 @@ Game = NodePath("..")
 offset_top = 82.0
 offset_bottom = 160.0
 
+[node name="Not_Implemented" type="Label" parent="UserInterface/Settings/Controller" index="0"]
+offset_left = 150.0
+offset_top = 74.0
+offset_right = 336.0
+offset_bottom = 105.0
+scale = Vector2(2, 2)
+text = "Not Implemented Yet"
+horizontal_alignment = 2
+
 [node name="TotalTimer2" type="Label" parent="UserInterface" node_paths=PackedStringArray("timer", "game")]
 layout_mode = 0
 offset_top = 41.0

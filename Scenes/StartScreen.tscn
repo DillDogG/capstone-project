@@ -287,9 +287,9 @@ horizontal_alignment = 2
 
 [node name="Mouse_Sens_Slider" type="HSlider" parent="Settings/Controls"]
 layout_mode = 2
-offset_top = 40.0
+offset_top = 36.0
 offset_right = 500.0
-offset_bottom = 56.0
+offset_bottom = 52.0
 min_value = 0.1
 max_value = 5.0
 step = 0.05
@@ -299,9 +299,9 @@ scrollable = false
 [node name="Mouse_Sens_Value" type="SpinBox" parent="Settings/Controls"]
 layout_mode = 0
 offset_left = 720.0
-offset_top = 32.0
+offset_top = 28.0
 offset_right = 824.0
-offset_bottom = 71.0
+offset_bottom = 67.0
 min_value = 0.1
 max_value = 5.0
 step = 0.05
@@ -312,3 +312,12 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
+
+[node name="Not_Implemented" type="Label" parent="Settings/Controller"]
+offset_left = 150.0
+offset_top = 74.0
+offset_right = 336.0
+offset_bottom = 105.0
+scale = Vector2(2, 2)
+text = "Not Implemented Yet"
+horizontal_alignment = 2
